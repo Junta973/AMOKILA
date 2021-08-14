@@ -30,6 +30,9 @@ class RegistrationController extends AbstractController
                 )
             );
 
+
+            $user->setUsername('marc');
+            //dd($user);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

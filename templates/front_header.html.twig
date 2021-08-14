@@ -1,0 +1,16 @@
+<nav class="front_nav">
+
+
+        <a href="{{ path('app_apropos') }}">A propos</a>
+        <a href="{{ path('app_contact') }}">Contact</a>
+        {% if app.user %}
+                <a href="{{ path('app_logout') }}">     Déconnexion</a>
+        {% else %}
+                <a href="{{ path('app_register') }}">   S'inscrire</a>
+                <a href="{{ path('app_login') }}">      Connexion</a>
+        {% endif %}
+        <a id="menuNavBar" href="javascript:void(0);" class="icon">
+                <i class="fa fa-bars"></i>
+        </a>
+
+</nav>
