@@ -6,21 +6,28 @@
     {{ form_start(registrationForm) }}
     <h1>Register</h1>
 
-
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
 
     <div class="form-group">
-            {{ form_row(registrationForm.email) }}
+        <label>E-mail</label>
+        {{ form_widget(registrationForm.email) }}
+        <span class="error-field">{{ form_errors(registrationForm.email) }}</span>
     </div>
     <div class="form-group">
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
+        <label>Password</label>
+        {{ form_widget(registrationForm.plainPassword) }}
+        <span class="error-field">{{ form_errors(registrationForm.plainPassword) }}</span>
     </div>
     <div class="form-group customcheckbox">
         {{ form_row(registrationForm.agreeTerms) }}
     </div>
 
 
-        <button type="submit" class="btn">Register</button>
+    <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

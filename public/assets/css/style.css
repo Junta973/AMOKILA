@@ -148,6 +148,17 @@ a,button{
     .container_forms .section_right {
         grid-row: 1;
     }
+
+}
+
+.error-field ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.error-field ul li{
+    color: #ff0918;
+    font-size: 16px;
 }
 
 .alert {
@@ -268,9 +279,233 @@ form .custom-checkbox{
     background-color: #FFFFFF;
     color: #1F15A0;
 }
+.btn-dark{
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.btn-warning{
+    background-color: #D1AB2C;
+    border-color: #D1AB2C;
+    color: #FFFFFF;
+}
+.btn-danger{
+    background-color: #E03D20;
+    border-color: #E03D20;
+    color: #FFFFFF;
+}
+.btn-secondary{
+    background-color: #515A62;
+    border-color: #515A62;
+    color: #FFFFFF;
+}
+
 .btn-block{
     width: 100% !important;
 }
 .text-center{
     text-align: center;
+}
+
+.w-240{
+    width: 240px !important;
+}
+.w-100{
+    width: 100px !important;
+}
+.mt-5{
+   margin-top: 5px;
+}
+.mt-2{
+    margin-top: 2px;
+}
+.ml-2{
+    margin-left: 2px;
+}
+.font-14{
+    font-size: 14px !important;
+}
+
+.badge{
+    display: block;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    font: italic normal normal 29px/35px Helvetica;
+    opacity: 1;
+}
+.badge.badge-success{
+    background-color: #25CB1E;
+    border-color: #25CB1E;
+    color: #FFFFFF;
+}
+.badge.badge-danger{
+    background-color: #E03D20;
+    border-color: #E03D20;
+    color: #FFFFFF;
+}
+/** admin section css **/
+
+#header{
+    width: 100%;
+    position: relative;
+    min-height: 80px;
+    background: #000000 0% 0% no-repeat padding-box;
+    color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    padding: 0px 12px 0px 12px;
+}
+.menu {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 100%;
+    justify-content: flex-start;
+}
+
+.options {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+#header a{
+    margin: 0 12px 0 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+.side-menu{
+    width: 320px;
+    position: absolute;
+    top: 0;
+    background-color: #2810B7;
+    height: calc(120% - 50px);
+    z-index: 2;
+    transition: all .5s ease 0s;
+}
+
+.side-menu.closed{
+    width: 80px !important;
+}
+
+.side-menu.closed{
+    width: 80px !important;
+}
+
+.side-menu.closed li a span,.side-menu.closed .side-logo{
+    display: none;
+    transition: all .5s ease 0s;
+}
+
+.top-side-menu{
+    display: block;
+    height: 30px;
+    padding: 20px;
+    color: #FFFFFF;
+    font-size: 44px;
+}
+
+#side-menu {
+    background: #2810B7;
+}
+.title h3{
+    white-space: nowrap;
+}
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+ul {
+    list-style: none;
+}
+.nav>li {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+#side-menu li.active>a,#side-menu li>a:hover {
+    border-radius: 0;
+    color: #323a45;
+    background: #e3e8ee;
+}
+#side-menu li a {
+      color: #fff;
+      text-transform: uppercase;
+      padding: 11px 20px 11px 16px;
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: 20% 70%;
+      white-space: nowrap;
+      text-align: center;
+      align-items: center;
+}
+#side-menu li a span {
+    font-size: 18px;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+li a i.menu-icon {
+    margin-right: 16px;
+    display: block;
+    float: left;
+    width: 18px;
+    font-size: 44px;
+}
+#side-menu li.active, li .nav-second-level li {
+    background: #fff;
+    border-bottom: 0;
+}
+#toggle-menu{
+    cursor: pointer;
+}
+.options span{
+    cursor: pointer;
+}
+
+.options span img{
+    width: 45px;
+}
+
+.side-logo{
+    position: absolute;
+    width: 104px;
+    left: 120PX;
+    top: 0px;
+}
+
+.admin_container{
+    margin-left: 320px;
+    transition: all .5s ease 0s;
+}
+.admin_content{
+    padding: 15px;
+}
+.admin_container.closed{
+    margin-left: 80px;
+}
+.header-body{
+    display: flex;
+    justify-content: center;
+}
+.container-body{
+    margin-top: 25px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    height: 25px;
 }

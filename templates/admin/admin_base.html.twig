@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}AMOKILA ADMIN!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
+    {% endblock %}
+
+    {% block javascripts %}
+        <script
+                src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
+    {% endblock %}
+</head>
+<body>
+
+{% include 'admin/admin_menu.html.twig' %}
+<div class="admin_container">
+    {% include 'admin/admin_header.html.twig' %}
+    <div class="admin_content">
+    {% block body %}{% endblock %}
+    </div>
+</div>
+
+
+<script>
+    $(document).on('click','#toggle-menu',function (){
+        $('.side-menu').toggleClass('closed');
+        $('.admin_container').toggleClass('closed');
+    });
+    $(document).ready(function (){
+        if ($( window ).width() <= 600) {
+            $('.side-menu').addClass('closed');
+            $('.admin_container').addClass('closed');
+        }else{
+            $('.side-menu').removeClass('closed');
+            $('.admin_container').removeClass('closed');
+        }
+    })
+    $(window).resize(function (){
+        if ($( window ).width() <= 600) {
+            $('.side-menu').addClass('closed');
+            $('.admin_container').addClass('closed');
+        }else{
+            $('.side-menu').removeClass('closed');
+            $('.admin_container').removeClass('closed');
+        }
+    })
+</script>
+</body>
+</html>
