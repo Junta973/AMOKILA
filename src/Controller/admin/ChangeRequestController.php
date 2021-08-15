@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class adminController extends AbstractController
+class ChangeRequestController extends AbstractController
 {
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/admin/changeRequests", name="app_admin_change_requests")
      */
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'title' => 'DASHBOARD',
+        return $this->render('admin/ChangeRequest/index.html.twig', [
+            'title' => 'CHANGE REQUEST',
         ]);
     }
 }

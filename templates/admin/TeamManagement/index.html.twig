@@ -1,0 +1,122 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Admin Dashboard!{% endblock %}
+
+{% block body %}
+
+    <div class="header-body">
+        <button class="btn btn-dark w-240 mt-5 ml-2">Prof. filter</button>
+        <button class="btn btn-dark w-240 mt-5 ml-2">Skills filter</button>
+        <button class="btn btn-dark w-240 mt-5 ml-2">Level filter</button>
+        <button class="btn btn-dark w-240 mt-5 ml-2">Dep. filter</button>
+        <button class="btn btn-dark w-240 mt-5 ml-2"><i class="fa fa-user"></i> add user</button>
+    </div>
+    <div class="container-body">
+
+        <table>
+            <thead>
+            <tr>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>FirstName</th>
+                <th>Profession</th>
+                <th>Skills</th>
+                <th>Level</th>
+                <th>Département</th>
+                <th style="width: 30%;">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img width="75" src="{{ asset('assets/img/profile.png') }}" alt="" /></td>
+                <td>Chahir</td>
+                <td>Jbali</td>
+                <td>Developer</td>
+                <td>Symfony</td>
+                <td>9</td>
+                <td>Engineering</td>
+                <td>
+                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
+                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
+                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                </td>
+            </tr>
+            <tr>
+                <td><img width="75" src="{{ asset('assets/img/profile.png') }}" alt="" /></td>
+                <td>Chahir</td>
+                <td>Jbali</td>
+                <td>Developer</td>
+                <td>Symfony</td>
+                <td>9</td>
+                <td>Engineering</td>
+                <td>
+                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
+                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
+                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                </td>
+            </tr>
+            <tr>
+                <td><img width="75" src="{{ asset('assets/img/profile.png') }}" alt="" /></td>
+                <td>Chahir</td>
+                <td>Jbali</td>
+                <td>Developer</td>
+                <td>Symfony</td>
+                <td>9</td>
+                <td>Engineering</td>
+                <td>
+                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
+                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
+                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                </td>
+            </tr>
+            <tr>
+                <td><img width="75" src="{{ asset('assets/img/profile.png') }}" alt="" /></td>
+                <td>Chahir</td>
+                <td>Jbali</td>
+                <td>Developer</td>
+                <td>Symfony</td>
+                <td>9</td>
+                <td>Engineering</td>
+                <td>
+                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
+                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
+                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                </td>
+            </tr>
+            <tr>
+                <td><img width="75" src="{{ asset('assets/img/profile.png') }}" alt="" /></td>
+                <td>Chahir</td>
+                <td>Jbali</td>
+                <td>Developer</td>
+                <td>Symfony</td>
+                <td>9</td>
+                <td>Engineering</td>
+                <td>
+                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
+                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
+                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                </td>
+            </tr>
+            <tr>
+                <td><img width="75" src="{{ asset('assets/img/profile.png') }}" alt="" /></td>
+                <td>Chahir</td>
+                <td>Jbali</td>
+                <td>Developer</td>
+                <td>Symfony</td>
+                <td>9</td>
+                <td>Engineering</td>
+                <td>
+                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
+                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
+                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                </td>
+            </tr>
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+{% endblock %}

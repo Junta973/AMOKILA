@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class adminController extends AbstractController
+class MaterialController extends AbstractController
 {
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/admin/material", name="app_admin_material")
      */
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig', [
-            'title' => 'DASHBOARD',
+        return $this->render('admin/Material/index.html.twig', [
+            'title' => 'MATERIALS LIST',
         ]);
     }
 }

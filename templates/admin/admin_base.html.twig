@@ -8,6 +8,7 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
     {% endblock %}
 
     {% block javascripts %}
@@ -15,6 +16,7 @@
                 src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
     {% endblock %}
 </head>
 <body>
@@ -26,7 +28,6 @@
     {% block body %}{% endblock %}
     </div>
 </div>
-
 
 <script>
     $(document).on('click','#toggle-menu',function (){
@@ -51,6 +52,14 @@
             $('.admin_container').removeClass('closed');
         }
     })
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+        });
+        calendar.render();
+    });
 </script>
+
 </body>
 </html>

@@ -4,59 +4,67 @@
         <img class="side-logo" src="{{ asset('assets/img/logo_transparent_menu.png') }}">
     </span>
     <ul class="nav metis-menu" id="side-menu">
-        <li>
-            <a>
+        <li class="{{ app.request.get('_route') == 'app_admin' ? 'active' : '' }}">
+            <a href="{{ path('app_admin') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-text">
-               Dashboard
-            </span>
+                    Dashboard
+                </span>
             </a>
         </li>
-        <li>
-            <a>
+        <li class="{{ app.request.get('_route') == 'app_admin_project' ? 'active' : '' }}">
+            <a href="{{ path('app_admin_project') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-text">
                Project
             </span>
             </a>
         </li>
-        <li>
-            <a>
+        <li class="{{ app.request.get('_route') == 'app_admin_change_requests' ? 'active' : '' }}">
+            <a href="{{ path('app_admin_change_requests') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-text">
                Change Request
             </span>
             </a>
         </li>
-        <li>
-            <a>
+        <li class="{{ app.request.get('_route') == 'app_admin_process' ? 'active' : '' }}">
+            <a href="{{ path('app_admin_process') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-text">
                Process
             </span>
             </a>
         </li>
-        <li>
-            <a>
+        <li class="{{ app.request.get('_route') == 'app_admin_task_request' ? 'active' : '' }}">
+            <a href="{{ path('app_admin_task_request') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-text">
                Task List
             </span>
             </a>
         </li>
-        <li>
-            <a>
+        <li class="{{ app.request.get('_route') == 'app_admin_team_management' ? 'active' : '' }}">
+            <a href="{{ path('app_admin_team_management') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-text">
                Team Management
             </span>
             </a>
         </li>
-        <li>
-            <a>
+        <li class="{{ app.request.get('_route') == 'app_admin_material' ? 'active' : '' }}">
+            <a href="{{ path('app_admin_material') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-text">
                Materials
+            </span>
+            </a>
+        </li>
+        <li class="{{ app.request.get('_route') == 'app_admin_planning' ? 'active' : '' }}">
+            <a href="{{ path('app_admin_planning') }}">
+                <i class="fa fa-home menu-icon"></i>
+                <span class="menu-text">
+               Planning
             </span>
             </a>
         </li>
