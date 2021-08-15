@@ -17,4 +17,12 @@ class ProjectController extends AbstractController
             'title' => 'PROJECT',
         ]);
     }
+
+    /**
+     * @route("/admin/project/ajouter", name="app_admin_project_ajouter")
+     */
+    public function ajouterProjet(): Response
+    {
+        return $this->render('admin/Project/ajouterProjet.html.twig');
+    }
 }
