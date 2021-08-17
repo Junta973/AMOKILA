@@ -240,10 +240,11 @@ a,button{
 
 form h1,label{
     color: #FFFFFF;
+    font-size: 18px;
 }
 
 form .form-control{
-    width: 100%;
+    width: 97%;
     height: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -271,8 +272,8 @@ form .custom-checkbox{
     border-radius: 38px;
     opacity: 1;
     width: 160px;
-    height: 40px;
-    padding: 5px;
+    padding: 15px 15px 15px 20px;
+    text-align: center;
 }
 
 .btn-light{
@@ -311,6 +312,9 @@ form .custom-checkbox{
 }
 .w-100{
     width: 100px !important;
+}
+.wc-100{
+    width: 100% !important;
 }
 .mt-5{
    margin-top: 5px;
@@ -434,7 +438,7 @@ ul {
 #side-menu li a {
       color: #fff;
       text-transform: uppercase;
-      padding: 11px 20px 11px 16px;
+      padding: 10px 20px 10px 5px;
       text-decoration: none;
       display: grid;
       grid-template-columns: 20% 70%;
@@ -443,7 +447,7 @@ ul {
       align-items: center;
 }
 #side-menu li a span {
-    font-size: 18px;
+    font-size: 16px;
 }
 .nav>li>a {
     position: relative;
@@ -507,7 +511,7 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    height: 25px;
+    height: 50px;
 }
 
 .row{
@@ -524,6 +528,9 @@ td, th {
 }
 .col-md-4{
     width: 30%;
+}
+.col-md-6{
+    width: 50%;
 }
 .col-md-12{
     width: 100%;

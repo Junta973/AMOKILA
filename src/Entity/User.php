@@ -46,6 +46,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $username;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $firstname;
+
+    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $age;
@@ -58,12 +68,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $skills;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $contrat;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $departement;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $hourly_fee;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $level;
 
     /**
      * @ORM\OneToMany(targetEntity=Project::class, mappedBy="maitre")
@@ -84,6 +109,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToOne(targetEntity=Media::class, cascade={"persist", "remove"})
      */
     private $avatar;
+
+    public function __toString()
+    {
+        return $this->email;
+        // TODO: Implement __toString() method.
+    }
 
     /**
      * @ORM\OneToMany(targetEntity=ProjectChangeRequest::class, mappedBy="user")
@@ -372,6 +403,90 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function hasRole($role){
+        return in_array($role,$this->roles);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param mixed $firstname
+     */
+    public function setFirstname($firstname): void
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * @param mixed $skills
+     */
+    public function setSkills($skills): void
+    {
+        $this->skills = $skills;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param mixed $level
+     */
+    public function setLevel($level): void
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
+    }
+
+    /**
+     * @param mixed $departement
+     */
+    public function setDepartement($departement): void
+    {
+        $this->departement = $departement;
     }
 
 }

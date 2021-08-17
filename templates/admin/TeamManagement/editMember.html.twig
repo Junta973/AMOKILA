@@ -1,0 +1,139 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}MODIFIER UTILISATEUR{% endblock %}
+
+{% block titleHeader %}MODIFIER UTILISATEUR{% endblock %}
+{% block body %}
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Avatar</label>
+                {{ form_widget(form.avatar) }}
+                <span class="error-field">{{ form_errors(form.avatar) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Name</label>
+                {{ form_widget(form.name) }}
+                <span class="error-field">{{ form_errors(form.name) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Firstname</label>
+                {{ form_widget(form.firstname) }}
+                <span class="error-field">{{ form_errors(form.firstname) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">E-mail</label>
+                {{ form_widget(form.email) }}
+                <span class="error-field">{{ form_errors(form.email) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Username</label>
+                {{ form_widget(form.username) }}
+                <span class="error-field">{{ form_errors(form.username) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Password</label>
+                {{ form_widget(form.plainPassword.first) }}
+                <span class="error-field">{{ form_errors(form.plainPassword.first) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Confirm Password</label>
+                {{ form_widget(form.plainPassword.second) }}
+                <span class="error-field">{{ form_errors(form.plainPassword.first) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Skills</label>
+                {{ form_widget(form.skills) }}
+                <span class="error-field">{{ form_errors(form.skills) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Profession</label>
+                {{ form_widget(form.profession) }}
+                <span class="error-field">{{ form_errors(form.username) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Département</label>
+                {{ form_widget(form.departement) }}
+                <span class="error-field">{{ form_errors(form.departement) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Hourly Fee</label>
+                {{ form_widget(form.hourly_fee) }}
+                <span class="error-field">{{ form_errors(form.hourly_fee) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Contrat type</label>
+                {{ form_widget(form.contrat) }}
+                <span class="error-field">{{ form_errors(form.contrat) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Age</label>
+                {{ form_widget(form.age) }}
+                <span class="error-field">{{ form_errors(form.age) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Level</label>
+                {{ form_widget(form.level) }}
+                <span class="error-field">{{ form_errors(form.level) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Roles</label>
+                {{ form_widget(form.roles) }}
+                <span class="error-field">{{ form_errors(form.roles) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="wc-100 text-center">
+        <button type="reset" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-light">Modifier</button>
+    </div>
+
+    {{ form_end(form) }}
+
+
+
+{% endblock %}

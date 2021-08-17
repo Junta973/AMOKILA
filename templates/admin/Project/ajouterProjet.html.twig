@@ -1,0 +1,79 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}AJOUTER PROJET{% endblock %}
+
+{% block titleHeader %}AJOUTER PROJET{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project Name</label>
+                {{ form_widget(form.project_name) }}
+                <span class="error-field">{{ form_errors(form.project_name) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project ref</label>
+                {{ form_widget(form.ref_project) }}
+                <span class="error-field">{{ form_errors(form.ref_project) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Chef de projet</label>
+                {{ form_widget(form.maitre) }}
+                <span class="error-field">{{ form_errors(form.maitre) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Project description</label>
+                {{ form_widget(form.project_description) }}
+                <span class="error-field">{{ form_errors(form.project_description) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Project start date</label>
+                {{ form_widget(form.date_init_projet) }}
+                <span class="error-field">{{ form_errors(form.date_init_projet) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Project end date</label>
+                {{ form_widget(form.date_fin_projet) }}
+                <span class="error-field">{{ form_errors(form.date_fin_projet) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Budget</label>
+                {{ form_widget(form.budget) }}
+                <span class="error-field">{{ form_errors(form.budget) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Cost</label>
+                {{ form_widget(form.cost) }}
+                <span class="error-field">{{ form_errors(form.cost) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="wc-100 text-center">
+        <button type="reset" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-light">Ajouter</button>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

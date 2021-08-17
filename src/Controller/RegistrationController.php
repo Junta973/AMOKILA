@@ -41,10 +41,10 @@ class RegistrationController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
                 // do anything else you need here, like send an email
-                $this->addFlash('danger','Inscription effectué avec succès!');
+                $this->addFlash('success','Inscription effectué avec succès!');
                 return $this->redirectToRoute('app_login');
             }else{
-                $this->addFlash('danger','veuillez vérifier le formulaire!');
+                $this->addFlash('danger','Veuillez vérifier le formulaire!');
             }
         }
 

@@ -1,0 +1,103 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}MODIFIER PROCESS{% endblock %}
+
+{% block titleHeader %}MODIFIER PROCESS{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="wc-100">Process Name</label>
+                    {{ form_widget(form.process_name) }}
+                    <span class="error-field">{{ form_errors(form.process_name) }}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="wc-100">Indice</label>
+                    {{ form_widget(form.process_indice) }}
+                    <span class="error-field">{{ form_errors(form.process_indice) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Process réference</label>
+                    {{ form_widget(form.ref_process) }}
+                    <span class="error-field">{{ form_errors(form.ref_process) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Created By</label>
+                    {{ form_widget(form.user) }}
+                    <span class="error-field">{{ form_errors(form.user) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Task</label>
+                    {{ form_widget(form.task) }}
+                    <span class="error-field">{{ form_errors(form.task) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Process import</label>
+                    {{ form_widget(form.process_path) }}
+                    <span class="error-field">{{ form_errors(form.process_path) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Document 1 import</label>
+                    {{ form_widget(form.document1_path) }}
+                    <span class="error-field">{{ form_errors(form.document1_path) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Document 2 import</label>
+                    {{ form_widget(form.document2_path) }}
+                    <span class="error-field">{{ form_errors(form.document2_path) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Document 3 import</label>
+                    {{ form_widget(form.document3_path) }}
+                    <span class="error-field">{{ form_errors(form.document3_path) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Document 4 import</label>
+                    {{ form_widget(form.document4_path) }}
+                    <span class="error-field">{{ form_errors(form.document4_path) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="wc-100 text-center">
+            <button type="reset" class="btn btn-danger">Annuler</button>
+            <button type="submit" class="btn btn-light">Modifier</button>
+        </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

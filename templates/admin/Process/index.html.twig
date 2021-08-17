@@ -7,7 +7,7 @@
     <div class="header-body">
         <button class="btn btn-dark w-240 mt-5 ml-2">Add filter</button>
         <button class="btn btn-dark w-240 mt-5 ml-2">Process name filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Add Process</button>
+        <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Process</a>
     </div>
     <div class="container-body">
 
@@ -20,114 +20,17 @@
             </tr>
             </thead>
             <tbody>
+            {% for process in allProcess %}
             <tr>
-                <td>0005</td>
-                <td>Process name</td>
+                <td>{{ process.refProcess }}</td>
+                <td>{{ process.processName }}</td>
                 <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                    <a href="{{ path('app_admin_process_modifier',{'id':process.id}) }}" class="btn btn-warning font-14 w-100 mt-2">Modify</a>
+                    <a href="{{ path('app_admin_process_delete',{'id':process.id}) }}" class="btn btn-danger font-14 w-100 mt-2">Delete</a>
+                    <a href="{{ path('app_admin_process_view',{'id':process.id}) }}" class="btn btn-secondary font-14 w-100 mt-2">More</a>
                 </td>
             </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Process name</td>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
+            {% endfor %}
             </tbody>
 
 

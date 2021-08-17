@@ -7,7 +7,7 @@
     <div class="header-body">
         <button class="btn btn-dark w-240 mt-5 ml-2">Ref filter</button>
         <button class="btn btn-dark w-240 mt-5 ml-2">Task name filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Add task</button>
+        <a href="{{ path('app_admin_taskRequest_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add task</a>
     </div>
     <div class="container-body">
 
@@ -21,90 +21,22 @@
             </tr>
             </thead>
             <tbody>
+
+            {% for task in tasks %}
             <tr>
-                <td>0005</td>
-                <td>Task name</td>
+                <td>{{ task.taskRef }}</td>
+                <td>{{ task.taskName }}</td>
                 <th>
-                    <a class="badge badge-success font-14">100%</a>
+                    <a class="badge badge-success font-14">{{ task.progress ? task.progress : 0 }}%</a>
                 </th>
                 <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
+                    <a href="{{ path('app_admin_taskRequest_modifier',{'id':task.id}) }}" class="btn btn-warning font-14 w-100 mt-2">Modify</a>
+                    <a href="{{ path('app_admin_taskRequest_delete',{'id':task.id}) }}" class="btn btn-danger font-14 w-100 mt-2">Delete</a>
+                    <a href="{{ path('app_admin_taskRequest_view',{'id':task.id}) }}" class="btn btn-secondary font-14 w-100 mt-2">More</a>
                 </td>
             </tr>
-            <tr>
-                <td>0005</td>
-                <td>Task name</td>
-                <th>
-                    <a class="badge badge-success font-14">100%</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Task name</td>
-                <th>
-                    <a class="badge badge-success font-14">100%</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Task name</td>
-                <th>
-                    <a class="badge badge-success font-14">100%</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Task name</td>
-                <th>
-                    <a class="badge badge-success font-14">100%</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Task name</td>
-                <th>
-                    <a class="badge badge-success font-14">100%</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Task name</td>
-                <th>
-                    <a class="badge badge-success font-14">100%</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
+            {% endfor %}
+
             </tbody>
 
 
