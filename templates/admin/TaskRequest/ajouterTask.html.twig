@@ -1,0 +1,19 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}AJOUTER TASK{% endblock %}
+
+{% block titleHeader %}AJOUTER TASK{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+
+
+
+
+    <div class="wc-100 text-center">
+        <button type="reset" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-light">Ajouter</button>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -45,9 +45,14 @@ class Project
     private $date_fin_projet;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $cost;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $budget;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projects")
@@ -68,6 +73,12 @@ class Project
      * @ORM\OneToMany(targetEntity=Phase::class, mappedBy="project")
      */
     private $phases;
+
+    public function __toString()
+    {
+        return $this->project_name;
+        // TODO: Implement __toString() method.
+    }
 
     public function __construct()
     {
@@ -253,6 +264,22 @@ class Project
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBudget()
+    {
+        return $this->budget;
+    }
+
+    /**
+     * @param mixed $budget
+     */
+    public function setBudget($budget): void
+    {
+        $this->budget = $budget;
     }
 
 }

@@ -44,7 +44,7 @@ class RegistrationController extends AbstractController
                 $this->addFlash('success','Inscription effectué avec succès!');
                 return $this->redirectToRoute('app_login');
             }else{
-                $this->addFlash('danger','veuillez vérifier le formulaire!');
+                $this->addFlash('danger','Veuillez vérifier le formulaire!');
             }
         }
 
