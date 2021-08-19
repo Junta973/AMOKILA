@@ -1,0 +1,36 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}DETAILS PROCESS{% endblock %}
+
+{% block titleHeader %}DETAILS PROCESS #{{ process.id }} {{ process.processName }}{% endblock %}
+{% block body %}
+
+    <div class="col-md-12 view">
+        <div class="row">
+            <div class="col-md-6"><h6>Task:</h6></div>
+            <div class="col-md-6"><p>{{ process.task.taskName }}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h6>ID process:</h6></div>
+            <div class="col-md-6"><p>{{ process.id }}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h6>Réference de process:</h6></div>
+            <div class="col-md-6"><p>{{ process.refProcess }}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h6>Nom de process:</h6></div>
+            <div class="col-md-6"><p>{{ process.processName }}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h6>Créé par:</h6></div>
+            <div class="col-md-6"><p>{{ process.user }}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><h6>Indice:</h6></div>
+            <div class="col-md-6"><p>{{ process.processIndice }}</p></div>
+        </div>
+    </div>
+
+
+{% endblock %}

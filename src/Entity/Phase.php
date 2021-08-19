@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PhaseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,9 +40,15 @@ class Phase
     private $project_phase_date_end;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="phases")
+     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="Phase")
      */
-    private $project;
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -95,15 +103,34 @@ class Phase
         return $this;
     }
 
-    public function getProject(): ?Project
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
     {
-        return $this->project;
+        return $this->projects;
     }
 
-    public function setProject(?Project $project): self
+    public function addProject(Project $project): self
     {
-        $this->project = $project;
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->setPhase($this);
+        }
 
         return $this;
     }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            // set the owning side to null (unless already changed)
+            if ($project->getPhase() === $this) {
+                $project->setPhase(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

@@ -8,7 +8,12 @@
         <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add project</a>
     </div>
     <div class="container-body">
-
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
         <table>
             <thead>
             <tr>

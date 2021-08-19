@@ -90,10 +90,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $level;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="maitre")
-     */
-    private $projects;
 
     /**
      * @ORM\OneToMany(targetEntity=Task::class, mappedBy="user")
@@ -120,6 +116,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=ProjectChangeRequest::class, mappedBy="user")
      */
     private $projectChangeRequests;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="projectOwner")
+     */
+    private $projects;
 
     public function __construct()
     {
@@ -269,36 +270,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setHourlyFee(?int $hourly_fee): self
     {
         $this->hourly_fee = $hourly_fee;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Project[]
-     */
-    public function getProjects(): Collection
-    {
-        return $this->projects;
-    }
-
-    public function addProject(Project $project): self
-    {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
-            $project->setMaitre($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProject(Project $project): self
-    {
-        if ($this->projects->removeElement($project)) {
-            // set the owning side to null (unless already changed)
-            if ($project->getMaitre() === $this) {
-                $project->setMaitre(null);
-            }
-        }
 
         return $this;
     }
@@ -487,6 +458,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDepartement($departement): void
     {
         $this->departement = $departement;
+    }
+
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->setProjectOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            // set the owning side to null (unless already changed)
+            if ($project->getProjectOwner() === $this) {
+                $project->setProjectOwner(null);
+            }
+        }
+
+        return $this;
     }
 
 }

@@ -6,7 +6,8 @@
     <ul class="nav metis-menu" id="side-menu">
         <li class="{{ app.request.get('_route') == 'app_admin' ? 'active' : '' }}">
             <a href="{{ path('app_admin') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/dashboard.png') }}" />
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/dashboard.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/dashboard-white.png') }}" />
                 <span class="menu-text">
                     Dashboard
                 </span>
@@ -14,33 +15,35 @@
         </li>
         <li class="{{ app.request.get('_route') == 'app_admin_project' ? 'active' : '' }}">
             <a href="{{ path('app_admin_project') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/project-management.png') }}" />
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/project-management.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/project-management-white.png') }}" />
                 <span class="menu-text">
                Project
             </span>
             </a>
         </li>
-        {% if app.user.hasRole('ROLE_SUPER_ADMIN') %}
         <li class="{{ app.request.get('_route') == 'app_admin_change_requests' ? 'active' : '' }}">
             <a href="{{ path('app_admin_change_requests') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/change-request-icon.png') }}" />
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/change-request-icon.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/change-request-white.png') }}" />
                 <span class="menu-text">
                Change Request
             </span>
             </a>
         </li>
-        {% endif %}
         <li class="{{ app.request.get('_route') == 'app_admin_process' ? 'active' : '' }}">
             <a href="{{ path('app_admin_process') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/process.png') }}" />
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/process.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/process-white.png') }}" />
                 <span class="menu-text">
                Process
             </span>
             </a>
         </li>
         <li class="{{ app.request.get('_route') == 'app_admin_task_request' ? 'active' : '' }}">
-            <a href="{{ path('app_admin_task_request') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/task-list.png') }}" />
+            <a href="{{ path('app_admin_task_list') }}">
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/task-list.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/task-list-white.png') }}" />
                 <span class="menu-text">
                Task List
             </span>
@@ -48,7 +51,8 @@
         </li>
         <li class="{{ app.request.get('_route') == 'app_admin_team_management' ? 'active' : '' }}">
             <a href="{{ path('app_admin_team_management') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/team-icon.png') }}" />
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/team-icon.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/team-management-white.png') }}" />
                 <span class="menu-text">
                Team Management
             </span>
@@ -56,7 +60,8 @@
         </li>
         <li class="{{ app.request.get('_route') == 'app_admin_material' ? 'active' : '' }}">
             <a href="{{ path('app_admin_material') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/Materials-icon.png') }}" />
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/Materials-icon.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/Materials-white.png') }}" />
                 <span class="menu-text">
                Materials
             </span>
@@ -64,7 +69,8 @@
         </li>
         <li class="{{ app.request.get('_route') == 'app_admin_planning' ? 'active' : '' }}">
             <a href="{{ path('app_admin_planning') }}">
-                <img width="70" height="70" src="{{ asset('assets/img/time-management.png') }}" />
+                <img class="black" width="70" height="70" src="{{ asset('assets/img/time-management.png') }}" />
+                <img class="white" width="70" height="70" src="{{ asset('assets/img/planning-white.png') }}" />
                 <span class="menu-text">
                Planning
             </span>

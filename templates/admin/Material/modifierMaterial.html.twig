@@ -1,0 +1,31 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}EDIT MATERIAL{% endblock %}
+
+{% block titleHeader %}EDIT MATERIAL{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    <label>Material reference</label>
+    {{ form_widget(form.ref_material) }}
+
+    <label>Material name</label>
+    {{ form_widget(form.name_material) }}
+
+    <label>Validity date</label>
+    {{ form_widget(form.date_validation_in) }}
+
+    <label>Expire date</label>
+    {{ form_widget(form.date_validation_out) }}
+
+    <label>Cost</label>
+    {{ form_widget(form.material_cost) }}
+
+    <hr>
+    <div class="wc-100 text-center">
+        <button type="reset" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-light">Modifier</button>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

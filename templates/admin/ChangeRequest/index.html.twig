@@ -5,11 +5,15 @@
 {% block body %}
 
     <div class="header-body">
-        <button class="btn btn-dark w-240 mt-5 ml-2">Project filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Phase filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Add task</button>
+        <a href="{{ path('app_admin_change_request_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Change Request</a>
     </div>
     <div class="container-body">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
 
         <table>
             <thead>
@@ -21,91 +25,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>0005</td>
-                <td>Project change request name</td>
-                <th>
-                    <a class="badge badge-success font-14">Approuved</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Project change request name</td>
-                <th>
-                    <a class="badge badge-success font-14">Approuved</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Project change request name</td>
-                <th>
-                    <a class="badge badge-danger font-14">Rejete</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Project change request name</td>
-                <th>
-                    <a class="badge badge-success font-14">Approuved</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Project change request name</td>
-                <th>
-                    <a class="badge badge-success font-14">Approuved</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Project change request name</td>
-                <th>
-                    <a class="badge badge-success font-14">Approuved</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-            <tr>
-                <td>0005</td>
-                <td>Project change request name</td>
-                <th>
-                    <a class="badge badge-success font-14">Approuved</a>
-                </th>
-                <td>
-                    <button class="btn btn-warning font-14 w-100 mt-2">Modify</button>
-                    <button class="btn btn-danger font-14 w-100 mt-2">Delete</button>
-                    <button class="btn btn-secondary font-14 w-100 mt-2">More</button>
-                </td>
-            </tr>
-
+            {% for request in allProjectRequests %}
+                <tr>
+                    <td>{{ request.pcrRef }}</td>
+                    <td>{{ request.pcrName }}</td>
+                    <th>
+                        <a class="badge badge-success font-14">Approuved</a>
+                    </th>
+                    <td>
+                        <a href="{{ path('app_admin_change_request_modifier',{'id':request.id}) }}" class="btn btn-warning font-14 w-100 mt-2">Modify</a>
+                        <a href="{{ path('app_admin_change_request_delete',{'id': request.id}) }}" class="btn btn-danger font-14 w-100 mt-2">Delete</a>
+                        <a href="{{ path('app_admin_change_request_view',{'id':request.id}) }}" class="btn btn-secondary font-14 w-100 mt-2">More</a>
+                    </td>
+                </tr>
+            {% else %}
+               <tr>
+                   <td colspan="4">La liste est vide.</td>
+               </tr>
+            {% endfor %}
             </tbody>
 
 
