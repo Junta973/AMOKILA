@@ -30,28 +30,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
-            <div class="form-group">
-                <label class="wc-100">Request by</label>
-                {{ form_widget(form.Request_by) }}
-                <span class="error-field">{{ form_errors(form.Request_by) }}</span>
-            </div>
-        </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">Date</label>
                 {{ form_widget(form.date_de_creation) }}
                 <span class="error-field">{{ form_errors(form.date_de_creation) }}</span>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">Impact of change</label>
                 {{ form_widget(form.impact_of_change) }}
                 <span class="error-field">{{ form_errors(form.impact_of_change) }}</span>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">PCR Ref</label>
                 {{ form_widget(form.pcr_ref) }}
@@ -102,6 +95,11 @@
             </div>
         </div>
         <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Status</label>
+                {{ form_widget(form.pcr_status) }}
+                <span class="error-field">{{ form_errors(form.pcr_status) }}</span>
+            </div>
         </div>
         <div class="col-md-3">
         </div>
@@ -126,32 +124,6 @@
         <div class="col-md-3">
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="form-group">
-                <label class="wc-100">Status</label>
-                {{ form_widget(form.pcr_status) }}
-                <span class="error-field">{{ form_errors(form.pcr_status) }}</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label class="wc-100">Approval date</label>
-                {{ form_widget(form.approval_date) }}
-                <span class="error-field">{{ form_errors(form.approval_date) }}</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="form-group">
-                <label class="wc-100">Approved by</label>
-                {{ form_widget(form.approved_by) }}
-                <span class="error-field">{{ form_errors(form.approved_by) }}</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div>
-
     <hr>
     <div class="wc-100 text-center">
         <button type="reset" class="btn btn-danger">Annuler</button>

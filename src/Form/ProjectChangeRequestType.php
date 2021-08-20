@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\ProjectChangeRequest;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,27 +39,20 @@ class ProjectChangeRequestType extends AbstractType
             ->add('pcr_proposed_action', TextareaType::class,[
                 'attr' => ['class' => 'wc-100','rows'=>3]
             ])
-            ->add('approval_date', DateType::class,
-                [
-                    'label' => false,
-                    'required' => false,
-                    'mapped' => true,
-                    'widget' => 'single_text',
-                    'format' => 'yyyy-MM-dd',
-                    'attr' => [
-                        'class' => 'form-control datepicker'
-                    ]
-                ])
-            ->add('pcr_status', TextType::class,[
-                'attr' => ['class' => 'form-control']
+            ->add('pcr_status', ChoiceType::class,[
+                'attr' => ['class' => 'wc-100'],
+                'choices' => [
+                    'New CR' => 'New CR',
+                    'In Review' => 'In Review',
+                    'Approuved' => 'Approuved',
+                    'Rejected' => 'Rejected'
+                ],
+                'required' => true,
             ])
             ->add('pcr_name', TextType::class,[
                 'attr' => ['class' => 'form-control']
             ])
             ->add('pcr_ref', TextType::class,[
-                'attr' => ['class' => 'form-control']
-            ])
-            ->add('approved_by', TextType::class,[
                 'attr' => ['class' => 'form-control']
             ])
             ->add('Materials', null,[
@@ -67,11 +61,14 @@ class ProjectChangeRequestType extends AbstractType
             ->add('Components', null,[
                 'attr' => ['class' => 'wc-100']
             ])
-            ->add('Request_by', TextType::class,[
-                'attr' => ['class' => 'form-control']
-            ])
-            ->add('Priority', TextType::class,[
-                'attr' => ['class' => 'form-control']
+            ->add('Priority', ChoiceType::class,[
+                'attr' => ['class' => 'wc-100'],
+                'choices' => [
+                    'Low' => 'Low',
+                    'Medium' => 'Medium',
+                    'Hight' => 'Hight',
+                ],
+                'required' => true
             ])
             ->add('Estimated_cost', null,[
                 'attr' => ['class' => 'form-control']

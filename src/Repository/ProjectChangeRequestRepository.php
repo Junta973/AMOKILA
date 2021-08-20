@@ -19,6 +19,14 @@ class ProjectChangeRequestRepository extends ServiceEntityRepository
         parent::__construct($registry, ProjectChangeRequest::class);
     }
 
+    public function getMyChangeRequests($user){
+        return $this->createQueryBuilder('p')
+            ->where('p.requestedBy = :user')
+            ->setParameter('user',$user)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function getNbrResults(){
         return $this->createQueryBuilder('p')
             ->select('COUNT(p)')

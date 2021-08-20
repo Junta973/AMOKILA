@@ -122,12 +122,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $projects;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ProjectChangeRequest::class, mappedBy="approuvedBy")
+     */
+    private $pcrApprouvedbyuser;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProjectChangeRequest::class, mappedBy="requestedBy")
+     */
+    private $pcrRequestedbyuser;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
         $this->tasks = new ArrayCollection();
         $this->processes = new ArrayCollection();
         $this->projectChangeRequests = new ArrayCollection();
+        $this->pcrApprouvedbyuser = new ArrayCollection();
+        $this->pcrRequestedbyuser = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -484,6 +496,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($project->getProjectOwner() === $this) {
                 $project->setProjectOwner(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProjectChangeRequest[]
+     */
+    public function getPcrApprouvedbyuser(): Collection
+    {
+        return $this->pcrApprouvedbyuser;
+    }
+
+    public function addPcrApprouvedbyuser(ProjectChangeRequest $pcrApprouvedbyuser): self
+    {
+        if (!$this->pcrApprouvedbyuser->contains($pcrApprouvedbyuser)) {
+            $this->pcrApprouvedbyuser[] = $pcrApprouvedbyuser;
+            $pcrApprouvedbyuser->setApprouvedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removePcrApprouvedbyuser(ProjectChangeRequest $pcrApprouvedbyuser): self
+    {
+        if ($this->pcrApprouvedbyuser->removeElement($pcrApprouvedbyuser)) {
+            // set the owning side to null (unless already changed)
+            if ($pcrApprouvedbyuser->getApprouvedBy() === $this) {
+                $pcrApprouvedbyuser->setApprouvedBy(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProjectChangeRequest[]
+     */
+    public function getPcrRequestedbyuser(): Collection
+    {
+        return $this->pcrRequestedbyuser;
+    }
+
+    public function addPcrRequestedbyuser(ProjectChangeRequest $pcrRequestedbyuser): self
+    {
+        if (!$this->pcrRequestedbyuser->contains($pcrRequestedbyuser)) {
+            $this->pcrRequestedbyuser[] = $pcrRequestedbyuser;
+            $pcrRequestedbyuser->setRequestedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removePcrRequestedbyuser(ProjectChangeRequest $pcrRequestedbyuser): self
+    {
+        if ($this->pcrRequestedbyuser->removeElement($pcrRequestedbyuser)) {
+            // set the owning side to null (unless already changed)
+            if ($pcrRequestedbyuser->getRequestedBy() === $this) {
+                $pcrRequestedbyuser->setRequestedBy(null);
             }
         }
 

@@ -6,8 +6,130 @@
 {% block body %}
 
     {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project Name</label>
+                {{ form_widget(form.project) }}
+                <span class="error-field">{{ form_errors(form.project) }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Priority</label>
+                {{ form_widget(form.Priority) }}
+                <span class="error-field">{{ form_errors(form.Priority) }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Pcr name</label>
+                {{ form_widget(form.pcr_name) }}
+                <span class="error-field">{{ form_errors(form.pcr_name) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Date</label>
+                {{ form_widget(form.date_de_creation) }}
+                <span class="error-field">{{ form_errors(form.date_de_creation) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Impact of change</label>
+                {{ form_widget(form.impact_of_change) }}
+                <span class="error-field">{{ form_errors(form.impact_of_change) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">PCR Ref</label>
+                {{ form_widget(form.pcr_ref) }}
+                <span class="error-field">{{ form_errors(form.pcr_ref) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Change description</label>
+                {{ form_widget(form.pcr_description) }}
+                <span class="error-field">{{ form_errors(form.pcr_description) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Change reason</label>
+                {{ form_widget(form.pcr_change_reason) }}
+                <span class="error-field">{{ form_errors(form.pcr_change_reason) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Proposed action</label>
+                {{ form_widget(form.pcr_proposed_action) }}
+                <span class="error-field">{{ form_errors(form.pcr_proposed_action) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Materials</label>
+                {{ form_widget(form.Materials) }}
+                <span class="error-field">{{ form_errors(form.Materials) }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Estimated cost</label>
+                {{ form_widget(form.Estimated_cost) }}
+                <span class="error-field">{{ form_errors(form.Estimated_cost) }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Status</label>
+                {{ form_widget(form.pcr_status) }}
+                <span class="error-field">{{ form_errors(form.pcr_status) }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Components</label>
+                {{ form_widget(form.Components) }}
+                <span class="error-field">{{ form_errors(form.Components) }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Assigned to</label>
+                {{ form_widget(form.user) }}
+                <span class="error-field">{{ form_errors(form.user) }}</span>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
 
-    <button type="submit"> Submit </button>
+    <hr>
+    <div class="wc-100 text-center">
+        <button type="reset" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-light">Modifier</button>
+    </div>
     {{ form_end(form) }}
 
 {% endblock %}

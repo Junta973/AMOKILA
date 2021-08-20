@@ -10,7 +10,9 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Avatar</label>
-                {{ form_widget(form.avatar) }}
+                <span class="btn-file">
+                     {{ form_widget(form.avatar) }}
+                </span>
                 <span class="error-field">{{ form_errors(form.avatar) }}</span>
             </div>
         </div>

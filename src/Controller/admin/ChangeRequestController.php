@@ -19,7 +19,13 @@ class ChangeRequestController extends AbstractController
      */
     public function index(ProjectChangeRequestRepository $repository): Response
     {
-        $allProjectRequests = $repository->findAll();
+
+        if($this->isGranted("ROLE_ADMIN"))
+            $allProjectRequests = $repository->findAll();
+        else
+            $allProjectRequests = $repository->getMyChangeRequests($this->getUser());
+
+
         return $this->render('admin/ChangeRequest/index.html.twig', [
             'title' => 'CHANGE REQUEST',
             'allProjectRequests' => $allProjectRequests
@@ -35,6 +41,7 @@ class ChangeRequestController extends AbstractController
         $form = $this->createForm(ProjectChangeRequestType::class,$changeRequest);
         $form = $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()){
+            $changeRequest->setRequestedBy($this->getUser());
             $em->persist($changeRequest);
             $em->flush();
             $this->addFlash('success','Change request ajouté avec succès');
@@ -57,6 +64,12 @@ class ChangeRequestController extends AbstractController
         $form = $this->createForm(ProjectChangeRequestType::class,$changeRequest);
         $form = $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()){
+
+            if ($changeRequest->getPcrStatus() != "New CR"){
+                $changeRequest->setApprouvedBy($this->getUser());
+                $changeRequest->setApprovalDate(new \DateTime());
+            }
+
             $em->persist($changeRequest);
             $em->flush();
             $this->addFlash('success','Change request modifié avec succès');

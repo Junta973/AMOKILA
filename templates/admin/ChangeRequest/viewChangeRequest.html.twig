@@ -5,8 +5,30 @@
 {% block titleHeader %}CHANGE REQUEST #{{ changeRequest.id }}{% endblock %}
 {% block body %}
 
+    <div class="bg-white col-md-12  card card-details">
+        <div class="view">
+            <div class="row">
+                <div class="col-md-6"><h6>ID Change Request:</h6></div>
+                <div class="col-md-6"><p>{{ changeRequest.id }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><h6>Réference de change Request:</h6></div>
+                <div class="col-md-6"><p>{{ changeRequest.pcrRef }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><h6>Status:</h6></div>
+                <div class="col-md-6"><p>{{ changeRequest.pcrStatus }}</p></div>
+            </div>
 
-    ID: {{ changeRequest.id }}
-    Name: {{ changeRequest.pcrName }}
+            <div class="row">
+                <div class="col-md-6"><h6>Requested by:</h6></div>
+                <div class="col-md-6"><p>{{ changeRequest.requestedBy }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><h6>Approuved by:</h6></div>
+                <div class="col-md-6"><p>{{ changeRequest.approuvedBy }}</p></div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

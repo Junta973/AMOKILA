@@ -32,9 +32,10 @@ class adminController extends AbstractController
         $totalProcess = $changeRequestRepository->getNbrResults();
         $lastProcess = $changeRequestRepository->getLastResluts(5);
 
-        $totalTasks = $processRepository->getNbrResults();
-        $lastTasks = $processRepository->getLastResluts(5);
+        $totalTasks = $taskRepository->getNbrResults();
+        $lastTasks = $taskRepository->getLastResluts(5);
 
+        $lastTasksInProgress = $taskRepository->getLastTaskOnProgress(5);
 
         return $this->render('admin/index.html.twig', [
             'title' => 'DASHBOARD',
@@ -46,6 +47,7 @@ class adminController extends AbstractController
             'lastProcess' => $lastProcess,
             'totalTasks' => $totalTasks,
             'lastTasks' => $lastTasks,
+            'lastTasksInProgress' => $lastTasksInProgress
         ]);
     }
 }

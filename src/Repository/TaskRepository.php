@@ -36,6 +36,15 @@ class TaskRepository extends ServiceEntityRepository
             ;
     }
 
+    public function getLastTaskOnProgress($nb){
+        return $this->createQueryBuilder('t')
+            ->where('t.progress < 100 and t.progress > 0')
+            ->orderBy('t.id','DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Task[] Returns an array of Task objects
     //  */

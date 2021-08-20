@@ -94,6 +94,12 @@
                 <a class="buttonLink">
                     <h3>5 coûts par projet</h3>
                 </a>
+                {% for p in lastProjects %}
+                    <a href="{{ path('app_admin_project_view',{'id':p.id}) }}" style="color: #5eb5e0;" class="buttonLink">
+                        - {{ p }} : {{ p.cost|number_format(2,'.',',') }} EUR
+                    </a>
+                    <br>
+                {% endfor %}
             </div>
             <div class="card col-md-4 p-15">
                 <a class="buttonLink">
@@ -107,8 +113,14 @@
             </div>
             <div class="card col-md-4 p-15">
                 <a class="buttonLink">
-                    <h3>5 task progress</h3>
+                    <h3>{{ lastTasksInProgress|length }} task progress</h3>
                 </a>
+                {% for task in lastTasksInProgress %}
+                    <a href="{{ path('app_admin_taskList_view',{'id':task.id}) }}" style="color: #5eb5e0;" class="buttonLink">
+                        - {{ task }} : {{ task.progress }}%
+                    </a>
+                    <br>
+                {% endfor %}
             </div>
 
         </div>
