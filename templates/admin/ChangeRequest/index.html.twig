@@ -30,7 +30,18 @@
                     <td>{{ request.pcrRef }}</td>
                     <td>{{ request.pcrName }}</td>
                     <th>
-                        <a class="badge badge-success font-14">Approuved</a>
+
+                        {% set status = 'light' %}
+
+                        {% if request.pcrStatus == 'In Review' %}
+                            {% set status = 'warning' %}
+                        {% elseif request.pcrStatus == 'Approuved' %}
+                            {% set status = 'success' %}
+                        {% elseif request.pcrStatus == 'Rejected' %}
+                            {% set status = 'danger' %}
+                        {% endif %}
+
+                        <a class="badge badge-{{ status }} font-14">{{ request.pcrStatus }}</a>
                     </th>
                     <td>
                         <a href="{{ path('app_admin_change_request_modifier',{'id':request.id}) }}" class="btn btn-warning font-14 w-100 mt-2">Modify</a>

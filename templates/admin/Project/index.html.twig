@@ -14,11 +14,19 @@
         {% for message in app.flashes('danger') %}
             <div class="alert alert-danger">{{ message }}</div>
         {% endfor %}
-        <table>
+
+        <table id="Table">
             <thead>
             <tr>
-                <th>Ref</th>
-                <th>Project name</th>
+                <th>
+                    Ref<br>
+                    <input class="form-control" type="text" onkeyup="mySmartSearchFn(0,$(this))" placeholder="Search Ref.." />
+                </th>
+                <th>
+                    Project name
+                    <br>
+                    <input class="form-control" type="text" onkeyup="mySmartSearchFn(1,$(this))" placeholder="Search Project name.." />
+                </th>
                 <th style="width: 30%;">Action</th>
             </tr>
             </thead>
@@ -33,6 +41,10 @@
                     <a href="{{ path('app_admin_project_view',{'id':project.id}) }}" class="btn btn-secondary font-14 w-100 mt-2">More</a>
                 </td>
             </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">La liste est vide.</td>
+                </tr>
             {% endfor %}
             </tbody>
 

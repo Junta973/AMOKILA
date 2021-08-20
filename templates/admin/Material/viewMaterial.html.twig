@@ -5,28 +5,29 @@
 {% block titleHeader %}DETAILS MATERIAL #{{ material.id }} {{ material.nameMaterial }}{% endblock %}
 {% block body %}
 
-    <div class="col-md-12 view">
-        <div class="row">
-            <div class="col-md-6"><h6>ID material:</h6></div>
-            <div class="col-md-6"><p>{{ material.id }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Réference de material:</h6></div>
-            <div class="col-md-6"><p>{{ material.refMaterial }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Nom de material:</h6></div>
-            <div class="col-md-6"><p>{{ material.nameMaterial }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Validity date:</h6></div>
-            <div class="col-md-6"><p>{{ material.dateValidationIn|date() }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Expire date:</h6></div>
-            <div class="col-md-6"><p>{{ material.dateValidationOut|date() }}</p></div>
+    <div class="bg-white col-md-12  card card-details">
+        <div class="view">
+            <div class="row">
+                <div class="col-md-6"><h6>ID material:</h6></div>
+                <div class="col-md-6"><p>{{ material.id }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><h6>Réference de material:</h6></div>
+                <div class="col-md-6"><p>{{ material.refMaterial }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><h6>Nom de material:</h6></div>
+                <div class="col-md-6"><p>{{ material.nameMaterial }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><h6>Validity date:</h6></div>
+                <div class="col-md-6"><p>{{ material.dateValidationIn|date() }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><h6>Expire date:</h6></div>
+                <div class="col-md-6"><p>{{ material.dateValidationOut|date() }}</p></div>
+            </div>
         </div>
     </div>
-
 
 {% endblock %}

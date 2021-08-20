@@ -67,22 +67,12 @@ class ProjectChangeRequest
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $approved_by;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $Materials;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $Components;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Request_by;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -108,6 +98,22 @@ class ProjectChangeRequest
      * @ORM\OneToMany(targetEntity=Task::class, mappedBy="requestChange")
      */
     private $tasks;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="pcrApprouvedbyuser")
+     */
+    private $approuvedBy;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="pcrRequestedbyuser")
+     */
+    private $requestedBy;
+
+    public function __toString()
+    {
+        return $this->pcr_name;
+        // TODO: Implement __toString() method.
+    }
 
     public function __construct()
     {
@@ -227,18 +233,6 @@ class ProjectChangeRequest
         return $this;
     }
 
-    public function getApprovedBy(): ?string
-    {
-        return $this->approved_by;
-    }
-
-    public function setApprovedBy(string $approved_by): self
-    {
-        $this->approved_by = $approved_by;
-
-        return $this;
-    }
-
     public function getMaterials(): ?string
     {
         return $this->Materials;
@@ -259,18 +253,6 @@ class ProjectChangeRequest
     public function setComponents(string $Components): self
     {
         $this->Components = $Components;
-
-        return $this;
-    }
-
-    public function getRequestBy(): ?string
-    {
-        return $this->Request_by;
-    }
-
-    public function setRequestBy(string $Request_by): self
-    {
-        $this->Request_by = $Request_by;
 
         return $this;
     }
@@ -349,6 +331,30 @@ class ProjectChangeRequest
                 $task->setRequestChange(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getApprouvedBy(): ?User
+    {
+        return $this->approuvedBy;
+    }
+
+    public function setApprouvedBy(?User $approuvedBy): self
+    {
+        $this->approuvedBy = $approuvedBy;
+
+        return $this;
+    }
+
+    public function getRequestedBy(): ?User
+    {
+        return $this->requestedBy;
+    }
+
+    public function setRequestedBy(?User $requestedBy): self
+    {
+        $this->requestedBy = $requestedBy;
 
         return $this;
     }

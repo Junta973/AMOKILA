@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\Phase;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,11 +15,34 @@ class PhaseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('phase_name')
-            ->add('phase_description')
-            ->add('project_phase_date_start')
-            ->add('project_phase_date_end')
-            ->add('project')
+            ->add('phase_name', TextType::class,[
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('phase_description', TextareaType::class,[
+                'attr' => ['class' => 'wc-100','rows'=>4]
+            ])
+            ->add('project_phase_date_start', DateType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'mapped' => true,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control datepicker'
+                    ]
+                ])
+            ->add('project_phase_date_end', DateType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'mapped' => true,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control datepicker'
+                    ]
+                ])
         ;
     }
 

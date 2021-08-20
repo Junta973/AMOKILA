@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,9 +24,39 @@ class TaskType extends AbstractType
             ->add('task_description', TextareaType::class,[
                 'attr' => ['class' => 'wc-100','rows'=>4]
             ])
-            ->add('date')
-            ->add('date_start')
-            ->add('date_end')
+            ->add('date', DateType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'mapped' => true,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control datepicker'
+                    ]
+                ])
+            ->add('date_start', DateType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'mapped' => true,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control datepicker'
+                    ]
+                ])
+            ->add('date_end', DateType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'mapped' => true,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control datepicker'
+                    ]
+                ])
             ->add('progress', null,[
                 'attr' => ['class' => 'form-control']
             ])

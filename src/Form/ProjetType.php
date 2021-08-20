@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Project;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,8 +24,28 @@ class ProjetType extends AbstractType
             ->add('project_description', TextareaType::class,[
                 'attr' => ['class' => 'wc-100','rows'=>4]
             ])
-            ->add('date_init_projet')
-            ->add('date_fin_projet')
+            ->add('date_init_projet', DateType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'mapped' => true,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control datepicker'
+                    ]
+                ])
+            ->add('date_fin_projet', DateType::class,
+                [
+                    'label' => false,
+                    'required' => false,
+                    'mapped' => true,
+                    'widget' => 'single_text',
+                    'format' => 'yyyy-MM-dd',
+                    'attr' => [
+                        'class' => 'form-control datepicker'
+                    ]
+                ])
             ->add('cost', null,[
                 'attr' => ['class' => 'form-control']
             ])

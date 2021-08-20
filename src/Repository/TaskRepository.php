@@ -19,6 +19,32 @@ class TaskRepository extends ServiceEntityRepository
         parent::__construct($registry, Task::class);
     }
 
+    public function getNbrResults(){
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
+    public function getLastResluts($nbr){
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults($nbr)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getLastTaskOnProgress($nb){
+        return $this->createQueryBuilder('t')
+            ->where('t.progress < 100 and t.progress > 0')
+            ->orderBy('t.id','DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Task[] Returns an array of Task objects
     //  */

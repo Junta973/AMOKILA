@@ -44,6 +44,12 @@ class Phase
      */
     private $projects;
 
+    public function __toString()
+    {
+        return $this->phase_name;
+        // TODO: Implement __toString() method.
+    }
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
