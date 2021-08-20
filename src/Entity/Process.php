@@ -45,27 +45,27 @@ class Process
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Media::class, inversedBy="processes")
+     * @ORM\ManyToOne(targetEntity=Media::class, inversedBy="processes", cascade={"persist"})
      */
     private $process_path;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Media::class, inversedBy="processes")
+     * @ORM\ManyToOne(targetEntity=Media::class, inversedBy="processes", cascade={"persist"})
      */
     private $document1_path;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Media::class)
+     * @ORM\ManyToOne(targetEntity=Media::class, cascade={"persist"})
      */
     private $document2_path;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Media::class)
+     * @ORM\ManyToOne(targetEntity=Media::class, cascade={"persist"})
      */
     private $document3_path;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Media::class)
+     * @ORM\ManyToOne(targetEntity=Media::class, cascade={"persist"})
      */
     private $document4_path;
 

@@ -1,0 +1,52 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}DETAILS PROJET{% endblock %}
+
+{% block titleHeader %}DETAILS PROJET #{{ project.id }} {{ project.projectName }}{% endblock %}
+{% block body %}
+
+<div class="col-md-12 view">
+    <div class="row">
+        <div class="col-md-6"><h6>Phase:</h6></div>
+        <div class="col-md-6"><p>{{ project.id }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>ID Project:</h6></div>
+        <div class="col-md-6"><p>{{ project.id }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Réference de projet:</h6></div>
+        <div class="col-md-6"><p>{{ project.refProject }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Nom de Projet:</h6></div>
+        <div class="col-md-6"><p>{{ project.projectName }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Description:</h6></div>
+        <div class="col-md-6"><p>{{ project.projectDescription }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Date début:</h6></div>
+        <div class="col-md-6"><p>{{ project.dateInitProjet|date() }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Date Fin:</h6></div>
+        <div class="col-md-6"><p>{{ project.dateFinProjet|date() }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Cost:</h6></div>
+        <div class="col-md-6"><p>{{ project.cost|number_format(2,'.','') }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Budget:</h6></div>
+        <div class="col-md-6"><p>{{ project.budget|number_format(2,'.','') }}</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><h6>Chef de projet:</h6></div>
+        <div class="col-md-6"><p>{{ project.projectOwner }}</p></div>
+    </div>
+</div>
+
+
+{% endblock %}

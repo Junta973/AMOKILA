@@ -5,14 +5,16 @@
 {% block body %}
 
     <div class="header-body">
-        <button class="btn btn-dark w-240 mt-5 ml-2">Prof. filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Skills filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Level filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Dep. filter</button>
         <a href="{{ path('app_admin_utilisateur_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2"><i class="fa fa-user"></i> add user</a>
     </div>
     <div class="container-body">
 
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
         <table>
             <thead>
             <tr>

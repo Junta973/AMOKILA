@@ -5,12 +5,15 @@
 {% block body %}
 
     <div class="header-body">
-        <button class="btn btn-dark w-240 mt-5 ml-2">Add filter</button>
-        <button class="btn btn-dark w-240 mt-5 ml-2">Process name filter</button>
         <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Process</a>
     </div>
     <div class="container-body">
-
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
         <table>
             <thead>
             <tr>

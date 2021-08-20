@@ -28,10 +28,16 @@ class ProjetType extends AbstractType
             ->add('cost', null,[
                 'attr' => ['class' => 'form-control']
             ])
+            ->add('Phase', null,[
+                'attr' => ['class' => 'wc-100']
+            ])
             ->add('budget', null,[
                 'attr' => ['class' => 'form-control']
             ])
             ->add('maitre', null,[
+                'attr' => ['class' => 'wc-100']
+            ])
+            ->add('projectOwner', null,[
                 'attr' => ['class' => 'wc-100']
             ])
         ;

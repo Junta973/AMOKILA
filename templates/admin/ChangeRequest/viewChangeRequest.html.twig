@@ -1,0 +1,12 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}CHANGE REQUEST {{ changeRequest.id }}{% endblock %}
+
+{% block titleHeader %}CHANGE REQUEST #{{ changeRequest.id }}{% endblock %}
+{% block body %}
+
+
+    ID: {{ changeRequest.id }}
+    Name: {{ changeRequest.pcrName }}
+
+{% endblock %}

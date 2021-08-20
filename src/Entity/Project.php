@@ -55,11 +55,6 @@ class Project
     private $budget;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projects")
-     */
-    private $maitre;
-
-    /**
      * @ORM\OneToMany(targetEntity=Task::class, mappedBy="projet")
      */
     private $tasks;
@@ -70,9 +65,24 @@ class Project
     private $projectChangeRequests;
 
     /**
-     * @ORM\OneToMany(targetEntity=Phase::class, mappedBy="project")
+     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="projects")
      */
-    private $phases;
+    private $maitre;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="maitre")
+     */
+    private $projects;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projects")
+     */
+    private $projectOwner;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Phase::class, inversedBy="projects")
+     */
+    private $Phase;
 
     public function __toString()
     {
@@ -85,6 +95,7 @@ class Project
         $this->tasks = new ArrayCollection();
         $this->projectChangeRequests = new ArrayCollection();
         $this->phases = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,18 +175,6 @@ class Project
         return $this;
     }
 
-    public function getMaitre(): ?User
-    {
-        return $this->maitre;
-    }
-
-    public function setMaitre(?User $maitre): self
-    {
-        $this->maitre = $maitre;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Task[]
      */
@@ -237,36 +236,6 @@ class Project
     }
 
     /**
-     * @return Collection|Phase[]
-     */
-    public function getPhases(): Collection
-    {
-        return $this->phases;
-    }
-
-    public function addPhase(Phase $phase): self
-    {
-        if (!$this->phases->contains($phase)) {
-            $this->phases[] = $phase;
-            $phase->setProject($this);
-        }
-
-        return $this;
-    }
-
-    public function removePhase(Phase $phase): self
-    {
-        if ($this->phases->removeElement($phase)) {
-            // set the owning side to null (unless already changed)
-            if ($phase->getProject() === $this) {
-                $phase->setProject(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getBudget()
@@ -280,6 +249,72 @@ class Project
     public function setBudget($budget): void
     {
         $this->budget = $budget;
+    }
+
+    public function getMaitre(): ?self
+    {
+        return $this->maitre;
+    }
+
+    public function setMaitre(?self $maitre): self
+    {
+        $this->maitre = $maitre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(self $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->setMaitre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(self $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            // set the owning side to null (unless already changed)
+            if ($project->getMaitre() === $this) {
+                $project->setMaitre(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getProjectOwner(): ?User
+    {
+        return $this->projectOwner;
+    }
+
+    public function setProjectOwner(?User $projectOwner): self
+    {
+        $this->projectOwner = $projectOwner;
+
+        return $this;
+    }
+
+    public function getPhase(): ?Phase
+    {
+        return $this->Phase;
+    }
+
+    public function setPhase(?Phase $Phase): self
+    {
+        $this->Phase = $Phase;
+
+        return $this;
     }
 
 }

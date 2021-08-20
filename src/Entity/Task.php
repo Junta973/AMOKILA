@@ -79,6 +79,22 @@ class Task
      */
     private $components;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ProjectChangeRequest::class, inversedBy="tasks")
+     */
+    private $requestChange;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+
+    public function __toString()
+    {
+        return $this->task_name;
+        // TODO: Implement __toString() method.
+    }
+
     public function __construct()
     {
         $this->material = new ArrayCollection();
@@ -276,6 +292,30 @@ class Task
         if ($this->components->removeElement($component)) {
             $component->removeTask($this);
         }
+
+        return $this;
+    }
+
+    public function getRequestChange(): ?ProjectChangeRequest
+    {
+        return $this->requestChange;
+    }
+
+    public function setRequestChange(?ProjectChangeRequest $requestChange): self
+    {
+        $this->requestChange = $requestChange;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

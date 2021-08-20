@@ -1,0 +1,104 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}MODIFIER TASK{% endblock %}
+
+{% block titleHeader %}MODIFIER TASK{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Task Name</label>
+                {{ form_widget(form.task_name) }}
+                <span class="error-field">{{ form_errors(form.task_name) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Task ref</label>
+                {{ form_widget(form.task_ref) }}
+                <span class="error-field">{{ form_errors(form.task_ref) }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Created By</label>
+                {{ form_widget(form.user) }}
+                <span class="error-field">{{ form_errors(form.user) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Project change request réf</label>
+                {{ form_widget(form.requestChange) }}
+                <span class="error-field"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Date</label>
+                {{ form_widget(form.date) }}
+                <span class="error-field"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project Réference</label>
+                {{ form_widget(form.projet) }}
+                <span class="error-field">{{ form_errors(form.projet) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Task Cost</label>
+                {{ form_widget(form.task_cost) }}
+                <span class="error-field">{{ form_errors(form.task_cost) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Task Description</label>
+                {{ form_widget(form.task_description) }}
+                <span class="error-field">{{ form_errors(form.task_description) }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Date start</label>
+                {{ form_widget(form.date_start) }}
+                <span class="error-field">{{ form_errors(form.date_start) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Date End</label>
+                {{ form_widget(form.date_end) }}
+                <span class="error-field">{{ form_errors(form.date_end) }}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Progress</label>
+                {{ form_widget(form.progress) }}
+                <span class="error-field">{{ form_errors(form.progress) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="wc-100 text-center">
+        <button type="reset" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-light">Modifier</button>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

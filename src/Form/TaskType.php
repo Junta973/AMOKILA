@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,15 +14,33 @@ class TaskType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('task_ref')
-            ->add('task_name')
-            ->add('task_description')
+            ->add('task_ref', TextType::class,[
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('task_name', TextType::class,[
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('task_description', TextareaType::class,[
+                'attr' => ['class' => 'wc-100','rows'=>4]
+            ])
+            ->add('date')
             ->add('date_start')
             ->add('date_end')
-            ->add('progress')
-            ->add('task_cost')
-            ->add('user')
-            ->add('projet')
+            ->add('progress', null,[
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('task_cost', null,[
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('requestChange', null,[
+                'attr' => ['class' => 'wc-100']
+            ])
+            ->add('user', null,[
+                'attr' => ['class' => 'wc-100']
+            ])
+            ->add('projet', null,[
+                'attr' => ['class' => 'wc-100']
+            ])
         ;
     }
 

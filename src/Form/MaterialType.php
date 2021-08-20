@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Material;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,12 +13,17 @@ class MaterialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('ref_material')
-            ->add('name_material')
+            ->add('ref_material', TextType::class,[
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('name_material', TextType::class,[
+                'attr' => ['class' => 'form-control']
+            ])
             ->add('date_validation_in')
             ->add('date_validation_out')
-            ->add('material_cost')
-            ->add('tasks')
+            ->add('material_cost', null,[
+                'attr' => ['class' => 'form-control']
+            ])
         ;
     }
 

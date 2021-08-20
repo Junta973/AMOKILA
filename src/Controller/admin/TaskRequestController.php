@@ -13,21 +13,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class TaskRequestController extends AbstractController
 {
     /**
-     * @Route("/admin/taskRequest", name="app_admin_task_request")
+     * @Route("/admin/taskList", name="app_admin_task_list")
      */
     public function index(TaskRepository $taskRepository): Response
     {
         $tasks = $taskRepository->findAll();
-        return $this->render('admin/TaskRequest/index.html.twig', [
-            'title' => 'TASK REQUEST',
+        return $this->render('admin/Task/index.html.twig', [
+            'title' => 'TASK LIST',
             'tasks' => $tasks
         ]);
     }
 
     /**
-     * @route("/admin/taskRequest/ajouter", name="app_admin_taskRequest_ajouter", methods={"GET","POST"})
+     * @route("/admin/taskList/ajouter", name="app_admin_taskList_ajouter", methods={"GET","POST"})
      */
-    public function ajoutertaskRequest(Request $request): Response
+    public function ajoutertaskList(Request $request): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $task = new Task();
@@ -38,13 +38,13 @@ class TaskRequestController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
             $this->addFlash('success','Task ajouter avec succès!');
-            return $this->redirectToRoute('app_admin_task_request');
+            return $this->redirectToRoute('app_admin_task_list');
         }
-        return $this->render('admin/TaskRequest/ajouterTask.html.twig', ["form" => $form->createView()]);
+        return $this->render('admin/Task/ajouterTask.html.twig', ["form" => $form->createView()]);
     }
 
     /**
-     * @route("/admin/taskRequest/modifier/{id}", name="app_admin_taskRequest_modifier", methods={"GET","POST"})
+     * @route("/admin/taskList/modifier/{id}", name="app_admin_taskList_modifier", methods={"GET","POST"})
      */
     public function modifiertaskRequest(Request $request,TaskRepository $taskRepository,$id): Response
     {
@@ -57,13 +57,13 @@ class TaskRequestController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
             $this->addFlash('success','Task modifié avec succès!');
-            return $this->redirectToRoute('app_admin_task_request');
+            return $this->redirectToRoute('app_admin_task_list');
         }
-        return $this->render('admin/TaskRequest/modifierTask.html.twig', ["form" => $form->createView()]);
+        return $this->render('admin/Task/modifierTask.html.twig', ["form" => $form->createView()]);
     }
 
     /**
-     * @Route("/admin/taskRequest/delete/{id}", name="app_admin_taskRequest_delete", methods={"GET"})
+     * @Route("/admin/taskList/delete/{id}", name="app_admin_taskList_delete", methods={"GET"})
      */
     public function deletetaskRequest(Request $request, $id): Response
     {
@@ -77,15 +77,17 @@ class TaskRequestController extends AbstractController
             $this->addFlash('danger','Task introuvable!');
         }
 
-        return $this->redirectToRoute('app_admin_task_request');
+        return $this->redirectToRoute('app_admin_task_list');
 
     }
 
     /**
-     * @route("/admin/taskRequest/view/{id}", name="app_admin_taskRequest_view", methods={"GET"})
+     * @route("/admin/taskList/view/{id}", name="app_admin_taskList_view", methods={"GET"})
      */
     public function viewtaskRequest(Request $request,$id): Response
     {
-        return $this->render('admin/Process/viewProcess.html.twig');
+        $entityManager = $this->getDoctrine()->getManager();
+        $task = $entityManager->getRepository(Task::class)->findOneBy(['id'=>$id]);
+        return $this->render('admin/Task/viewTask.html.twig',['task'=>$task]);
     }
 }
