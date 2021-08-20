@@ -69,6 +69,12 @@ class Process
      */
     private $document4_path;
 
+    public function __toString()
+    {
+        return $this->process_name;
+        // TODO: Implement __toString() method.
+    }
+
     public function __construct()
     {
         $this->media = new ArrayCollection();

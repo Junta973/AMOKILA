@@ -24,26 +24,30 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Chef de projet</label>
+                <label class="wc-100">Project owner</label>
                 {{ form_widget(form.projectOwner) }}
                 <span class="error-field">{{ form_errors(form.projectOwner) }}</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Parent</label>
+                <label class="wc-100">Project Mère</label>
                 {{ form_widget(form.maitre) }}
                 <span class="error-field">{{ form_errors(form.maitre) }}</span>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project description</label>
-                {{ form_widget(form.project_description) }}
-                <span class="error-field">{{ form_errors(form.project_description) }}</span>
+                <label class="wc-100">Project Phase</label>
+                {{ form_widget(form.Phase) }}
+                <span class="error-field">{{ form_errors(form.Phase) }}</span>
             </div>
+        </div>
+        <div class="col-md-6">
+            <label class="wc-100"></label><br>
+            <a class="btn btn-dark font-14 w-100" href="{{ path('app_admin_phase') }}" target="_blank">Phase config</a>
         </div>
     </div>
     <div class="row">
@@ -76,19 +80,18 @@
             </div>
         </div>
     </div>
+
+
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Project Phase</label>
-                {{ form_widget(form.Phase) }}
-                <span class="error-field">{{ form_errors(form.Phase) }}</span>
+                <label class="wc-100">Project description</label>
+                {{ form_widget(form.project_description) }}
+                <span class="error-field">{{ form_errors(form.project_description) }}</span>
             </div>
         </div>
-        <div class="col-md-6">
-            <label class="wc-100"></label><br>
-            <a class="btn btn-dark font-14 w-100" href="" target="_blank">Phase config</a>
-        </div>
     </div>
+    <hr>
     <div class="wc-100 text-center">
         <button type="reset" class="btn btn-danger">Annuler</button>
         <button type="submit" class="btn btn-light">Ajouter</button>

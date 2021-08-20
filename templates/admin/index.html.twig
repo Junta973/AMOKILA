@@ -14,12 +14,18 @@
             <div class="col-md-4 row ff-wrap">
                 <div class="col-md-12 text-center">
                     Nombre de Projet
-                    16
+                    {{ totalProject }}
                 </div>
                 <div class="card col-md-12 p-15">
                     <a class="buttonLink">
-                        <h3>5 derniers projets</h3>
+                        <h3>{{ lastProjects|length }} derniers projets</h3>
                     </a>
+                    {% for p in lastProjects %}
+                        <a href="{{ path('app_admin_project_view',{'id':p.id}) }}" style="color: #5eb5e0;" class="buttonLink">
+                           - {{ p }}
+                        </a>
+                        <br>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -27,12 +33,18 @@
             <div class="col-md-4 row ff-wrap">
                 <div class="col-md-12 text-center">
                     Nombre de CR
-                    65
+                    {{ totalPCR }}
                 </div>
                 <div class="card col-md-12 p-15">
                     <a class="buttonLink">
-                        <h3>5 derniers CR</h3>
+                        <h3>{{ lastPCRs|length }} derniers CR</h3>
                     </a>
+                    {% for l in lastPCRs %}
+                        <a href="{{ path('app_admin_change_request_view',{'id':l.id}) }}" style="color: #5eb5e0;" class="buttonLink">
+                            - {{ l }}
+                        </a>
+                        <br>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -40,12 +52,18 @@
             <div class="col-md-4 row ff-wrap">
                 <div class="col-md-12 text-center">
                     Nombre de Process
-                    98
+                    {{ totalProcess }}
                 </div>
                 <div class="card col-md-12 p-15">
                     <a class="buttonLink">
-                        <h3>5 derniers process</h3>
+                        <h3>{{ lastProcess|length }} derniers process</h3>
                     </a>
+                    {% for l in lastProcess %}
+                        <a href="{{ path('app_admin_process_view',{'id':l.id}) }}" style="color: #5eb5e0;" class="buttonLink">
+                            - {{ l }}
+                        </a>
+                        <br>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -53,12 +71,18 @@
             <div class="col-md-4 row ff-wrap">
                 <div class="col-md-12 text-center">
                     Nombre de Task
-                    155
+                    {{ totalTasks }}
                 </div>
                 <div class="card col-md-12 p-15">
                     <a class="buttonLink">
-                        <h3>5 derniers task</h3>
+                        <h3>{{ lastTasks|length}} derniers task</h3>
                     </a>
+                    {% for l in lastTasks %}
+                        <a href="{{ path('app_admin_taskList_view',{'id':l.id}) }}" style="color: #5eb5e0;" class="buttonLink">
+                            - {{ l }}
+                        </a>
+                        <br>
+                    {% endfor %}
                 </div>
             </div>
 

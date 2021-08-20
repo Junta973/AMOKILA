@@ -19,6 +19,23 @@ class ProcessRepository extends ServiceEntityRepository
         parent::__construct($registry, Process::class);
     }
 
+    public function getNbrResults(){
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
+    public function getLastResluts($nbr){
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults($nbr)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Process[] Returns an array of Process objects
     //  */

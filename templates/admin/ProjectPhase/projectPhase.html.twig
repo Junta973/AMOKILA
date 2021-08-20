@@ -1,0 +1,85 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}PHASE CONFIGURATION{% endblock %}
+
+{% block titleHeader %}PHASE CONFIGURATION{% endblock %}
+{% block body %}
+
+
+    {{ form_start(form) }}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Phase Name</label>
+                {{ form_widget(form.phase_name) }}
+                <span class="error-field">{{ form_errors(form.phase_name) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Phase Description</label>
+                {{ form_widget(form.phase_description) }}
+                <span class="error-field">{{ form_errors(form.phase_description) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Phase start date</label>
+                {{ form_widget(form.project_phase_date_start) }}
+                <span class="error-field">{{ form_errors(form.project_phase_date_start) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Phase end date</label>
+                {{ form_widget(form.project_phase_date_end) }}
+                <span class="error-field">{{ form_errors(form.project_phase_date_end) }}</span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="wc-100 text-center">
+        <button type="reset" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-light">Ajouter</button>
+    </div>
+    <hr>
+    <div class="bg-white card card-details">
+        <div class="row">
+            <h4>Phase List</h4>
+        </div>
+        <div class="row">
+            <table>
+                <tbody>
+                {% for phase in allphases %}
+                    <tr>
+                        <td><p>{{ phase.phaseName }}</p></td>
+                        <td><p>{{ phase.projectPhaseDateStart|date('d/m/Y') }}</p></td>
+                        <td><p>{{ phase.projectPhaseDateEnd|date('d/m/Y') }}</p></td>
+                        <td>
+                            <a href="{{ path('app_admin_phase',{'id':phase.id}) }}"><i class="fa fa-pencil"></i></a>
+                            <a class="text-danger" href="{{ path('app_admin_phase_delete',{'id':phase.id}) }}"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">La liste est vide.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

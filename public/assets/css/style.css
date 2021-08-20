@@ -306,6 +306,10 @@ form .custom-checkbox{
     color: #FFFFFF;
 }
 
+.text-danger{
+    color: #E03D20;
+}
+
 .btn-block{
     width: 100% !important;
 }
@@ -335,7 +339,9 @@ form .custom-checkbox{
 .font-14{
     font-size: 14px !important;
 }
-
+.bg-white{
+    background-color: white !important;
+}
 .badge{
     display: block;
     width: 100px;
@@ -547,19 +553,31 @@ td, th {
     justify-content: center;
 }
 .card{
-    height: 120px;
+    min-height: 120px;
     border:1px solid #000000;
     margin: 15px;
     padding: 15px;
     border-radius: 12px;
     text-align: center;
 }
+.card-details{
+    height: auto !important;
+}
+.card-details p,h6{
+    color: #000000 !important;
+}
 
+.col-md-3{
+    width: 25%;
+}
 .col-md-4{
     width: 33.33%;
 }
 .col-md-6{
     width: 50%;
+}
+.col-md-8{
+    width: 66.66%;
 }
 .col-md-12{
     width: 100%;
