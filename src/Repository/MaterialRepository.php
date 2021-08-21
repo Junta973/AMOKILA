@@ -19,22 +19,18 @@ class MaterialRepository extends ServiceEntityRepository
         parent::__construct($registry, Material::class);
     }
 
-    // /**
-    //  * @return Material[] Returns an array of Material objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+    public function countValide()
     {
         return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('COUNT(m.id)')
+            ->andWhere('m.date_validation_out > :val')
+            ->setParameter('val', (new \DateTime()))
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Material

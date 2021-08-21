@@ -35,7 +35,7 @@
         $('.admin_container').toggleClass('closed');
     });
     $(document).ready(function (){
-        if ($( window ).width() <= 600) {
+        if ($( window ).width() <= 800) {
             $('.side-menu').addClass('closed');
             $('.admin_container').addClass('closed');
         }else{
@@ -44,7 +44,7 @@
         }
     })
     $(window).resize(function (){
-        if ($( window ).width() <= 600) {
+        if ($( window ).width() <= 800) {
             $('.side-menu').addClass('closed');
             $('.admin_container').addClass('closed');
         }else{
@@ -52,30 +52,6 @@
             $('.admin_container').removeClass('closed');
         }
     })
-
-</script>
-<script>
-
-    function mySmartSearchFn(x,input) {
-        // Declare variables
-        var table, tr, td, i, txtValue;
-        var filter = input.val();
-        table = document.getElementById("Table");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[x];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
 
 </script>
 </body>

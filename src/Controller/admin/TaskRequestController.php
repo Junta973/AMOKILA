@@ -35,6 +35,7 @@ class TaskRequestController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
+            $task->setUser($this->getUser());
             $entityManager->persist($task);
             $entityManager->flush();
             $this->addFlash('success','Task ajouter avec succès!');

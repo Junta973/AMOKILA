@@ -38,10 +38,10 @@
                 <td>{{ user.skills }}</td>
                 <td>{{ user.level }}</td>
                 <td>{{ user.departement }}</td>
-                <td>
-                    <a href="{{ path('app_admin_utilisateur_modifier',{'id':user.id}) }}" class="btn btn-warning font-14 w-100 mt-2">Modifier</a>
-                    <a href="{{ path('app_admin_utilisateur_delete',{'id':user.id}) }}" class="btn btn-danger font-14 w-100 mt-2">Supprimer</a>
-                    <a class="btn btn-secondary font-14 w-100 mt-2">More</a>
+                <td class="text-center">
+                    <a href="{{ path('app_admin_utilisateur_modifier',{'id':user.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
+                    <a href="{{ path('app_admin_utilisateur_delete',{'id': user.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    <a href="" class="text-info w-100 mt-2"><i class="fa fa-eye"></i></a>
                 </td>
             </tr>
             {% else %}

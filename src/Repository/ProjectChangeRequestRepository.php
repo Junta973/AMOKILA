@@ -35,6 +35,16 @@ class ProjectChangeRequestRepository extends ServiceEntityRepository
             ;
     }
 
+    public function getNbrResultsByStats($status){
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->where('p.pcr_status = :status')
+            ->setParameter('status',$status)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
     public function getLastResluts($nbr){
         return $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC')

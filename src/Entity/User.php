@@ -132,6 +132,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $pcrRequestedbyuser;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Task::class, mappedBy="assignedTo")
+     */
+    private $assignedTasks;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
@@ -140,6 +145,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->projectChangeRequests = new ArrayCollection();
         $this->pcrApprouvedbyuser = new ArrayCollection();
         $this->pcrRequestedbyuser = new ArrayCollection();
+        $this->assignedTasks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -557,6 +563,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($pcrRequestedbyuser->getRequestedBy() === $this) {
                 $pcrRequestedbyuser->setRequestedBy(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Task[]
+     */
+    public function getAssignedTasks(): Collection
+    {
+        return $this->assignedTasks;
+    }
+
+    public function addAssignedTask(Task $assignedTask): self
+    {
+        if (!$this->assignedTasks->contains($assignedTask)) {
+            $this->assignedTasks[] = $assignedTask;
+            $assignedTask->addAssignedTo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAssignedTask(Task $assignedTask): self
+    {
+        if ($this->assignedTasks->removeElement($assignedTask)) {
+            $assignedTask->removeAssignedTo($this);
         }
 
         return $this;

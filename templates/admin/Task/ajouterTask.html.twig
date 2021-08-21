@@ -25,13 +25,6 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Created By</label>
-                {{ form_widget(form.user) }}
-                <span class="error-field">{{ form_errors(form.user) }}</span>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
                 <label class="wc-100">Project change request réf</label>
                 {{ form_widget(form.requestChange) }}
                 <span class="error-field"></span>
@@ -42,6 +35,13 @@
                 <label class="wc-100">Date</label>
                 {{ form_widget(form.date) }}
                 <span class="error-field"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Color</label>
+                {{ form_widget(form.color) }}
+                <span class="error-field">{{ form_errors(form.color) }}</span>
             </div>
         </div>
     </div>
@@ -91,6 +91,15 @@
                 <label class="wc-100">Progress</label>
                 {{ form_widget(form.progress) }}
                 <span class="error-field">{{ form_errors(form.progress) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Assigned To</label>
+                {{ form_widget(form.assignedTo) }}
+                <span class="error-field">{{ form_errors(form.assignedTo) }}</span>
             </div>
         </div>
     </div>
