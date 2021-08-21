@@ -94,6 +94,11 @@ class Task
      */
     private $color;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="assignedTasks")
+     */
+    private $assignedTo;
+
     public function __toString()
     {
         return $this->task_name;
@@ -105,6 +110,7 @@ class Task
         $this->material = new ArrayCollection();
         $this->processes = new ArrayCollection();
         $this->components = new ArrayCollection();
+        $this->assignedTo = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -333,6 +339,30 @@ class Task
     public function setColor(?string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getAssignedTo(): Collection
+    {
+        return $this->assignedTo;
+    }
+
+    public function addAssignedTo(User $assignedTo): self
+    {
+        if (!$this->assignedTo->contains($assignedTo)) {
+            $this->assignedTo[] = $assignedTo;
+        }
+
+        return $this;
+    }
+
+    public function removeAssignedTo(User $assignedTo): self
+    {
+        $this->assignedTo->removeElement($assignedTo);
 
         return $this;
     }

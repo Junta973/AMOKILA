@@ -36,6 +36,23 @@ class ProcessRepository extends ServiceEntityRepository
             ;
     }
 
+
+    public function search($processref,$processname){
+        $req = $this->createQueryBuilder('p');
+
+        if ($processref)
+            $req->andWhere('p.ref_process LIKE :ref')
+                ->setParameter('ref','%'.$processname.'%');
+
+        if ($processname)
+            $req->andWhere('p.process_name LIKE :name')
+                ->setParameter('name','%'.$processname.'%');
+
+        $req = $req->getQuery()->getResult();
+
+        return $req;
+    }
+
     // /**
     //  * @return Process[] Returns an array of Process objects
     //  */

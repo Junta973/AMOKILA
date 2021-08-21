@@ -2,6 +2,7 @@
 
 namespace App\Controller\admin;
 
+use App\Repository\MaterialRepository;
 use App\Repository\ProcessRepository;
 use App\Repository\ProjectChangeRequestRepository;
 use App\Repository\ProjectRepository;
@@ -19,7 +20,8 @@ class adminController extends AbstractController
         ProjectRepository $projectRepository,
         ProjectChangeRequestRepository $changeRequestRepository,
         ProcessRepository $processRepository,
-        TaskRepository $taskRepository
+        TaskRepository $taskRepository,
+        MaterialRepository $materialRepository
     ): Response
     {
 
@@ -29,13 +31,22 @@ class adminController extends AbstractController
         $totalPCR = $changeRequestRepository->getNbrResults();
         $lastPCRs = $changeRequestRepository->getLastResluts(5);
 
-        $totalProcess = $changeRequestRepository->getNbrResults();
-        $lastProcess = $changeRequestRepository->getLastResluts(5);
+        $totalProcess = $processRepository->getNbrResults();
+        $lastProcess = $processRepository->getLastResluts(5);
 
         $totalTasks = $taskRepository->getNbrResults();
         $lastTasks = $taskRepository->getLastResluts(5);
 
         $lastTasksInProgress = $taskRepository->getLastTaskOnProgress(5);
+
+        $nbrPCRApprouved = $changeRequestRepository->getNbrResultsByStats('Approuved');
+        $nbrPCRNewCR = $changeRequestRepository->getNbrResultsByStats('New CR');
+        $nbrPCRInReview = $changeRequestRepository->getNbrResultsByStats('In Review');
+        $nbrPCRRejected = $changeRequestRepository->getNbrResultsByStats('Rejected');
+
+        $materialCount = $materialRepository->count([]);
+        $materialValid = $materialRepository->countValide();
+
 
         return $this->render('admin/index.html.twig', [
             'title' => 'DASHBOARD',
@@ -47,7 +58,15 @@ class adminController extends AbstractController
             'lastProcess' => $lastProcess,
             'totalTasks' => $totalTasks,
             'lastTasks' => $lastTasks,
-            'lastTasksInProgress' => $lastTasksInProgress
+            'lastTasksInProgress' => $lastTasksInProgress,
+
+            'nbrPCRApprouved' =>$nbrPCRApprouved,
+            'nbrPCRNewCR' =>$nbrPCRNewCR,
+            'nbrPCRInReview' =>$nbrPCRInReview,
+            'nbrPCRRejected' =>$nbrPCRRejected,
+
+            'materialCount' => $materialCount,
+            'materialValid' => $materialValid
         ]);
     }
 }

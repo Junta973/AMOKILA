@@ -14,6 +14,34 @@
         {% for message in app.flashes('danger') %}
             <div class="alert alert-danger">{{ message }}</div>
         {% endfor %}
+
+        <div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="text-black">Task Ref</label>
+                        <input class="form-control" name="reftask" placeholder="Task Ref.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">Task Name</label>
+                        <input class="form-control" name="nametask" placeholder="Task Name.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">Min Progress</label>
+                        <input type="number" min="0" max="100" class="form-control" name="minprogress" placeholder="Min.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">Max Progress</label>
+                        <input type="number" min="0" max="100" class="form-control" name="maxprogress" placeholder="Max.." />
+                    </div>
+                    <div class="col-md-3 btn-algin">
+                        <button class="h-45">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
         <table>
             <thead>
             <tr>
@@ -27,7 +55,7 @@
 
             {% for task in tasks %}
             <tr>
-                <td>{{ task.taskRef }}</td>
+                <td style="color: {{ task.color }};">{{ task.taskRef }}</td>
                 <td>{{ task.taskName }}</td>
                 <th>
                     {% set etat = 'warning' %}
@@ -38,10 +66,10 @@
                     {% endif%}
                     <a class="badge badge-{{ etat }} font-14">{{ task.progress ? task.progress : 0 }}%</a>
                 </th>
-                <td>
-                    <a href="{{ path('app_admin_taskList_modifier',{'id':task.id}) }}" class="btn btn-warning font-14 w-100 mt-2">Modify</a>
-                    <a href="{{ path('app_admin_taskList_delete',{'id':task.id}) }}" class="btn btn-danger font-14 w-100 mt-2">Delete</a>
-                    <a href="{{ path('app_admin_taskList_view',{'id':task.id}) }}" class="btn btn-secondary font-14 w-100 mt-2">More</a>
+                <td class="text-center">
+                    <a href="{{ path('app_admin_taskList_modifier',{'id':task.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
+                    <a href="{{ path('app_admin_taskList_delete',{'id': task.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    <a href="{{ path('app_admin_taskList_view',{'id':task.id}) }}" class="text-info w-100 mt-2"><i class="fa fa-eye"></i></a>
                 </td>
             </tr>
             {% else %}

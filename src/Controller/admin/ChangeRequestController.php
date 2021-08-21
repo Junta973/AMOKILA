@@ -17,13 +17,17 @@ class ChangeRequestController extends AbstractController
     /**
      * @Route("/admin/changeRequests", name="app_admin_change_requests")
      */
-    public function index(ProjectChangeRequestRepository $repository): Response
+    public function index(Request $request,ProjectChangeRequestRepository $repository): Response
     {
 
+        $pcrref = $request->request->get('pcrref');
+        $pcrname = $request->request->get('pcrname');
+        $pcretat = $request->request->get('pcretat');
+
         if($this->isGranted("ROLE_ADMIN"))
-            $allProjectRequests = $repository->findAll();
+            $allProjectRequests = $repository->search($pcrref,$pcrname,$pcretat,null);
         else
-            $allProjectRequests = $repository->getMyChangeRequests($this->getUser());
+            $allProjectRequests = $repository->search($pcrref,$pcrname,$pcretat,$this->getUser());
 
 
         return $this->render('admin/ChangeRequest/index.html.twig', [

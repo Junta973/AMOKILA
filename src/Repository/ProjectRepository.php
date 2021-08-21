@@ -36,6 +36,24 @@ class ProjectRepository extends ServiceEntityRepository
             ;
     }
 
+
+    public function search($name,$ref){
+
+        $req = $this->createQueryBuilder('p');
+
+        if ($ref)
+            $req->andWhere('p.ref_project LIKE :ref')
+            ->setParameter('ref','%'.$ref.'%');
+
+        if ($name)
+            $req->andWhere('p.project_name LIKE :name')
+                ->setParameter('name','%'.$name.'%');
+
+        $req = $req->getQuery()->getResult();
+
+        return $req;
+    }
+
     // /**
     //  * @return Project[] Returns an array of Project objects
     //  */

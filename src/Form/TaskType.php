@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -66,11 +67,21 @@ class TaskType extends AbstractType
             ->add('requestChange', null,[
                 'attr' => ['class' => 'wc-100']
             ])
-            ->add('user', null,[
-                'attr' => ['class' => 'wc-100']
-            ])
             ->add('projet', null,[
                 'attr' => ['class' => 'wc-100']
+            ])
+            ->add('assignedTo', null,[
+                'attr' => ['class' => 'wc-100']
+            ])
+            ->add('color', ChoiceType::class,[
+                'attr' => ['class' => 'wc-100'],
+                'choices' => [
+                    '#F5E6CA' => '#F5E6CA',
+                    '#FB9300' => '#FB9300',
+                    '#F54748' => '#F54748',
+                    '#343F56' => '#343F56'
+                ],
+                'required' => true,
             ])
         ;
     }

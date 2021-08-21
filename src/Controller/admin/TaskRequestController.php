@@ -15,9 +15,15 @@ class TaskRequestController extends AbstractController
     /**
      * @Route("/admin/taskList", name="app_admin_task_list")
      */
-    public function index(TaskRepository $taskRepository): Response
+    public function index(Request $request,TaskRepository $taskRepository): Response
     {
-        $tasks = $taskRepository->findAll();
+
+        $reftask = $request->request->get('reftask');
+        $nametask = $request->request->get('nametask');
+        $minprogress = $request->request->get('minprogress');
+        $maxprogress = $request->request->get('maxprogress');
+
+        $tasks = $taskRepository->search($reftask,$nametask,$minprogress,$maxprogress);
         return $this->render('admin/Task/index.html.twig', [
             'title' => 'TASK LIST',
             'tasks' => $tasks
@@ -35,6 +41,7 @@ class TaskRequestController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $task = $form->getData();
+            $task->setUser($this->getUser());
             $entityManager->persist($task);
             $entityManager->flush();
             $this->addFlash('success','Task ajouter avec succès!');

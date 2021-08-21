@@ -15,6 +15,35 @@
             <div class="alert alert-danger">{{ message }}</div>
         {% endfor %}
 
+        <div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="text-black">PCR Ref</label>
+                        <input class="form-control" name="pcrref" placeholder="search ref.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">PCR Name</label>
+                        <input class="form-control" name="pcrname" placeholder="search pcr name.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">PCR Etat</label>
+                        <select name="pcretat" class="wc-100">
+                            <option></option>
+                            <option value="New CR">New CR</option>
+                            <option value="In Review">In Review</option>
+                            <option value="Approuved">Approuved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 btn-algin">
+                        <button class="h-45">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
         <table>
             <thead>
             <tr>
@@ -43,10 +72,10 @@
 
                         <a class="badge badge-{{ status }} font-14">{{ request.pcrStatus }}</a>
                     </th>
-                    <td>
-                        <a href="{{ path('app_admin_change_request_modifier',{'id':request.id}) }}" class="btn btn-warning font-14 w-100 mt-2">Modify</a>
-                        <a href="{{ path('app_admin_change_request_delete',{'id': request.id}) }}" class="btn btn-danger font-14 w-100 mt-2">Delete</a>
-                        <a href="{{ path('app_admin_change_request_view',{'id':request.id}) }}" class="btn btn-secondary font-14 w-100 mt-2">More</a>
+                    <td class="text-center">
+                        <a href="{{ path('app_admin_change_request_modifier',{'id':request.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ path('app_admin_change_request_delete',{'id': request.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                        <a href="{{ path('app_admin_change_request_view',{'id':request.id}) }}" class="text-info w-100 mt-2"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
             {% else %}

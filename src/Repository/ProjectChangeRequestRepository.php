@@ -35,6 +35,16 @@ class ProjectChangeRequestRepository extends ServiceEntityRepository
             ;
     }
 
+    public function getNbrResultsByStats($status){
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p)')
+            ->where('p.pcr_status = :status')
+            ->setParameter('status',$status)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
     public function getLastResluts($nbr){
         return $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC')
@@ -42,6 +52,30 @@ class ProjectChangeRequestRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
             ;
+    }
+
+    public function search($pcrref,$pcrname,$pcretat,$user){
+        $req = $this->createQueryBuilder('p');
+
+        if ($pcrref)
+            $req->andWhere('p.pcr_ref LIKE :ref')
+                ->setParameter('ref','%'.$pcrref.'%');
+
+        if ($pcrname)
+            $req->andWhere('p.pcr_name LIKE :name')
+                ->setParameter('name','%'.$pcrname.'%');
+
+        if ($pcretat)
+            $req->andWhere('p.pcr_status = :etat')
+                ->setParameter('etat',$pcretat);
+
+        if($user)
+            $req->where('p.requestedBy = :user')
+                ->setParameter('user',$user);
+
+        $req = $req->getQuery()->getResult();
+
+        return $req;
     }
 
     // /**
