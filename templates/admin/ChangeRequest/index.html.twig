@@ -15,6 +15,35 @@
             <div class="alert alert-danger">{{ message }}</div>
         {% endfor %}
 
+        <div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="text-black">PCR Ref</label>
+                        <input class="form-control" name="pcrref" placeholder="search ref.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">PCR Name</label>
+                        <input class="form-control" name="pcrname" placeholder="search pcr name.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">PCR Etat</label>
+                        <select name="pcretat" class="wc-100">
+                            <option></option>
+                            <option value="New CR">New CR</option>
+                            <option value="In Review">In Review</option>
+                            <option value="Approuved">Approuved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 btn-algin">
+                        <button class="h-45">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
         <table>
             <thead>
             <tr>

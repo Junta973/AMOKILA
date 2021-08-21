@@ -29,10 +29,10 @@ class ProcessType extends AbstractType
                 'attr' => ['class' => 'wc-100']
             ])
             ->add('process_path', MediaType::class)
-            ->add('document1_path', MediaType::class)
-            ->add('document2_path', MediaType::class)
-            ->add('document3_path', MediaType::class)
-            ->add('document4_path', MediaType::class)
+            ->add('document1_path', MediaType::class,['required'=>false])
+            ->add('document2_path', MediaType::class,['required'=>false])
+            ->add('document3_path', MediaType::class,['required'=>false])
+            ->add('document4_path', MediaType::class,['required'=>false])
         ;
     }
 

@@ -16,9 +16,15 @@ class TeamManagementController extends AbstractController
     /**
      * @Route("/admin/TeamManagement", name="app_admin_team_management")
      */
-    public function index(UserRepository $userRepository): Response
+    public function index(Request $request,UserRepository $userRepository): Response
     {
-        $users = $userRepository->findAll();
+
+        $email = $request->request->get('email');
+        $skills = $request->request->get('skills');
+        $level = $request->request->get('level');
+        $profession = $request->request->get('profession');
+
+        $users = $userRepository->search($email,$skills,$level,$profession);
         return $this->render('admin/TeamManagement/index.html.twig', [
             'title' => 'TEAM MANAGEMENT',
             'users' => $users

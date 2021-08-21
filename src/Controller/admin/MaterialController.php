@@ -15,9 +15,15 @@ class MaterialController extends AbstractController
     /**
      * @Route("/admin/material", name="app_admin_material")
      */
-    public function index(MaterialRepository $materialRepository): Response
+    public function index(Request $request,MaterialRepository $materialRepository): Response
     {
-        $allMaterials = $materialRepository->findAll();
+
+        $ref = $request->request->get('ref');
+        $name = $request->request->get('name');
+        $etat = $request->request->get('etat');
+
+
+        $allMaterials = $materialRepository->search($ref,$name,$etat);
         return $this->render('admin/Material/index.html.twig', [
             'title' => 'MATERIALS LIST',
             'allMaterials' => $allMaterials

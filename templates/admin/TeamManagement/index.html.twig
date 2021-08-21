@@ -15,12 +15,37 @@
         {% for message in app.flashes('danger') %}
             <div class="alert alert-danger">{{ message }}</div>
         {% endfor %}
+        <div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="text-black">E-mail</label>
+                        <input class="form-control" name="email" placeholder="Email.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">Skills</label>
+                        <input class="form-control" name="skills" placeholder="Skills.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">Level</label>
+                        <input class="form-control" type="number" min="0" max="5" name="level" placeholder="Level.." />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="text-black">Profession</label>
+                        <input class="form-control" name="profession" placeholder="Profession.." />
+                    </div>
+                    <div class="col-md-3 btn-algin">
+                        <button class="h-45">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
         <table>
             <thead>
             <tr>
                 <th>Photo</th>
-                <th>Name</th>
-                <th>FirstName</th>
+                <th>E-mail</th>
                 <th>Profession</th>
                 <th>Skills</th>
                 <th>Level</th>
@@ -32,8 +57,7 @@
             {% for user in users %}
                 <tr>
                 <td><img width="75" height="75" src="{{ user.avatar ? vich_uploader_asset(user.avatar, 'imageFile', 'App\\Entity\\Media') :  asset('assets/img/profile.png') }}" alt="" /></td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.firstname }}</td>
+                <td>{{ user.email }}</td>
                 <td>{{ user.profession }}</td>
                 <td>{{ user.skills }}</td>
                 <td>{{ user.level }}</td>

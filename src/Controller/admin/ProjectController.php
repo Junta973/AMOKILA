@@ -16,9 +16,13 @@ class ProjectController extends AbstractController
     /**
      * @Route("/admin/project", name="app_admin_project")
      */
-    public function index(ProjectRepository $projectRepository): Response
+    public function index(Request $request,ProjectRepository $projectRepository): Response
     {
-        $projects = $projectRepository->findAll();
+
+        $ref = $request->request->get('refprojet');
+        $name = $request->request->get('nameprojet');
+
+        $projects = $projectRepository->search($name,$ref);
         return $this->render('admin/Project/index.html.twig', [
             'title' => 'PROJECT',
             'projects' => $projects

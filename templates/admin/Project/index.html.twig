@@ -15,6 +15,25 @@
             <div class="alert alert-danger">{{ message }}</div>
         {% endfor %}
 
+        <div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="text-black">Project Ref</label>
+                        <input class="form-control" name="refprojet" placeholder="search ref.." />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="text-black">Project Name</label>
+                        <input class="form-control" name="nameprojet" placeholder="search project name.." />
+                    </div>
+                    <div class="col-md-4 btn-algin">
+                        <button class="h-45">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
         <table id="Table">
             <thead>
             <tr>

@@ -160,7 +160,7 @@ a,button{
     .dashbord .ff-wrap{
         width: 100% !important;
     }
-    .col-md-4,.col-md-6,.col-md-8 {
+    .col-md-4,.col-md-6,.col-md-8,.col-md-3 {
         width: 100% !important;
     }
 }
@@ -333,8 +333,16 @@ form .custom-checkbox{
 .text-primary{
       color: #007bff;
 }
+.text-black{
+    color: #000000;
+}
+
 .btn-block{
     width: 100% !important;
+}
+.btn-algin{
+    display: flex;
+    align-items: flex-end;
 }
 .text-center{
     text-align: center;
@@ -349,6 +357,9 @@ form .custom-checkbox{
 .wc-100{
     width: 100% !important;
     min-height: 43px !important;
+}
+.h-45{
+    height: 45px;
 }
 .mt-5{
    margin-top: 5px;

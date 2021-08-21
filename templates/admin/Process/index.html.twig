@@ -8,6 +8,32 @@
         <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Process</a>
     </div>
     <div class="container-body">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+
+        <div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="text-black">Process Ref</label>
+                        <input class="form-control" name="processref" placeholder="search ref.." />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="text-black">Process Name</label>
+                        <input class="form-control" name="processname" placeholder="Search Process name.." />
+                    </div>
+
+                    <div class="col-md-4 btn-algin">
+                        <button class="h-45">Search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
 
         <table>
             <thead>

@@ -18,8 +18,10 @@ class MediaType extends AbstractType
                     'attr' => [
                         'class' => 'form-control',
                     ],
-                    'label' => false
-                ])
+                    'label' => false,
+                    'required' => $options['required']
+                ]
+            )
         ;
     }
 

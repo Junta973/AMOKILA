@@ -15,9 +15,12 @@ class ProcessController extends AbstractController
     /**
      * @Route("/admin/process", name="app_admin_process")
      */
-    public function index(ProcessRepository $processRepository): Response
+    public function index(Request $request,ProcessRepository $processRepository): Response
     {
-        $allProcess = $processRepository->findAll();
+
+        $processref = $request->request->get('processref');
+        $processname = $request->request->get('processname');
+        $allProcess = $processRepository->search($processref,$processname);
         return $this->render('admin/Process/index.html.twig', [
             'title' => 'PROCESS',
             'allProcess' => $allProcess

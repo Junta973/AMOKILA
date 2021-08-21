@@ -31,7 +31,28 @@ class MaterialRepository extends ServiceEntityRepository
         ;
     }
 
+    public function search($ref,$name,$etat){
+        $req = $this->createQueryBuilder('p');
 
+        if ($ref)
+            $req->andWhere('p.ref_material LIKE :ref')
+                ->setParameter('ref','%'.$ref.'%');
+
+        if ($name)
+            $req->andWhere('p.name_material LIKE :name')
+                ->setParameter('name','%'.$name.'%');
+
+        if ($etat == "1")
+            $req->andWhere('p.date_validation_out > :jour')
+                ->setParameter('jour', (new \DateTime()));
+        elseif ($etat == "0")
+            $req->andWhere('p.date_validation_out < :jouro')
+                ->setParameter('jouro', (new \DateTime()));
+
+        $req = $req->getQuery()->getResult();
+
+        return $req;
+    }
     /*
     public function findOneBySomeField($value): ?Material
     {

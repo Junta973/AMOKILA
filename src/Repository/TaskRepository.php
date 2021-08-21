@@ -45,6 +45,30 @@ class TaskRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function search($reftask,$nametask,$minprogress,$maxprogress){
+        $req = $this->createQueryBuilder('p');
+
+        if ($reftask)
+            $req->andWhere('p.task_ref LIKE :ref')
+                ->setParameter('ref','%'.$reftask.'%');
+
+        if ($nametask)
+            $req->andWhere('p.task_name LIKE :name')
+                ->setParameter('name','%'.$nametask.'%');
+
+        if ($minprogress)
+            $req->andWhere('p.progress > :minprog')
+                ->setParameter('minprog', $minprogress);
+
+        if ($maxprogress)
+            $req->andWhere('p.progress < :maxprog')
+                ->setParameter('maxprog', $maxprogress);
+
+        $req = $req->getQuery()->getResult();
+
+        return $req;
+    }
+
     // /**
     //  * @return Task[] Returns an array of Task objects
     //  */

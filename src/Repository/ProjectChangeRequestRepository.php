@@ -54,6 +54,30 @@ class ProjectChangeRequestRepository extends ServiceEntityRepository
             ;
     }
 
+    public function search($pcrref,$pcrname,$pcretat,$user){
+        $req = $this->createQueryBuilder('p');
+
+        if ($pcrref)
+            $req->andWhere('p.pcr_ref LIKE :ref')
+                ->setParameter('ref','%'.$pcrref.'%');
+
+        if ($pcrname)
+            $req->andWhere('p.pcr_name LIKE :name')
+                ->setParameter('name','%'.$pcrname.'%');
+
+        if ($pcretat)
+            $req->andWhere('p.pcr_status = :etat')
+                ->setParameter('etat',$pcretat);
+
+        if($user)
+            $req->where('p.requestedBy = :user')
+                ->setParameter('user',$user);
+
+        $req = $req->getQuery()->getResult();
+
+        return $req;
+    }
+
     // /**
     //  * @return ProjectChangeRequest[] Returns an array of ProjectChangeRequest objects
     //  */
