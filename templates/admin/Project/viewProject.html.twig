@@ -5,49 +5,82 @@
 {% block titleHeader %}DETAILS PROJET #{{ project.id }} {{ project.projectName }}{% endblock %}
 {% block body %}
 
-    <div class="bg-white col-md-12  card card-details">
-        <div class="view">
-        <div class="row">
-            <div class="col-md-6"><h6>Phase:</h6></div>
-            <div class="col-md-6"><p>{{ project.phase }}</p></div>
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project Name</label>
+                {{ form_widget(form.project_name,{'attr':{'readonly':true}}) }}
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-6"><h6>ID Project:</h6></div>
-            <div class="col-md-6"><p>{{ project.id }}</p></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project ref</label>
+                {{ form_widget(form.ref_project,{'attr':{'readonly':true}}) }}
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Réference de projet:</h6></div>
-            <div class="col-md-6"><p>{{ project.refProject }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Nom de Projet:</h6></div>
-            <div class="col-md-6"><p>{{ project.projectName }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Description:</h6></div>
-            <div class="col-md-6"><p>{{ project.projectDescription }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Date début:</h6></div>
-            <div class="col-md-6"><p>{{ project.dateInitProjet|date() }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Date Fin:</h6></div>
-            <div class="col-md-6"><p>{{ project.dateFinProjet|date() }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Cost:</h6></div>
-            <div class="col-md-6"><p>{{ project.cost|number_format(2,'.','') }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Budget:</h6></div>
-            <div class="col-md-6"><p>{{ project.budget|number_format(2,'.','') }}</p></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6"><h6>Chef de projet:</h6></div>
-            <div class="col-md-6"><p>{{ project.projectOwner }}</p></div>
-        </div>
-</div>
-
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Chef de projet</label>
+                <input class="form-control" value="{{ project.projectOwner }}" readonly>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Parent</label>
+                <input class="form-control" value="{{ project.maitre }}" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Project description</label>
+                {{ form_widget(form.project_description,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Project start date</label>
+                {{ form_widget(form.date_init_projet,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Project end date</label>
+                {{ form_widget(form.date_fin_projet,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Budget</label>
+                {{ form_widget(form.budget,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Cost</label>
+                {{ form_widget(form.cost,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project Phase</label>
+                <input class="form-control" value="{{ project.phase }}" readonly>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="wc-100"></label><br>
+            <a class="btn btn-dark font-14 w-100" href="" target="_blank">Phase config</a>
+        </div>
+    </div>
+
+    </form>
+
 {% endblock %}

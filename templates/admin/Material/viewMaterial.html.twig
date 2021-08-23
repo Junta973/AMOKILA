@@ -5,29 +5,22 @@
 {% block titleHeader %}DETAILS MATERIAL #{{ material.id }} {{ material.nameMaterial }}{% endblock %}
 {% block body %}
 
-    <div class="bg-white col-md-12  card card-details">
-        <div class="view">
-            <div class="row">
-                <div class="col-md-6"><h6>ID material:</h6></div>
-                <div class="col-md-6"><p>{{ material.id }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Réference de material:</h6></div>
-                <div class="col-md-6"><p>{{ material.refMaterial }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Nom de material:</h6></div>
-                <div class="col-md-6"><p>{{ material.nameMaterial }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Validity date:</h6></div>
-                <div class="col-md-6"><p>{{ material.dateValidationIn|date() }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Expire date:</h6></div>
-                <div class="col-md-6"><p>{{ material.dateValidationOut|date() }}</p></div>
-            </div>
-        </div>
-    </div>
+    {{ form_start(form) }}
+        <label>Material reference</label>
+        {{ form_widget(form.ref_material,{'attr':{'readonly':true}}) }}
+
+        <label>Material name</label>
+        {{ form_widget(form.name_material,{'attr':{'readonly':true}}) }}
+
+        <label>Validity date</label>
+        {{ form_widget(form.date_validation_in,{'attr':{'readonly':true}}) }}
+
+        <label>Expire date</label>
+        {{ form_widget(form.date_validation_out,{'attr':{'readonly':true}}) }}
+
+        <label>Cost</label>
+        {{ form_widget(form.material_cost,{'attr':{'readonly':true}}) }}
+
+    {{ form_end(form) }}
 
 {% endblock %}

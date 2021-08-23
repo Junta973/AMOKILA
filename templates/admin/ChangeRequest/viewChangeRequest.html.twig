@@ -5,30 +5,112 @@
 {% block titleHeader %}CHANGE REQUEST #{{ changeRequest.id }}{% endblock %}
 {% block body %}
 
-    <div class="bg-white col-md-12  card card-details">
-        <div class="view">
-            <div class="row">
-                <div class="col-md-6"><h6>ID Change Request:</h6></div>
-                <div class="col-md-6"><p>{{ changeRequest.id }}</p></div>
+    <form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Project Name</label>
+                <input class="form-control" value="{{ changeRequest.project }}" readonly>
             </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Réference de change Request:</h6></div>
-                <div class="col-md-6"><p>{{ changeRequest.pcrRef }}</p></div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Priority</label>
+                <input class="form-control" value="{{ changeRequest.priority }}" readonly>
             </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Status:</h6></div>
-                <div class="col-md-6"><p>{{ changeRequest.pcrStatus }}</p></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6"><h6>Requested by:</h6></div>
-                <div class="col-md-6"><p>{{ changeRequest.requestedBy }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Approuved by:</h6></div>
-                <div class="col-md-6"><p>{{ changeRequest.approuvedBy }}</p></div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Pcr name</label>
+                {{ form_widget(form.pcr_name,{'attr':{'readonly':true}}) }}
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Date</label>
+                {{ form_widget(form.date_de_creation,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">Impact of change</label>
+                {{ form_widget(form.impact_of_change,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="wc-100">PCR Ref</label>
+                {{ form_widget(form.pcr_ref,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Change description</label>
+                {{ form_widget(form.pcr_description,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Change reason</label>
+                {{ form_widget(form.pcr_change_reason,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Proposed action</label>
+                {{ form_widget(form.pcr_proposed_action,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Materials</label>
+                {{ form_widget(form.Materials,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Estimated cost</label>
+                {{ form_widget(form.Estimated_cost,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Status</label>
+                <input class="form-control" value="{{ changeRequest.pcrStatus }}" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Components</label>
+                {{ form_widget(form.Components,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="wc-100">Assigned to</label>
+                <input class="form-control" value="{{ changeRequest.user }}" readonly>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <hr>
+    </form>
 
 {% endblock %}

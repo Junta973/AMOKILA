@@ -64,7 +64,7 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'form-control']
             ])
             ->add('age', null,[
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'form-control','min'=>0]
             ])
             ->add('profession', TextType::class,[
                 'attr' => ['class' => 'form-control']
@@ -79,10 +79,10 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'form-control']
             ])
             ->add('hourly_fee', null,[
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'form-control','min'=>0]
             ])
             ->add('level', null,[
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'form-control','min'=>0,'max'=>5]
             ])
             ->add('avatar', MediaType::class)
             ->add('roles', ChoiceType::class, array(
