@@ -95,6 +95,8 @@ class TaskRequestController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $task = $entityManager->getRepository(Task::class)->findOneBy(['id'=>$id]);
-        return $this->render('admin/Task/viewTask.html.twig',['task'=>$task]);
+        $form = $this->createForm(TaskType::class, $task);
+        $form->handleRequest($request);
+        return $this->render('admin/Task/viewTask.html.twig',['task'=>$task,"form" => $form->createView()]);
     }
 }

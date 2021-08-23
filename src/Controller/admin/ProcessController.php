@@ -91,6 +91,8 @@ class ProcessController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $process = $entityManager->getRepository(Process::class)->findOneBy(['id'=>$id]);
-        return $this->render('admin/Process/viewProcess.html.twig',['process'=>$process]);
+        $form = $this->createForm(ProcessType::class, $process);
+        $form->handleRequest($request);
+        return $this->render('admin/Process/viewProcess.html.twig',['process'=>$process,"form" => $form->createView()]);
     }
 }

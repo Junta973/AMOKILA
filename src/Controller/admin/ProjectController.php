@@ -93,7 +93,9 @@ class ProjectController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);
-        return $this->render('admin/Project/viewProject.html.twig',['project'=>$project]);
+        $form = $this->createForm(ProjetType::class, $project);
+        $form->handleRequest($request);
+        return $this->render('admin/Project/viewProject.html.twig',['project'=>$project,"form" => $form->createView()]);
     }
 
 

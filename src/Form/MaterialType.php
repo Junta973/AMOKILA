@@ -43,7 +43,7 @@ class MaterialType extends AbstractType
                     ]
                 ])
             ->add('material_cost', null,[
-                'attr' => ['class' => 'form-control']
+                'attr' => ['class' => 'form-control','min'=>0]
             ])
         ;
     }

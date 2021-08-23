@@ -5,34 +5,86 @@
 {% block titleHeader %}DETAILS PROCESS #{{ process.id }} {{ process.processName }}{% endblock %}
 {% block body %}
 
-    <div class="bg-white col-md-12  card card-details">
-        <div class="view">
-            <div class="row">
-                <div class="col-md-6"><h6>Task:</h6></div>
-                <div class="col-md-6"><p>{{ process.task.taskName }}</p></div>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Process Name</label>
+                {{ form_widget(form.process_name,{'attr':{'readonly':true}}) }}
             </div>
-            <div class="row">
-                <div class="col-md-6"><h6>ID process:</h6></div>
-                <div class="col-md-6"><p>{{ process.id }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Réference de process:</h6></div>
-                <div class="col-md-6"><p>{{ process.refProcess }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Nom de process:</h6></div>
-                <div class="col-md-6"><p>{{ process.processName }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Créé par:</h6></div>
-                <div class="col-md-6"><p>{{ process.user }}</p></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6"><h6>Indice:</h6></div>
-                <div class="col-md-6"><p>{{ process.processIndice }}</p></div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Indice</label>
+                {{ form_widget(form.process_indice,{'attr':{'readonly':true}}) }}
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Process réference</label>
+                {{ form_widget(form.ref_process,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Created By</label>
+                {{ form_widget(form.user,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Task</label>
+                {{ form_widget(form.task,{'attr':{'readonly':true}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Process import</label>
+                {{ form_widget(form.process_path) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Document 1 import</label>
+                {{ form_widget(form.document1_path) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Document 2 import</label>
+                {{ form_widget(form.document2_path) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Document 3 import</label>
+                {{ form_widget(form.document3_path) }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Document 4 import</label>
+                {{ form_widget(form.document4_path) }}
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
 
 
 {% endblock %}

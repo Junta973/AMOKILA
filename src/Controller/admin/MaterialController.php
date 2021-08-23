@@ -88,12 +88,14 @@ class MaterialController extends AbstractController
     }
 
     /**
-     * @route("/admin/process/view/{id}", name="app_admin_material_view", methods={"GET"})
+     * @route("/admin/material/view/{id}", name="app_admin_material_view", methods={"GET"})
      */
     public function viewMaterial(Request $request,$id): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $Material = $entityManager->getRepository(Material::class)->findOneBy(['id'=>$id]);
-        return $this->render('admin/Material/viewMaterial.html.twig',['material'=>$Material]);
+        $form = $this->createForm(MaterialType::class, $Material);
+        $form->handleRequest($request);
+        return $this->render('admin/Material/viewMaterial.html.twig',['material'=>$Material,'form'=>$form->createView()]);
     }
 }

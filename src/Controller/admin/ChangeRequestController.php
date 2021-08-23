@@ -93,7 +93,10 @@ class ChangeRequestController extends AbstractController
             return $this->redirectToRoute('app_admin_change_requests');
         }
 
-        return $this->render('admin/ChangeRequest/viewChangeRequest.html.twig',['changeRequest'=>$changeRequest]);
+        $form = $this->createForm(ProjectChangeRequestType::class,$changeRequest);
+        $form = $form->handleRequest($request);
+
+        return $this->render('admin/ChangeRequest/viewChangeRequest.html.twig',['changeRequest'=>$changeRequest,'form'=>$form->createView()]);
     }
 
     /**
