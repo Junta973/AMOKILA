@@ -54,6 +54,7 @@ class ProjectChangeRequestRepository extends ServiceEntityRepository
             ;
     }
 
+
     public function search($pcrref,$pcrname,$pcretat,$user){
         $req = $this->createQueryBuilder('p');
 
@@ -70,11 +71,10 @@ class ProjectChangeRequestRepository extends ServiceEntityRepository
                 ->setParameter('etat',$pcretat);
 
         if($user)
-            $req->where('p.requestedBy = :user')
+            $req->andWhere('p.requestedBy = :user')
                 ->setParameter('user',$user);
 
         $req = $req->getQuery()->getResult();
-
         return $req;
     }
 

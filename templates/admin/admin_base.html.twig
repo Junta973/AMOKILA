@@ -22,7 +22,7 @@
 <body>
 
 {% include 'admin/admin_menu.html.twig' %}
-<div class="admin_container">
+<div class="admin_container responsiveContent">
     {% include 'admin/admin_header.html.twig' %}
     <div class="admin_content">
     {% block body %}{% endblock %}
@@ -30,7 +30,6 @@
 </div>
 
 <script>
-
     $(document).ready(function (){
 
         var etatmenu = localStorage.getItem('menu') ? localStorage.getItem('menu') : 'opened';
@@ -73,7 +72,9 @@
             $('.admin_container').removeClass('closed');
         }
     })
-
+    $(document).on('click','.options img',function (){
+        $('.dropdown').toggleClass('active');
+    });
 </script>
 </body>
 </html>

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class TeamManagementController extends AbstractController
 {
@@ -34,7 +35,7 @@ class TeamManagementController extends AbstractController
     /**
      * @Route("/admin/utitlisateur/ajouter", name="app_admin_utilisateur_ajouter", methods={"GET","POST"})
      */
-    public function ajouterUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function ajouterUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $user = new User();
@@ -42,7 +43,32 @@ class TeamManagementController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $user = $form->getData();
+           // $user = $form->getData();
+
+            $imageFile = $form->get('avatar')->getData()->getImageFile();
+            // Ce test est necessaire parce que le champ 'image' n'est pas obligatoire
+            // donc la requete doit être executé que si l'image est uploadé
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                // permet de nettoyer le nom afin de pouvoir l'utiliser dans l'url(enleve les caractères spéciaux)
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '_' . uniqid() . '.' . $imageFile->guessExtension();
+
+                //Déplace le fichier dans le dossier images ou uploads contenu dans le dossier publique
+
+                $imageFile->move(
+                    $this->getParameter('folder_upload_images'),
+                    $newFilename
+                );
+
+                // MaJ 'imageFilename' property to store the PDF file name
+                // instead of its contents
+                $media =  $user->getAvatar();
+                $media->setPath($newFilename);
+                $user->setAvatar($media);
+            }
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -60,7 +86,7 @@ class TeamManagementController extends AbstractController
     /**
      * @Route("/admin/utitlisateur/modifier/{id}", name="app_admin_utilisateur_modifier", methods={"GET","POST"})
      */
-    public function modifierUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id): Response
+    public function modifierUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,$id): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->findOneBy(['id'=>$id]);
@@ -68,7 +94,30 @@ class TeamManagementController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $user = $form->getData();
+            $imageFile = $form->get('avatar')->getData()->getImageFile();
+
+            // Ce test est necessaire parce que le champ 'image' n'est pas obligatoire
+            // donc la requete doit être executé que si l'image est uploadé
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+
+                // permet de nettoyer le nom afin de pouvoir l'utiliser dans l'url(enleve les caractères spéciaux)
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '_' . uniqid() . '.' . $imageFile->guessExtension();
+
+                //Déplace le fichier dans le dossier images ou uploads contenu dans le dossier publique
+
+                $imageFile->move(
+                    $this->getParameter('folder_upload_images'),
+                    $newFilename
+                );
+
+                // MaJ 'imageFilename' property to store the PDF file name
+                // instead of its contents
+                $media =  $user->getAvatar();
+                $media->setPath($newFilename);
+                $user->setAvatar($media);
+            }
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
