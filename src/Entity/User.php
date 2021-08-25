@@ -106,28 +106,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $avatar;
 
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $image;
-
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image): void
-    {
-        $this->image = $image;
-    }
-
-
     public function __toString()
     {
         return $this->email;
