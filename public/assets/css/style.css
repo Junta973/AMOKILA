@@ -164,8 +164,40 @@ a,button{
         width: 99% !important;
     }
 
-    tr ,th,td{
-        font-size: 18px;
+    tr,th{
+        font-size: 20px;
+    }
+    td{
+        font-size: 16px;
+    }
+    .responsiveMenu{
+        position: fixed;
+        bottom: 0;
+        top: unset !important;
+        height: 60px !important;
+        display: flex;
+        width: 100% !important;
+        flex-direction: column;
+    }
+    .responsiveMenu ul{
+        display: flex;
+        margin-top: 0px;
+        overflow-x: scroll;
+        width: 100%;
+    }
+    .responsiveMenu .top-side-menu{
+        display: none;
+    }
+    .responsiveContent{
+        margin-left: 0px !important;
+        margin-bottom: 100px;
+    }
+    .responsiveMenu img{
+        width: 40px;
+        height: 40px;
+    }
+    .responsiveMenu  li a{
+        padding: 10px 10px 10px 5px !important;
     }
 }
 
@@ -175,6 +207,28 @@ a,button{
     }
     .dashbord .ff-wrap{
         width: 100% !important;
+    }
+    .responsiveMenu{
+        position: fixed;
+        bottom: 0;
+        top: unset !important;
+        height: 85px !important;
+        display: flex;
+        width: 100% !important;
+        flex-direction: column;
+    }
+    .responsiveMenu ul{
+        display: flex;
+        margin-top: 0px;
+        overflow-x: scroll;
+        width: 100%;
+    }
+    .responsiveMenu .top-side-menu{
+        display: none;
+    }
+    .responsiveContent{
+        margin-left: 0px !important;
+        margin-bottom: 100px;
     }
 }
 
@@ -473,12 +527,9 @@ form .custom-checkbox{
 }
 
 .side-menu.closed{
-    width: 80px !important;
+    width: 80px;
 }
 
-.side-menu.closed{
-    width: 80px !important;
-}
 
 .side-menu.closed li a span,.side-menu.closed .side-logo{
     display: none;
@@ -677,4 +728,19 @@ td, th {
     filter: alpha(opacity=0);
     opacity: 0;
     direction: ltr;
+}
+
+.dropdown{
+    position: absolute;
+    width: 150px;
+    height: 45px;
+    background: #ffffff;
+    right: 0px;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #000;
+    display: none;
+}
+.dropdown.active{
+    display: block;
 }

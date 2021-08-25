@@ -46,8 +46,10 @@ class ProjetType extends AbstractType
                         'class' => 'form-control datepicker'
                     ]
                 ])
+
             ->add('cost', null,[
-                'attr' => ['class' => 'form-control','min'=>0]
+                'attr' => ['class' => 'form-control','min'=>0,'disabled'=>true],
+                'data' => $options['data']->calculCost(),
             ])
             ->add('Phase', null,[
                 'attr' => ['class' => 'wc-100']

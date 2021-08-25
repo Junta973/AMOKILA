@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=MediaRepository::class)
- * @Vich\Uploadable
  */
 class Media
 {
@@ -48,38 +47,31 @@ class Media
      */
     private $processes;
 
-
     /**
-     * @Vich\UploadableField(mapping="upload_images", fileNameProperty="path")
      * @var File
      */
     private $imageFile;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      * @var \DateTime
      */
     private $updatedAt;
-
-    // ...
-
-    public function setImageFile(File $image = null)
-    {
-        $this->imageFile = $image;
-
-        // VERY IMPORTANT:
-        // It is required that at least one field changes if you are using Doctrine,
-        // otherwise the event listeners won't be called and the file is lost
-        if ($image) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->updatedAt = new \DateTime('now');
-        }
-    }
 
     public function getImageFile()
     {
         return $this->imageFile;
     }
+
+    /**
+     * @param File $imageFile
+     */
+    public function setImageFile(File $imageFile): void
+    {
+        $this->imageFile = $imageFile;
+    }
+
+
 
     public function __construct()
     {
