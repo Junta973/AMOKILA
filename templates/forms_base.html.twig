@@ -10,17 +10,11 @@
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
     {% endblock %}
 
-    {% block javascripts %}
-        <script
-                src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                crossorigin="anonymous"></script>
-    {% endblock %}
 </head>
 <body>
 <div class="section_top"><h2><a href="{{ path('app_admin') }}">{% block titleHeader %}AMOKILA{% endblock %}</a></h2></div>
 <div class="container_forms">
-    <div class="section_left">
+    <div class="section_left d-none-modible">
 
         <img src="{{ asset('assets/img/logo_transparentform.png') }}">
         <h3>
@@ -32,6 +26,11 @@
         {% block body %}{% endblock %}
     </div>
 </div>
-
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+{% endblock %}
 </body>
 </html>

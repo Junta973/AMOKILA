@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -56,9 +57,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $firstname;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Type("DateTime")
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $age;
+    private $birthdate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -244,16 +246,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAge(): ?int
+    /**
+     * @return mixed
+     */
+    public function getBirthdate()
     {
-        return $this->age;
+        return $this->birthdate;
     }
 
-    public function setAge(?int $age): self
+    /**
+     * @param mixed $birthdate
+     */
+    public function setBirthdate($birthdate): void
     {
-        $this->age = $age;
-
-        return $this;
+        $this->birthdate = $birthdate;
     }
 
     public function getProfession(): ?string

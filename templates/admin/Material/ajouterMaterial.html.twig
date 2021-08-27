@@ -5,24 +5,57 @@
 {% block titleHeader %}AJOUTER MATERIAL{% endblock %}
 {% block body %}
     {{ form_start(form) }}
-        <label>Material reference</label>
-        {{ form_widget(form.ref_material) }}
 
-        <label>Material name</label>
-        {{ form_widget(form.name_material) }}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Material reference</label>
+                    {{ form_widget(form.ref_material) }}
+                    <span class="error-field">{{ form_errors(form.ref_material) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Material name</label>
+                    {{ form_widget(form.name_material) }}
+                    <span class="error-field">{{ form_errors(form.name_material) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Validity date</label>
+                    {{ form_widget(form.date_validation_in) }}
+                    <span class="error-field">{{ form_errors(form.date_validation_in) }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Expire date</label>
+                    {{ form_widget(form.date_validation_out) }}
+                    <span class="error-field">{{ form_errors(form.date_validation_out) }}</span>
+                </div>
+            </div>
+        </div>
 
-        <label>Validity date</label>
-        {{ form_widget(form.date_validation_in) }}
-
-        <label>Expire date</label>
-        {{ form_widget(form.date_validation_out) }}
-
-        <label>Cost</label>
-        {{ form_widget(form.material_cost) }}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="wc-100">Cost</label>
+                    {{ form_widget(form.material_cost) }}
+                    <span class="error-field">{{ form_errors(form.material_cost) }}</span>
+                </div>
+            </div>
+        </div>
 
         <hr>
         <div class="wc-100 text-center">
-            <button type="reset" class="btn btn-danger">Annuler</button>
+            <a href="{{ path('app_admin_material') }}" class="btn btn-danger">Annuler</a>
             <button type="submit" class="btn btn-light">Ajouter</button>
         </div>
 

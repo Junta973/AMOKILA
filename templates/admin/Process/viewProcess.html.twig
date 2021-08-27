@@ -45,42 +45,87 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Process import</label>
                 {{ form_widget(form.process_path) }}
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group doc">
+                {% if process.processPath %}
+                <a href="{{ asset('uploads/images/' ~ process.processPath.path ) }}" download> <i class="fa fa-download"></i> Process Doc </a>
+                {% else %}
+                    <a>No file uploaded</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Document 1 import</label>
                 {{ form_widget(form.document1_path) }}
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group doc">
+                {% if process.document1Path %}
+                    <a href="{{ asset('uploads/images/' ~ process.document1Path.path ) }}" download> <i class="fa fa-download"></i> Process Doc 1 </a>
+                {% else %}
+                    <a>No file uploaded</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Document 2 import</label>
                 {{ form_widget(form.document2_path) }}
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group doc">
+                {% if process.document2Path %}
+                    <a href="{{ asset('uploads/images/' ~ process.document2Path.path ) }}" download> <i class="fa fa-download"></i> Process Doc 2 </a>
+                {% else %}
+                    <a>No file uploaded</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Document 3 import</label>
                 {{ form_widget(form.document3_path) }}
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group doc">
+                {% if process.document3Path %}
+                    <a href="{{ asset('uploads/images/' ~ process.document3Path.path ) }}" download> <i class="fa fa-download"></i> Process Doc 3 </a>
+                {% else %}
+                    <a>No file uploaded</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Document 4 import</label>
                 {{ form_widget(form.document4_path) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group doc">
+                {% if process.document4Path %}
+                    <a href="{{ asset('uploads/images/' ~ process.document4Path.path ) }}" download> <i class="fa fa-download"></i> Process Doc 4 </a>
+                {% else %}
+                    <a>No file uploaded</a>
+                {% endif %}
             </div>
         </div>
     </div>

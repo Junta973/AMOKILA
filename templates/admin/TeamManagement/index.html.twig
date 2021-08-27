@@ -46,10 +46,10 @@
             <tr>
                 <th>Photo</th>
                 <th>E-mail</th>
-                <th>Profession</th>
-                <th>Skills</th>
-                <th>Level</th>
-                <th>Département</th>
+                <th class="d-none-modible">Profession</th>
+                <th class="d-none-modible">Skills</th>
+                <th class="d-none-modible">Level</th>
+                <th class="d-none-modible">Département</th>
                 <th style="width: 30%;">Action</th>
             </tr>
             </thead>
@@ -58,10 +58,10 @@
                 <tr>
                 <td><img width="75" height="75" src="{{ user.avatar ? asset('uploads/images/' ~ user.avatar.path ) :  asset('assets/img/profile.png') }}" alt="" /></td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.profession }}</td>
-                <td>{{ user.skills }}</td>
-                <td>{{ user.level }}</td>
-                <td>{{ user.departement }}</td>
+                <td class="d-none-modible">{{ user.profession }}</td>
+                <td class="d-none-modible">{{ user.skills }}</td>
+                <td class="d-none-modible">{{ user.level }}</td>
+                <td class="d-none-modible">{{ user.departement }}</td>
                 <td class="text-center">
                     <a href="{{ path('app_admin_utilisateur_modifier',{'id':user.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
                     <a href="{{ path('app_admin_utilisateur_delete',{'id': user.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
