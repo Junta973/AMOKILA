@@ -11,31 +11,29 @@
 
         <div class="row dashbord">
 
-            <div class="col-md-4 row ff-wrap">
-                <div class="col-md-12 text-center">
+            <div class="col-md-4 card">
+                <div class="card-title">
                     Nombre de Projet
                     {{ totalProject }}
                 </div>
-                <div class="card col-md-12 p-15">
+                <div class="card-details">
                     <a class="buttonLink">
                         <h3>{{ lastProjects|length }} derniers projets</h3>
                     </a>
                     {% for p in lastProjects %}
                         <a href="{{ path('app_admin_project_view',{'id':p.id}) }}" style="color: #5eb5e0;" class="buttonLink">
-                           - {{ p }}
+                            - {{ p }}
                         </a>
                         <br>
                     {% endfor %}
                 </div>
             </div>
-
-
-            <div class="col-md-4 row ff-wrap">
-                <div class="col-md-12 text-center">
+            <div class="col-md-4 card">
+                <div class="card-title">
                     Nombre de CR
                     {{ totalPCR }}
                 </div>
-                <div class="card col-md-12 p-15">
+                <div class="card-details">
                     <a class="buttonLink">
                         <h3>{{ lastPCRs|length }} derniers CR</h3>
                     </a>
@@ -47,14 +45,12 @@
                     {% endfor %}
                 </div>
             </div>
-
-
-            <div class="col-md-4 row ff-wrap">
-                <div class="col-md-12 text-center">
+            <div class="col-md-4 card">
+                <div class="card-title">
                     Nombre de Process
                     {{ totalProcess }}
                 </div>
-                <div class="card col-md-12 p-15">
+                <div class="card-details">
                     <a class="buttonLink">
                         <h3>{{ lastProcess|length }} derniers process</h3>
                     </a>
@@ -66,14 +62,12 @@
                     {% endfor %}
                 </div>
             </div>
-
-
-            <div class="col-md-4 row ff-wrap">
-                <div class="col-md-12 text-center">
+            <div class="col-md-4 card">
+                <div class="card-title">
                     Nombre de Task
                     {{ totalTasks }}
                 </div>
-                <div class="card col-md-12 p-15">
+                <div class="card-details">
                     <a class="buttonLink">
                         <h3>{{ lastTasks|length}} derniers task</h3>
                     </a>
@@ -86,15 +80,16 @@
                 </div>
             </div>
 
-
         </div>
 
+
         <div class="row dashbord">
-            <div class="col-md-4 row ff-wrap">
-                <div class="card col-md-12 p-15">
-                    <a class="buttonLink">
-                        <h3>5 coûts par projet</h3>
-                    </a>
+
+            <div class="col-md-4 card">
+                <div class="card-title">
+                    5 coûts par projet
+                </div>
+                <div class="card-details">
                     {% for p in lastProjects %}
                         <a href="{{ path('app_admin_project_view',{'id':p.id}) }}" style="color: #5eb5e0;" class="buttonLink">
                             - {{ p }} : {{ p.cost|number_format(2,'.',',') }} EUR
@@ -103,34 +98,32 @@
                     {% endfor %}
                 </div>
             </div>
-
-            <div class="col-md-4 row ff-wrap">
-                <div class="card col-md-12 p-15">
-                    <a class="buttonLink">
-                        <h3>CR approval status</h3>
-                    </a>
+            <div class="col-md-4 card">
+                <div class="card-title">
+                    CR approval status
+                </div>
+                <div class="card-details">
                     <div class="row">
-                        <span class="badge badge-light ml-2">{{ nbrPCRNewCR }}</span>
-                        <span class="badge badge-warning ml-2">{{ nbrPCRInReview }}</span>
-                        <span class="badge badge-success ml-2">{{ nbrPCRApprouved }}</span>
-                        <span class="badge badge-danger ml-2">{{ nbrPCRRejected }}</span>
+                        <span class="badge badge-light col-md-12">{{ nbrPCRNewCR }}</span>
+                        <span class="badge badge-warning col-md-12">{{ nbrPCRInReview }}</span>
+                        <span class="badge badge-success col-md-12">{{ nbrPCRApprouved }}</span>
+                        <span class="badge badge-danger col-md-12">{{ nbrPCRRejected }}</span>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4 card">
+                <div class="card-title">
 
-            <div class="col-md-4 row ff-wrap">
-                <div class="card col-md-12 p-15">
-                    <a class="buttonLink">
+                </div>
+                <div class="card-details">
 
-                    </a>
                 </div>
             </div>
-
-            <div class="col-md-4 row ff-wrap">
-                <div class="card col-md-12 p-15">
-                    <a class="buttonLink">
-                        <h3>{{ lastTasksInProgress|length }} task progress</h3>
-                    </a>
+            <div class="col-md-4 card">
+                <div class="card-title">
+                    {{ lastTasksInProgress|length }} task progress
+                </div>
+                <div class="card-details">
                     {% for task in lastTasksInProgress %}
                         <a href="{{ path('app_admin_taskList_view',{'id':task.id}) }}" style="color: #5eb5e0;" class="buttonLink">
                             - {{ task }} : {{ task.progress }}%
@@ -142,14 +135,16 @@
 
         </div>
 
+        <br>
+
         <div class="row dashbord">
 
-            <div class="col-md-4 row ff-wrap">
-                <div class="col-md-12 text-center">
+            <div class="col-md-4 card">
+                <div class="card-title">
                     Nombre de Materiel
                     {{ materialCount }}
                 </div>
-                <div class="card col-md-12 p-15">
+                <div class="card-details">
                     <div class="row">
                         <span class=" col-md-12 badge badge-success mt-5">VALID: {{ materialValid }}</span>
                     </div>
@@ -158,7 +153,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="col-md-4 row ff-wrap">
             </div>
