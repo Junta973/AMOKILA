@@ -6,13 +6,14 @@ use App\Repository\MediaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=MediaRepository::class)
  */
-class Media
+class Media implements Serializable
 {
     /**
      * @ORM\Id
@@ -160,6 +161,17 @@ class Media
         }
 
         return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize($this->id);
+    }
+
+    public function unserialize($serialized)
+    {
+        $this->id = unserialize($serialized);
+
     }
 
 }

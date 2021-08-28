@@ -71,25 +71,25 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Skills</label>
-                {{ form_widget(form.skills) }}
-                <span class="error-field">{{ form_errors(form.skills) }}</span>
+                <label class="wc-100">Level</label>
+                {{ form_widget(form.level) }}
+                <span class="error-field">{{ form_errors(form.level) }}</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Profession</label>
-                {{ form_widget(form.profession) }}
-                <span class="error-field">{{ form_errors(form.username) }}</span>
+                <label class="wc-100">Skills</label>
+                {{ form_widget(form.skills) }}
+                <span class="error-field">{{ form_errors(form.skills) }}</span>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Département</label>
-                {{ form_widget(form.departement) }}
-                <span class="error-field">{{ form_errors(form.departement) }}</span>
+                <label class="wc-100">Profession</label>
+                {{ form_widget(form.profession) }}
+                <span class="error-field">{{ form_errors(form.username) }}</span>
             </div>
         </div>
         <div class="col-md-6">
@@ -110,18 +110,18 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Age</label>
-                {{ form_widget(form.age) }}
-                <span class="error-field">{{ form_errors(form.age) }}</span>
+                <label class="wc-100">Département</label>
+                {{ form_widget(form.departement) }}
+                <span class="error-field">{{ form_errors(form.departement) }}</span>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Level</label>
-                {{ form_widget(form.level) }}
-                <span class="error-field">{{ form_errors(form.level) }}</span>
+                <label class="wc-100">BirthDate</label>
+                {{ form_widget(form.birthdate) }}
+                <span class="error-field">{{ form_errors(form.birthdate) }}</span>
             </div>
         </div>
         <div class="col-md-6">
@@ -134,7 +134,7 @@
     </div>
     <hr>
     <div class="wc-100 text-center">
-        <button type="reset" class="btn btn-danger">Annuler</button>
+        <a href="{{ path('app_admin_team_management') }}" class="btn btn-danger">Annuler</a>
         <button type="submit" class="btn btn-light">Ajouter</button>
     </div>
 

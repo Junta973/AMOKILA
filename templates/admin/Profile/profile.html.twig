@@ -1,0 +1,70 @@
+{% extends 'forms_base.html.twig' %}
+
+{% block title %}PROFILE{% endblock %}
+
+{% block titleHeader %}MODIFIER PROFILE{% endblock %}
+{% block body %}
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Avatar</label>
+                {{ form_widget(form.avatar) }}
+                <span class="error-field">{{ form_errors(form.avatar) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Name</label>
+                {{ form_widget(form.name) }}
+                <span class="error-field">{{ form_errors(form.name) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Firstname</label>
+                {{ form_widget(form.firstname) }}
+                <span class="error-field">{{ form_errors(form.firstname) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="wc-100">Username</label>
+                {{ form_widget(form.username) }}
+                <span class="error-field">{{ form_errors(form.username) }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Password</label>
+                {{ form_widget(form.plainPassword.first) }}
+                <span class="error-field">{{ form_errors(form.plainPassword.first) }}</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="wc-100">Confirm Password</label>
+                {{ form_widget(form.plainPassword.second) }}
+                <span class="error-field">{{ form_errors(form.plainPassword.first) }}</span>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="wc-100 text-center">
+        <a href="{{ path('app_admin') }}" class="btn btn-danger">Annuler</a>
+        <button type="submit" class="btn btn-light">Modifier</button>
+    </div>
+
+    {{ form_end(form) }}
+
+
+
+{% endblock %}

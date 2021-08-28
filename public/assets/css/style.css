@@ -199,6 +199,9 @@ a,button{
     .responsiveMenu  li a{
         padding: 10px 10px 10px 5px !important;
     }
+    .d-none-modible{
+        display: none !important;
+    }
 }
 
 @media screen and (max-width: 800px) and (min-width: 600px){
@@ -207,6 +210,13 @@ a,button{
     }
     .dashbord .ff-wrap{
         width: 100% !important;
+    }
+    .container_forms {
+        grid-template-columns: 100% !important;
+    }
+    .container_forms .section_right {
+        grid-row: 1;
+        margin-bottom: 50px;
     }
     .responsiveMenu{
         position: fixed;
@@ -229,6 +239,9 @@ a,button{
     .responsiveContent{
         margin-left: 0px !important;
         margin-bottom: 100px;
+    }
+    .d-none-modible{
+        display: none !important;
     }
 }
 
@@ -513,9 +526,13 @@ form .custom-checkbox{
 }
 
 #header a{
-    margin: 0 12px 0 0;
+    margin: 5px 12px 0 0;
     font-size: 16px;
     cursor: pointer;
+    width: 150px;
+    display: grid;
+    grid-template-columns: 30% 65%;
+    ALIGN-ITEMS: center;
 }
 .side-menu{
     width: 320px;
@@ -617,6 +634,8 @@ li a i.menu-icon {
 
 .options span img{
     width: 45px;
+    height: 45px;
+    border-radius: 50%;
 }
 
 .side-logo{
@@ -733,14 +752,27 @@ td, th {
 .dropdown{
     position: absolute;
     width: 150px;
-    height: 45px;
+    height: 70px;
     background: #ffffff;
     right: 0px;
     padding: 10px;
     text-align: center;
     border: 1px solid #000;
     display: none;
+    flex-direction: column;
 }
 .dropdown.active{
-    display: block;
+    display: flex !important;
+}
+.doc{
+    padding: 20px;
+    border: 1px solid #ffffff;
+}
+.doc a{
+    color: #ffffff;
+    font-size: 18px;
+}
+.doc a i{
+    color: #ffffff;
+    font-size: 24px;
 }

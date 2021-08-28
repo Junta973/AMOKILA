@@ -5,8 +5,9 @@
     <div class="title"><h3>{{ title }}</h3></div>
     <div class="options">
     <span>
-        <img src="{{ asset('assets/img/profile.png') }}">
+        <img src="{{ app.user.avatar ? asset('uploads/images/' ~ app.user.avatar.path ) :  asset('assets/img/profile.png') }}">
         <div class="dropdown">
+            <a href="{{ path('app_admin_profile_modifier') }}"><i class="fa fa-user-circle"></i> Profile</a>
             <a href="{{ path('app_logout') }}"><i class="fa fa-sign-out"></i> Logout</a>
         </div>
     </span>
