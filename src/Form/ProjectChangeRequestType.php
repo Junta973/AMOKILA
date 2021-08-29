@@ -47,7 +47,7 @@ class ProjectChangeRequestType extends AbstractType
                     'Approuved' => 'Approuved',
                     'Rejected' => 'Rejected'
                 ],
-                'required' => true,
+                'required' => true
             ])
             ->add('pcr_name', TextType::class,[
                 'attr' => ['class' => 'form-control']
@@ -85,7 +85,7 @@ class ProjectChangeRequestType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => ProjectChangeRequest::class,
+            'data_class' => ProjectChangeRequest::class
         ]);
     }
 }

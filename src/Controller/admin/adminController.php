@@ -30,6 +30,8 @@ class adminController extends AbstractController
         MaterialRepository $materialRepository
     ): Response
     {
+        if ($this->isGranted("ROLE_ADMIN") != true)
+            return $this->redirectToRoute('app_admin_project');
 
         $totalProject = $projectRepository->getNbrResults();
         $lastProjects = $projectRepository->getLastResluts(5);

@@ -4,6 +4,7 @@
         <img class="side-logo" src="{{ asset('assets/img/logo_transparent_menu.png') }}">
     </span>
     <ul class="nav metis-menu" id="side-menu">
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
         <li class="{{ app.request.get('_route') == 'app_admin' ? 'active' : '' }}">
             <a href="{{ path('app_admin') }}">
                 <img class="black" width="70" height="70" src="{{ asset('assets/img/dashboard.png') }}" />
@@ -13,6 +14,7 @@
                 </span>
             </a>
         </li>
+        {% endif %}
         <li class="{{ app.request.get('_route') == 'app_admin_project' ? 'active' : '' }}">
             <a href="{{ path('app_admin_project') }}">
                 <img class="black" width="70" height="70" src="{{ asset('assets/img/project-management.png') }}" />
@@ -49,15 +51,19 @@
             </span>
             </a>
         </li>
-        <li class="{{ app.request.get('_route') == 'app_admin_team_management' ? 'active' : '' }}">
-            <a href="{{ path('app_admin_team_management') }}">
-                <img class="black" width="70" height="70" src="{{ asset('assets/img/team-icon.png') }}" />
-                <img class="white" width="70" height="70" src="{{ asset('assets/img/team-management-white.png') }}" />
-                <span class="menu-text">
-               Team Management
-            </span>
-            </a>
-        </li>
+
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
+            <li class="{{ app.request.get('_route') == 'app_admin_team_management' ? 'active' : '' }}">
+                <a href="{{ path('app_admin_team_management') }}">
+                    <img class="black" width="70" height="70" src="{{ asset('assets/img/team-icon.png') }}" />
+                    <img class="white" width="70" height="70" src="{{ asset('assets/img/team-management-white.png') }}" />
+                    <span class="menu-text">
+                   Team Management
+                </span>
+                </a>
+            </li>
+        {% endif %}
+
         <li class="{{ app.request.get('_route') == 'app_admin_material' ? 'active' : '' }}">
             <a href="{{ path('app_admin_material') }}">
                 <img class="black" width="70" height="70" src="{{ asset('assets/img/Materials-icon.png') }}" />
