@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="header-body">
-        {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
             <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Process</a>
         {% endif %}
     </div>
@@ -51,7 +51,7 @@
                 <td>{{ process.refProcess }}</td>
                 <td>{{ process.processName }}</td>
                 <td class="text-center">
-                    {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
                         <a href="{{ path('app_admin_process_modifier',{'id':process.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
                         <a href="{{ path('app_admin_process_delete',{'id': process.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
                     {% endif %}

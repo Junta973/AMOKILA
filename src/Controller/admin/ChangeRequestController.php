@@ -65,6 +65,7 @@ class ChangeRequestController extends AbstractController
             return $this->redirectToRoute('app_admin_change_requests');
         }
 
+
         $form = $this->createForm(ProjectChangeRequestType::class,$changeRequest);
         $form = $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()){
@@ -79,7 +80,7 @@ class ChangeRequestController extends AbstractController
             $this->addFlash('success','Change request modifié avec succès');
             return $this->redirectToRoute('app_admin_change_requests');
         }
-        return $this->render('admin/ChangeRequest/modifierChangeRequest.html.twig',['form'=>$form->createView()]);
+        return $this->render('admin/ChangeRequest/modifierChangeRequest.html.twig',['form'=>$form->createView(),'changeRequest'=>$changeRequest]);
     }
 
     /**

@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="header-body text-center">
-        {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
             <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add project</a>
         {% endif %}
     </div>
@@ -54,7 +54,7 @@
                 <td>{{ project.refProject }}</td>
                 <td>{{ project.projectName }}</td>
                 <td class="text-center">
-                    {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+                    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
                         <a href="{{ path('app_admin_project_modifier',{'id':project.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
                         <a href="{{ path('app_admin_project_delete',{'id': project.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
                     {% endif %}

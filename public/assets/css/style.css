@@ -777,6 +777,7 @@ td, th {
     border: 1px solid #000;
     display: none;
     flex-direction: column;
+    z-index: 2;
 }
 .dropdown.active{
     display: flex !important;

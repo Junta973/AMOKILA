@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
             <label class="wc-100"></label><br>
             <a class="btn btn-dark font-14 w-100" href="{{ path('app_admin_phase') }}">Phase config</a>
             {% endif %}
