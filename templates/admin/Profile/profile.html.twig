@@ -7,6 +7,14 @@
 
     {{ form_start(form) }}
     <div class="row">
+        {% if app.user.avatar %}
+            <img src="{{ asset('uploads/images/') }}{{ app.user.avatar.path }}" width="100" height="100" style="border-radius: 50%;" />
+        {% else %}
+            <img src="{{ asset('assets/img/profile.png') }}" width="75" height="75" />
+        {% endif %}
+    </div>
+
+    <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Avatar</label>

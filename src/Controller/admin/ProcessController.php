@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Process;
 use App\Form\ProcessType;
 use App\Repository\ProcessRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,18 +32,17 @@ class ProcessController extends AbstractController
     /**
      * @route("/admin/process/ajouter", name="app_admin_process_ajouter", methods={"GET","POST"})
      */
-    public function ajouterProcess(Request $request,SluggerInterface $slugger): Response
+    public function ajouterProcess(Request $request,SluggerInterface $slugger,EntityManagerInterface $entityManager): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $process = new Process();
         $form = $this->createForm(ProcessType::class, $process);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $process_path = $form->get('process_path')->getData()->getImageFile();
-            $document1_path = $form->get('document1_path')->getData()->getImageFile();
-            $document2_path = $form->get('document2_path')->getData()->getImageFile();
-            $document3_path = $form->get('document3_path')->getData()->getImageFile();
-            $document4_path = $form->get('document4_path')->getData()->getImageFile();
+            $document1_path = $form->get('document1_path')->getData();
+            $document2_path = $form->get('document2_path')->getData();
+            $document3_path = $form->get('document3_path')->getData();
+            $document4_path = $form->get('document4_path')->getData();
 
             if ($process_path) {
                 $newFilename = self::upload($slugger,$process_path);
@@ -50,26 +50,26 @@ class ProcessController extends AbstractController
                 $mediap->setPath($newFilename);
                 $process->setProcessPath($mediap);
             }
-            if ($document1_path) {
-                $newFilename = self::upload($slugger,$document1_path);
+            if ($document1_path and $document1_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document1_path->getImageFile());
                 $media1 =  $process->getDocument1Path();
                 $media1->setPath($newFilename);
                 $process->setDocument1Path($media1);
             }
-            if ($document2_path) {
-                $newFilename = self::upload($slugger,$document2_path);
+            if ($document2_path and $document2_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document2_path->getImageFile());
                 $media2 =  $process->getDocument2Path();
                 $media2->setPath($newFilename);
                 $process->setDocument2Path($media2);
             }
-            if ($document3_path) {
-                $newFilename = self::upload($slugger,$document3_path);
+            if ($document3_path and $document3_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document3_path->getImageFile());
                 $media3 =  $process->getDocument3Path();
                 $media3->setPath($newFilename);
                 $process->setDocument3Path($media3);
             }
-            if ($document4_path) {
-                $newFilename = self::upload($slugger,$document4_path);
+            if ($document4_path and $document4_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document4_path->getImageFile());
                 $media4 =  $process->getDocument4Path();
                 $media4->setPath($newFilename);
                 $process->setDocument4Path($media4);
@@ -88,46 +88,45 @@ class ProcessController extends AbstractController
     /**
      * @route("/admin/process/modifier/{id}", name="app_admin_process_modifier", methods={"GET","POST"})
      */
-    public function modifierProcess(Request $request,ProcessRepository $processRepository,SluggerInterface $slugger,$id): Response
+    public function modifierProcess(Request $request,ProcessRepository $processRepository,SluggerInterface $slugger,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $process = $processRepository->findOneBy(['id'=>$id]);
         $form = $this->createForm(ProcessType::class, $process);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $process_path = $form->get('process_path')->getData()->getImageFile();
-            $document1_path = $form->get('document1_path')->getData()->getImageFile();
-            $document2_path = $form->get('document2_path')->getData()->getImageFile();
-            $document3_path = $form->get('document3_path')->getData()->getImageFile();
-            $document4_path = $form->get('document4_path')->getData()->getImageFile();
+            $process_path = $form->get('process_path')->getData();
+            $document1_path = $form->get('document1_path')->getData();
+            $document2_path = $form->get('document2_path')->getData();
+            $document3_path = $form->get('document3_path')->getData();
+            $document4_path = $form->get('document4_path')->getData();
 
-            if ($process_path) {
-                $newFilename = self::upload($slugger,$process_path);
+            if ($process_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$process_path->getImageFile());
                 $mediap =  $process->getProcessPath();
                 $mediap->setPath($newFilename);
                 $process->setProcessPath($mediap);
             }
-            if ($document1_path) {
-                $newFilename = self::upload($slugger,$document1_path);
+            if ($document1_path and $document1_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document1_path->getImageFile());
                 $media1 =  $process->getDocument1Path();
                 $media1->setPath($newFilename);
                 $process->setDocument1Path($media1);
             }
-            if ($document2_path) {
-                $newFilename = self::upload($slugger,$document2_path);
+            if ($document2_path and $document2_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document2_path->getImageFile());
                 $media2 =  $process->getDocument2Path();
                 $media2->setPath($newFilename);
                 $process->setDocument2Path($media2);
             }
-            if ($document3_path) {
-                $newFilename = self::upload($slugger,$document3_path);
+            if ($document3_path and $document3_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document3_path->getImageFile());
                 $media3 =  $process->getDocument3Path();
                 $media3->setPath($newFilename);
                 $process->setDocument3Path($media3);
             }
-            if ($document4_path) {
-                $newFilename = self::upload($slugger,$document4_path);
+            if ($document4_path and $document4_path->getImageFile()) {
+                $newFilename = self::upload($slugger,$document4_path->getImageFile());
                 $media4 =  $process->getDocument4Path();
                 $media4->setPath($newFilename);
                 $process->setDocument4Path($media4);
@@ -157,9 +156,8 @@ class ProcessController extends AbstractController
     /**
      * @Route("/admin/process/delete/{id}", name="app_admin_process_delete", methods={"GET"})
      */
-    public function deleteProcess(Request $request, $id): Response
+    public function deleteProcess(Request $request,EntityManagerInterface $entityManager, $id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $process = $entityManager->getRepository(Process::class)->findOneBy(['id'=>$id]);
         if($process){
             $entityManager->remove($process);
@@ -176,9 +174,8 @@ class ProcessController extends AbstractController
     /**
      * @route("/admin/process/view/{id}", name="app_admin_process_view", methods={"GET"})
      */
-    public function viewProcess(Request $request,$id): Response
+    public function viewProcess(Request $request,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $process = $entityManager->getRepository(Process::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(ProcessType::class, $process);
         $form->handleRequest($request);

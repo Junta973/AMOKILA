@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Material;
 use App\Form\MaterialType;
 use App\Repository\MaterialRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,9 +34,8 @@ class MaterialController extends AbstractController
     /**
      * @route("/admin/material/ajouter", name="app_admin_material_ajouter", methods={"GET","POST"})
      */
-    public function ajouterMaterial(Request $request): Response
+    public function ajouterMaterial(Request $request,EntityManagerInterface $entityManager): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $material = new Material();
         $form = $this->createForm(MaterialType::class, $material);
         $form->handleRequest($request);
@@ -52,9 +52,8 @@ class MaterialController extends AbstractController
     /**
      * @route("/admin/material/modifier/{id}", name="app_admin_material_modifier", methods={"GET","POST"})
      */
-    public function modifierMaterial(Request $request,MaterialRepository $materialRepository,$id): Response
+    public function modifierMaterial(Request $request,MaterialRepository $materialRepository,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $materila = $materialRepository->findOneBy(['id'=>$id]);
         $form = $this->createForm(MaterialType::class, $materila);
         $form->handleRequest($request);
@@ -71,9 +70,8 @@ class MaterialController extends AbstractController
     /**
      * @Route("/admin/material/delete/{id}", name="app_admin_material_delete", methods={"GET"})
      */
-    public function deleteMaterial(Request $request, $id): Response
+    public function deleteMaterial(Request $request,EntityManagerInterface $entityManager, $id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $Material = $entityManager->getRepository(Material::class)->findOneBy(['id'=>$id]);
         if($Material){
             $entityManager->remove($Material);
@@ -90,9 +88,8 @@ class MaterialController extends AbstractController
     /**
      * @route("/admin/material/view/{id}", name="app_admin_material_view", methods={"GET"})
      */
-    public function viewMaterial(Request $request,$id): Response
+    public function viewMaterial(Request $request,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $Material = $entityManager->getRepository(Material::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(MaterialType::class, $Material);
         $form->handleRequest($request);

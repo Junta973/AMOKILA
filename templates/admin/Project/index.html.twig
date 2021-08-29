@@ -5,7 +5,9 @@
 {% block body %}
 
     <div class="header-body text-center">
-        <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add project</a>
+        {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+            <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add project</a>
+        {% endif %}
     </div>
     <div class="container-body">
         {% for message in app.flashes('success') %}
@@ -52,8 +54,10 @@
                 <td>{{ project.refProject }}</td>
                 <td>{{ project.projectName }}</td>
                 <td class="text-center">
-                    <a href="{{ path('app_admin_project_modifier',{'id':project.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
-                    <a href="{{ path('app_admin_project_delete',{'id': project.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+                        <a href="{{ path('app_admin_project_modifier',{'id':project.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ path('app_admin_project_delete',{'id': project.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    {% endif %}
                     <a href="{{ path('app_admin_project_view',{'id':project.id}) }}" class="text-info w-100 mt-2"><i class="fa fa-eye"></i></a>
                 </td>
             </tr>

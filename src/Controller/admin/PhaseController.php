@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Phase;
 use App\Form\PhaseType;
 use App\Repository\PhaseRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +16,8 @@ class PhaseController extends AbstractController
     /**
      * @Route("/admin/phase/{id}", defaults={"id"=null}, name="app_admin_phase")
      */
-    public function index(Request $request,PhaseRepository $phaseRepository,$id): Response
+    public function index(Request $request,EntityManagerInterface $entityManager,PhaseRepository $phaseRepository,$id)
     {
-
-        $entityManager = $this->getDoctrine()->getManager();
-
         if(is_null($id))
             $phase = new Phase();
         else
@@ -45,9 +43,8 @@ class PhaseController extends AbstractController
     /**
      * @Route("/admin/phase/delete/{id}", name="app_admin_phase_delete", methods={"GET"})
      */
-    public function deletePhase(Request $request, $id): Response
+    public function deletePhase(Request $request,EntityManagerInterface $entityManager, $id)
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $Material = $entityManager->getRepository(Phase::class)->findOneBy(['id'=>$id]);
         if($Material){
             $entityManager->remove($Material);

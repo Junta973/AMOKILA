@@ -5,7 +5,9 @@
 {% block body %}
 
     <div class="header-body">
-        <a href="{{ path('app_admin_material_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Material</a>
+        {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+            <a href="{{ path('app_admin_material_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Material</a>
+        {% endif %}
     </div>
     <div class="container-body">
         {% for message in app.flashes('success') %}
@@ -62,8 +64,10 @@
                     </a>
                 </th>
                 <td class="text-center">
-                    <a href="{{ path('app_admin_material_modifier',{'id':material.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
-                    <a href="{{ path('app_admin_material_delete',{'id': material.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+                        <a href="{{ path('app_admin_material_modifier',{'id':material.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ path('app_admin_material_delete',{'id': material.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    {% endif %}
                     <a href="{{ path('app_admin_material_view',{'id':material.id}) }}" class="text-info w-100 mt-2"><i class="fa fa-eye"></i></a>
                 </td>
             </tr>

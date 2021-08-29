@@ -5,7 +5,7 @@
 {% block titleHeader %}DETAILS PROCESS #{{ process.id }} {{ process.processName }}{% endblock %}
 {% block body %}
 
-    {{ form_start(form) }}
+    <form>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -32,7 +32,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="wc-100">Created By</label>
-                {{ form_widget(form.user,{'attr':{'readonly':true}}) }}
+                <input class="form-control" value="{{ process.user }}" readonly />
             </div>
         </div>
     </div>
@@ -40,17 +40,11 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="wc-100">Task</label>
-                {{ form_widget(form.task,{'attr':{'readonly':true}}) }}
+                <input class="form-control" value="{{ process.task }}" readonly />
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="wc-100">Process import</label>
-                {{ form_widget(form.process_path) }}
-            </div>
-        </div>
         <div class="col-md-6">
             <div class="form-group doc">
                 {% if process.processPath %}
@@ -60,14 +54,9 @@
                 {% endif %}
             </div>
         </div>
+        <div class="col-md-6"></div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="wc-100">Document 1 import</label>
-                {{ form_widget(form.document1_path) }}
-            </div>
-        </div>
         <div class="col-md-6">
             <div class="form-group doc">
                 {% if process.document1Path %}
@@ -77,14 +66,9 @@
                 {% endif %}
             </div>
         </div>
+        <div class="col-md-6"></div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="wc-100">Document 2 import</label>
-                {{ form_widget(form.document2_path) }}
-            </div>
-        </div>
         <div class="col-md-6">
             <div class="form-group doc">
                 {% if process.document2Path %}
@@ -94,14 +78,9 @@
                 {% endif %}
             </div>
         </div>
+        <div class="col-md-6"></div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="wc-100">Document 3 import</label>
-                {{ form_widget(form.document3_path) }}
-            </div>
-        </div>
         <div class="col-md-6">
             <div class="form-group doc">
                 {% if process.document3Path %}
@@ -111,14 +90,9 @@
                 {% endif %}
             </div>
         </div>
+        <div class="col-md-6"></div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label class="wc-100">Document 4 import</label>
-                {{ form_widget(form.document4_path) }}
-            </div>
-        </div>
         <div class="col-md-6">
             <div class="form-group doc">
                 {% if process.document4Path %}
@@ -128,8 +102,13 @@
                 {% endif %}
             </div>
         </div>
+        <div class="col-md-6"></div>
     </div>
-    {{ form_end(form) }}
+    <hr>
+    <div class="wc-100 text-center mt-25">
+        <a href="{{ path('app_admin_process') }}" class="btn btn-danger">Annuler</a>
+    </div>
+    </form>
 
 
 {% endblock %}

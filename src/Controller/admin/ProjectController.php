@@ -6,6 +6,7 @@ use App\Entity\Project;
 use App\Entity\User;
 use App\Form\ProjetType;
 use App\Repository\ProjectRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,9 +33,8 @@ class ProjectController extends AbstractController
     /**
      * @route("/admin/project/ajouter", name="app_admin_project_ajouter", methods={"GET","POST"})
      */
-    public function ajouterProjet(Request $request): Response
+    public function ajouterProjet(Request $request,EntityManagerInterface $entityManager): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $projet = new Project();
         $form = $this->createForm(ProjetType::class, $projet);
         $form->handleRequest($request);
@@ -51,9 +51,8 @@ class ProjectController extends AbstractController
     /**
      * @route("/admin/project/modifier/{id}", name="app_admin_project_modifier", methods={"GET","POST"})
      */
-    public function modifierProjet(Request $request,ProjectRepository $projectRepository,$id): Response
+    public function modifierProjet(Request $request,ProjectRepository $projectRepository,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $projet = $projectRepository->findOneBy(['id'=>$id]);
         $form = $this->createForm(ProjetType::class, $projet);
         $form->handleRequest($request);
@@ -70,9 +69,8 @@ class ProjectController extends AbstractController
     /**
      * @Route("/admin/project/delete/{id}", name="app_admin_project_delete", methods={"GET"})
      */
-    public function deleteProjet(Request $request, $id): Response
+    public function deleteProjet(Request $request,EntityManagerInterface $entityManager, $id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);
         if($project){
             $entityManager->remove($project);
@@ -89,9 +87,8 @@ class ProjectController extends AbstractController
     /**
      * @route("/admin/project/view/{id}", name="app_admin_project_view", methods={"GET"})
      */
-    public function viewProjet(Request $request,$id): Response
+    public function viewProjet(Request $request,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(ProjetType::class, $project);
         $form->handleRequest($request);

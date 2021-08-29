@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\Task;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,9 +34,8 @@ class TaskRequestController extends AbstractController
     /**
      * @route("/admin/taskList/ajouter", name="app_admin_taskList_ajouter", methods={"GET","POST"})
      */
-    public function ajoutertaskList(Request $request): Response
+    public function ajoutertaskList(Request $request,EntityManagerInterface $entityManager): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
@@ -53,9 +53,8 @@ class TaskRequestController extends AbstractController
     /**
      * @route("/admin/taskList/modifier/{id}", name="app_admin_taskList_modifier", methods={"GET","POST"})
      */
-    public function modifiertaskRequest(Request $request,TaskRepository $taskRepository,$id): Response
+    public function modifiertaskRequest(Request $request,TaskRepository $taskRepository,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $task = $taskRepository->findOneBy(['id'=>$id]);
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
@@ -72,9 +71,8 @@ class TaskRequestController extends AbstractController
     /**
      * @Route("/admin/taskList/delete/{id}", name="app_admin_taskList_delete", methods={"GET"})
      */
-    public function deletetaskRequest(Request $request, $id): Response
+    public function deletetaskRequest(Request $request,EntityManagerInterface $entityManager, $id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $task = $entityManager->getRepository(Task::class)->findOneBy(['id'=>$id]);
         if($task){
             $entityManager->remove($task);
@@ -91,9 +89,8 @@ class TaskRequestController extends AbstractController
     /**
      * @route("/admin/taskList/view/{id}", name="app_admin_taskList_view", methods={"GET"})
      */
-    public function viewtaskRequest(Request $request,$id): Response
+    public function viewtaskRequest(Request $request,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $task = $entityManager->getRepository(Task::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);

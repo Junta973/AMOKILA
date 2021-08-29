@@ -45,7 +45,7 @@ class Project
     private $date_fin_projet;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $cost;
 
@@ -163,16 +163,20 @@ class Project
         return $this;
     }
 
-    public function getCost(): ?int
+    /**
+     * @return mixed
+     */
+    public function getCost()
     {
         return $this->cost;
     }
 
-    public function setCost(int $cost): self
+    /**
+     * @param mixed $cost
+     */
+    public function setCost($cost): void
     {
         $this->cost = $cost;
-
-        return $this;
     }
 
     /**

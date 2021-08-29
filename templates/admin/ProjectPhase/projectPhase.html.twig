@@ -53,32 +53,35 @@
         <button type="submit" class="btn btn-light"><i class="fa fa-plus"></i> Ajouter</button>
     </div>
     <hr>
-    <div class="bg-white card card-details">
-        <div class="row">
-            <h4>Phase List</h4>
-        </div>
-        <div class="row">
-            <table>
-                <tbody>
-                {% for phase in allphases %}
-                    <tr>
-                        <td><p>{{ phase.phaseName }}</p></td>
-                        <td><p>{{ phase.projectPhaseDateStart|date('d/m/Y') }}</p></td>
-                        <td><p>{{ phase.projectPhaseDateEnd|date('d/m/Y') }}</p></td>
-                        <td>
-                            <a href="{{ path('app_admin_phase',{'id':phase.id}) }}"><i class="fa fa-pencil"></i></a>
-                            <a class="text-danger" href="{{ path('app_admin_phase_delete',{'id':phase.id}) }}"><i class="fa fa-trash"></i></a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="4">La liste est vide.</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-title"></div>
+                <div class="card-details">
+                    <table>
+                        <tbody>
+                        {% for phase in allphases %}
+                            <tr>
+                                <td><p>{{ phase.phaseName }}</p></td>
+                                <td class="d-none-modible"><p>{{ phase.projectPhaseDateStart|date('d/m/Y') }}</p></td>
+                                <td class="d-none-modible"><p>{{ phase.projectPhaseDateEnd|date('d/m/Y') }}</p></td>
+                                <td>
+                                    <a href="{{ path('app_admin_phase',{'id':phase.id}) }}"><i class="fa fa-pencil"></i></a>
+                                    <a class="text-danger" href="{{ path('app_admin_phase_delete',{'id':phase.id}) }}"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">La liste est vide.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+
     {{ form_end(form) }}
 
 

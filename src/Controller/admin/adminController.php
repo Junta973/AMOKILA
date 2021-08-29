@@ -9,6 +9,7 @@ use App\Repository\ProcessRepository;
 use App\Repository\ProjectChangeRequestRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\TaskRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -78,9 +79,8 @@ class adminController extends AbstractController
     /**
      * @Route("/admin/profile", name="app_admin_profile_modifier", methods={"GET","POST"})
      */
-    public function profile(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger): Response
+    public function profile(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,EntityManagerInterface $entityManager): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $form = $this->createForm(profileType::class, $user);
         $form->handleRequest($request);
