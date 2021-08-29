@@ -78,16 +78,19 @@ a,button{
     margin-left: auto;
 }
 .home_logo{
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: calc(100% - 120px);
 }
 
 .home_logo img{
-    width: 800px;
-    height: 800px;
+    height: calc(100% - 120px);
     object-fit: cover;
+}
+
+.height-front{
+    height: calc(100% - 120px);
 }
 
 .front_nav a {
@@ -452,6 +455,9 @@ form .custom-checkbox{
 }
 .mt-2{
     margin-top: 2px;
+}
+.mt-25{
+    margin-top: 25px;
 }
 .ml-2{
     margin-left: 2px;

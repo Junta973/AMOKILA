@@ -21,6 +21,10 @@
         <label>Cost</label>
         {{ form_widget(form.material_cost,{'attr':{'readonly':true}}) }}
 
+        <hr>
+        <div class="wc-100 text-center mt-25">
+            <a href="{{ path('app_admin_material') }}" class="btn btn-danger">Annuler</a>
+        </div>
     {{ form_end(form) }}
 
 {% endblock %}

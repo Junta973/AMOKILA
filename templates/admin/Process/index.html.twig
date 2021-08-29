@@ -5,7 +5,9 @@
 {% block body %}
 
     <div class="header-body">
-        <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Process</a>
+        {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+            <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Process</a>
+        {% endif %}
     </div>
     <div class="container-body">
         {% for message in app.flashes('success') %}
@@ -49,8 +51,10 @@
                 <td>{{ process.refProcess }}</td>
                 <td>{{ process.processName }}</td>
                 <td class="text-center">
-                    <a href="{{ path('app_admin_process_modifier',{'id':process.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
-                    <a href="{{ path('app_admin_process_delete',{'id': process.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    {% if is_granted('ROLE_ADMIN') and is_granted('ROLE_SUPER_ADMIN')  %}
+                        <a href="{{ path('app_admin_process_modifier',{'id':process.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ path('app_admin_process_delete',{'id': process.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
+                    {% endif %}
                     <a href="{{ path('app_admin_process_view',{'id':process.id}) }}" class="text-info w-100 mt-2"><i class="fa fa-eye"></i></a>
                 </td>
             </tr>

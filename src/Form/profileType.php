@@ -59,7 +59,9 @@ class profileType extends AbstractType
             ->add('firstname', TextType::class,[
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('avatar', MediaType::class)
+            ->add('avatar', MediaType::class, [
+                'required' => isset($options['data']) and $options['data']->getId() ? false : true,
+            ])
 
         ;
     }

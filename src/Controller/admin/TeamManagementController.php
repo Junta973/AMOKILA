@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,9 +36,8 @@ class TeamManagementController extends AbstractController
     /**
      * @Route("/admin/utitlisateur/ajouter", name="app_admin_utilisateur_ajouter", methods={"GET","POST"})
      */
-    public function ajouterUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger): Response
+    public function ajouterUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger,EntityManagerInterface $entityManager): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -86,9 +86,8 @@ class TeamManagementController extends AbstractController
     /**
      * @Route("/admin/utitlisateur/modifier/{id}", name="app_admin_utilisateur_modifier", methods={"GET","POST"})
      */
-    public function modifierUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,$id): Response
+    public function modifierUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,EntityManagerInterface $entityManager,$id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -135,9 +134,8 @@ class TeamManagementController extends AbstractController
     /**
      * @Route("/admin/utitlisateur/delete/{id}", name="app_admin_utilisateur_delete", methods={"GET"})
      */
-    public function deleteUtitlisateur(Request $request, $id): Response
+    public function deleteUtitlisateur(Request $request,EntityManagerInterface $entityManager, $id): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->findOneBy(['id'=>$id]);
         if($user){
             $entityManager->remove($user);
