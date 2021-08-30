@@ -20,10 +20,14 @@ class ProjectController extends AbstractController
     public function index(Request $request,ProjectRepository $projectRepository): Response
     {
 
+        # recupération des paramaters de formulaire recherche
         $ref = $request->request->get('refprojet');
         $name = $request->request->get('nameprojet');
 
+        # on pass les parameters vers la method search et filtrer la resultat
         $projects = $projectRepository->search($name,$ref);
+
+        # envoie de projects vers le twig
         return $this->render('admin/Project/index.html.twig', [
             'title' => 'PROJECT',
             'projects' => $projects
@@ -35,16 +39,27 @@ class ProjectController extends AbstractController
      */
     public function ajouterProjet(Request $request,EntityManagerInterface $entityManager): Response
     {
+        # création de new project
         $projet = new Project();
+
+        # création de formulaire
         $form = $this->createForm(ProjetType::class, $projet);
+
+        # le submit de form et validation
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $projet = $form->getData();
             $entityManager->persist($projet);
             $entityManager->flush();
+
+            # message d'alert
             $this->addFlash('success','Projet ajouter avec succès!');
+
+            # redirect vers la page liste
             return $this->redirectToRoute('app_admin_project');
         }
+
+        # l'envoie de form vers le twig
         return $this->render('admin/Project/ajouterProjet.html.twig', ["form" => $form->createView()]);
     }
 
@@ -53,16 +68,28 @@ class ProjectController extends AbstractController
      */
     public function modifierProjet(Request $request,ProjectRepository $projectRepository,EntityManagerInterface $entityManager,$id): Response
     {
+        # get projet par id
         $projet = $projectRepository->findOneBy(['id'=>$id]);
+
+
+        # creation de formulaire
         $form = $this->createForm(ProjetType::class, $projet);
+
+        # le submit et le validation
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $projet = $form->getData();
             $entityManager->persist($projet);
             $entityManager->flush();
+
+            # le message d'alert
             $this->addFlash('success','Projet modifié avec succès!');
+
+            # le redirect vers la page liste de projets
             return $this->redirectToRoute('app_admin_project');
         }
+
+        # l'envoie de form vers le twig
         return $this->render('admin/Project/modifierProjet.html.twig', ["form" => $form->createView()]);
     }
 
@@ -71,15 +98,22 @@ class ProjectController extends AbstractController
      */
     public function deleteProjet(Request $request,EntityManagerInterface $entityManager, $id): Response
     {
+        # get projet par id
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);
+
+        # si projet exit
         if($project){
+            # on va supprimé le projet
             $entityManager->remove($project);
             $entityManager->flush();
             $this->addFlash('success','Projet supprimé avec succès!');
         }else{
+
+            # sinon on affiche le message d'alert
             $this->addFlash('danger','Projet introuvable!');
         }
 
+        # on redirige vers la page de projet
         return $this->redirectToRoute('app_admin_project');
 
     }
@@ -89,9 +123,11 @@ class ProjectController extends AbstractController
      */
     public function viewProjet(Request $request,EntityManagerInterface $entityManager,$id): Response
     {
+        # get projet par id
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(ProjetType::class, $project);
-        $form->handleRequest($request);
+
+        # envoie vers le twig
         return $this->render('admin/Project/viewProject.html.twig',['project'=>$project,"form" => $form->createView()]);
     }
 

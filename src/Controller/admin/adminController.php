@@ -19,6 +19,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class adminController extends AbstractController
 {
+
+    # le route de la page dashboard
+    ## L'annotation : le path et le nom de route Exmple "/admin" , name = "app_admin"
     /**
      * @Route("/admin", name="app_admin")
      */
@@ -28,34 +31,48 @@ class adminController extends AbstractController
         ProcessRepository $processRepository,
         TaskRepository $taskRepository,
         MaterialRepository $materialRepository
-    ): Response
+    )
     {
+        # si l'utilisateur connecté n'a pas le rôle admin on va le rediriger vers la page liste de projet
         if ($this->isGranted("ROLE_ADMIN") != true)
             return $this->redirectToRoute('app_admin_project');
 
+        # le nombre de projets total de la base de données
         $totalProject = $projectRepository->getNbrResults();
+        # le nbr(parameter) dernier resultats
         $lastProjects = $projectRepository->getLastResluts(5);
 
+        # le nombre de change requests  total de la base de données
         $totalPCR = $changeRequestRepository->getNbrResults();
+        # le nbr(parameter) dernier resultats
         $lastPCRs = $changeRequestRepository->getLastResluts(5);
 
+        # le nombre de process  total de la base de données
         $totalProcess = $processRepository->getNbrResults();
+        # le nbr(parameter) dernier resultats
         $lastProcess = $processRepository->getLastResluts(5);
 
+        # le nombre de tasks  total de la base de données
         $totalTasks = $taskRepository->getNbrResults();
+        # le nbr(parameter) dernier resultats
         $lastTasks = $taskRepository->getLastResluts(5);
 
+        # le nbr(parameter) dernier task in progress
         $lastTasksInProgress = $taskRepository->getLastTaskOnProgress(5);
 
+
+        # le nombre de change requests selon status
         $nbrPCRApprouved = $changeRequestRepository->getNbrResultsByStats('Approuved');
         $nbrPCRNewCR = $changeRequestRepository->getNbrResultsByStats('New CR');
         $nbrPCRInReview = $changeRequestRepository->getNbrResultsByStats('In Review');
         $nbrPCRRejected = $changeRequestRepository->getNbrResultsByStats('Rejected');
 
+        # en utilise la fonction count pour selectionner le nombre total de materiels
         $materialCount = $materialRepository->count([]);
+        # le nombre de materiels valide
         $materialValid = $materialRepository->countValide();
 
-
+        # en pass tout les variable vers le twig
         return $this->render('admin/index.html.twig', [
             'title' => 'DASHBOARD',
             'totalProject' => $totalProject,
@@ -78,13 +95,20 @@ class adminController extends AbstractController
         ]);
     }
 
+    # le route de la page modifier profile
     /**
-     * @Route("/admin/profile", name="app_admin_profile_modifier", methods={"GET","POST"})
+     * @Route("/admin/profile", name="app_admin_profile_modifier")
      */
-    public function profile(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,EntityManagerInterface $entityManager): Response
+    public function profile(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,EntityManagerInterface $entityManager)
     {
+        # permet de d'avoir l'utilisateur connecté
         $user = $this->getUser();
+
+        # creation de formulaire
         $form = $this->createForm(profileType::class, $user);
+
+
+        # le submit de formulaire + verification
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -112,17 +136,26 @@ class adminController extends AbstractController
                 $media->setPath($newFilename);
                 $user->setAvatar($media);
             }
+
+            # le cryptage de mot de pass
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            # persist et le flush
             $entityManager->persist($user);
             $entityManager->flush();
+
+            # le message d'alert
             $this->addFlash('success','Profile modifié avec succès!');
-            return $this->redirectToRoute('app_admin_profile_modifier');
+
+            # le redirect vers page admin
+            return $this->redirectToRoute('app_admin');
         }
+
         return $this->render("admin/Profile/profile.html.twig", ["form" => $form->createView()]);
     }
 }

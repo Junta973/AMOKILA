@@ -29,7 +29,7 @@ class ProjectRepository extends ServiceEntityRepository
 
     public function getLastResluts($nbr){
         return $this->createQueryBuilder('p')
-            ->orderBy('p.id', 'DESC')
+            ->orderBy('p.id', 'ASC')
             ->setMaxResults($nbr)
             ->getQuery()
             ->getResult()
