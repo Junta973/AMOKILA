@@ -1,8 +1,8 @@
 <nav class="front_nav">
 
 
-        <a href="{{ path('app_apropos') }}">A propos</a>
-        <a href="{{ path('app_contact') }}">Contact</a>
+        <a class="{% if app.request.get('_route') == 'app_apropos' %}active{% endif %}" href="{{ path('app_apropos') }}">A propos</a>
+        <a class="{% if app.request.get('_route') == 'app_contact' %}active{% endif %}" href="{{ path('app_contact') }}">Contact</a>
 
         {% if app.user %}
                 <a href="{{ path('app_admin') }}">      Dashboard</a>

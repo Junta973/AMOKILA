@@ -99,6 +99,7 @@ class Task
      */
     private $assignedTo;
 
+    // valeur à afficher par defaut
     public function __toString()
     {
         return $this->task_name;

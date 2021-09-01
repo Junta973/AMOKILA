@@ -321,14 +321,13 @@ class Project
         return $this;
     }
 
+    //
     public function calculCost(){
         $total = 0;
 
         if(count($this->tasks) != 0){
-
             foreach ($this->tasks as $task)
                 $total += $task->getTaskCost();
-
         }
 
         return $total;

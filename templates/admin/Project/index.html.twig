@@ -5,11 +5,14 @@
 {% block body %}
 
     <div class="header-body text-center">
+        {# Seulement les admin ou les super admin peuvent ajouter un projet #}
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
             <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add project</a>
         {% endif %}
     </div>
     <div class="container-body">
+
+        {# pour afficher les flash messages #}
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">{{ message }}</div>
         {% endfor %}
