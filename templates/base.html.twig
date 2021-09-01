@@ -10,11 +10,13 @@
         {% endblock %}
     </head>
     <body>
+
         {% include 'front_header.html.twig' %}
         <div class="container height-front">
             {% block body %}{% endblock %}
         </div>
         {% include 'front_footer.html.twig' %}
+
         {% block javascripts %}
             <script
                     src="https://code.jquery.com/jquery-3.6.0.min.js"

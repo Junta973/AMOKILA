@@ -73,7 +73,7 @@ class adminController extends AbstractController
         $materialValid = $materialRepository->countValide();
 
         # en pass tout les variable vers le twig
-        return $this->render('admin/index.html.twig', [
+        return $this->render('admin/dashboard.html.twig', [
             'title' => 'DASHBOARD',
             'totalProject' => $totalProject,
             'lastProjects' => $lastProjects,

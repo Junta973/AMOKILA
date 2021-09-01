@@ -83,6 +83,13 @@
             {% endif %}
         </div>
     </div>
+
+    <!-- Affichage des tâches du projet -->
+    <h4 class="color-white">Project tasks:</h4>
+    {% for task in project.tasks %}
+        <a class="color-white" href="{{ path('app_admin_taskList_view',{'id':task.id}) }}">- {{ task }}</a><br>
+    {% endfor %}
+
     <hr>
     <div class="wc-100 text-center mt-25">
         <a href="{{ path('app_admin_project') }}" class="btn btn-danger">Annuler</a>

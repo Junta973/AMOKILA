@@ -12,19 +12,24 @@
 
 </head>
 <body>
-<div class="section_top"><h2><a href="{{ path('app_admin') }}">{% block titleHeader %}AMOKILA{% endblock %}</a></h2></div>
+<div class="section_top">
+    <h2>
+        <a href="{{ path('app_admin') }}">{% block titleHeader %}AMOKILA{% endblock %}</a>
+    </h2>
+</div>
 <div class="container_forms">
-    <div class="section_left d-none-modible">
 
-        <img src="{{ asset('assets/img/logo_transparentform.png') }}">
+    <div class="section_left d-none-modible">
+        <img src="{{ asset('assets/img/logo_transparentform.png') }}" alt="logo"/>
         <h3>
             Bienvenue dans la version web de AMOKILA
         </h3>
-
     </div>
+
     <div class="section_right">
         {% block body %}{% endblock %}
     </div>
+
 </div>
 {% block javascripts %}
     <script
