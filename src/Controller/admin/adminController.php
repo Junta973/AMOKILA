@@ -20,8 +20,8 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class adminController extends AbstractController
 {
 
-    # le route de la page dashboard
-    ## L'annotation : le path et le nom de route Exmple "/admin" , name = "app_admin"
+    # la route de la page dashboard
+    ## L'annotation : le path et le nom de route Exemple "/admin" , name = "app_admin"
     /**
      * @Route("/admin", name="app_admin")
      */
