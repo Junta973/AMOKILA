@@ -22,8 +22,10 @@ class PlanningController extends AbstractController
                 'title' => 'Task '.$task->getTaskName().' ref: '.$task->getTaskRef(),
                 'start' => ($task->getDateStart())->format('Y-m-d'),
                 'end' => ($task->getDateEnd())->format('Y-m-d'),
-                'color' => $task->getColor() ? $task->getColor() : '#000000'
+                'color' => $task->getColor()
             ];
+
+
 
         return $this->render('admin/Planning/index.html.twig', [
             'title' => 'PLANNING',
