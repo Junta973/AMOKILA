@@ -50,5 +50,28 @@ security:
          - { path: ^/admin/project/view,        role: ROLE_USER }
          - { path: ^/admin/project,             role: ROLE_USER }
 
+         - { path: ^/admin/taskList/ajouter,     role: ROLE_ADMIN }
+         - { path: ^/admin/taskList/modifier,    role: ROLE_ADMIN }
+         - { path: ^/admin/taskList/delete,      role: ROLE_ADMIN }
+         - { path: ^/admin/taskList/view,        role: ROLE_USER }
+         - { path: ^/admin/taskList,             role: ROLE_USER }
+
+         - { path: ^/admin/process/ajouter,     role: ROLE_ADMIN }
+         - { path: ^/admin/process/modifier,    role: ROLE_ADMIN }
+         - { path: ^/admin/process/delete,      role: ROLE_ADMIN }
+         - { path: ^/admin/process/view,        role: ROLE_USER }
+         - { path: ^/admin/process,             role: ROLE_USER }
+
+         - { path: ^/admin/material/ajouter,     role: ROLE_ADMIN }
+         - { path: ^/admin/material/modifier,    role: ROLE_ADMIN }
+         - { path: ^/admin/material/delete,      role: ROLE_ADMIN }
+         - { path: ^/admin/material/view,        role: ROLE_USER }
+         - { path: ^/admin/material,             role: ROLE_USER }
+
+         - { path: ^/admin/TeamManagement,             role: ROLE_ADMIN }
+         - { path: ^/admin/phase,             role: ROLE_ADMIN }
+         - { path: ^/admin/changeRequests,             role: ROLE_USER }
+
+
 
         # - { path: ^/profile, roles: ROLE_USER }
