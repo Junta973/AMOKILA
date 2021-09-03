@@ -105,16 +105,19 @@ class ProjectController extends AbstractController
         # get projet par id
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);
 
-        # si projet exit
+        # si le projet existe
         if($project){
             if (
+                #si le projet à des taches
                 count($project->getTasks()) != 0 ||
+                #si le projet à des change request
                 count($project->getProjectChangeRequests()) != 0
             ){
+                #adflash pour indiquer que l'on ne peut pas supprimer
                 $this->addFlash('danger','Vous ne pouvez pas supprimer ce projet!');
             }else {
 
-                # on va supprimé le projet
+                # Sinon on peut supprimé le projet
                 $entityManager->remove($project);
                 $entityManager->flush();
                 $this->addFlash('success', 'Projet supprimé avec succès!');
