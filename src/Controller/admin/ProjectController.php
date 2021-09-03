@@ -103,10 +103,18 @@ class ProjectController extends AbstractController
 
         # si projet exit
         if($project){
-            # on va supprimé le projet
-            $entityManager->remove($project);
-            $entityManager->flush();
-            $this->addFlash('success','Projet supprimé avec succès!');
+            if (
+                count($project->getTasks()) != 0 ||
+                count($project->getProjectChangeRequests()) != 0
+            ){
+                $this->addFlash('danger','Vous ne pouvez pas supprimer ce projet!');
+            }else {
+
+                # on va supprimé le projet
+                $entityManager->remove($project);
+                $entityManager->flush();
+                $this->addFlash('success', 'Projet supprimé avec succès!');
+            }
         }else{
 
             # sinon on affiche le message d'alert
