@@ -33,46 +33,46 @@ class adminController extends AbstractController
         MaterialRepository $materialRepository
     )
     {
-        # si l'utilisateur connecté n'a pas le rôle admin on va le rediriger vers la page liste de projet
+        # Si l'utilisateur connecté n'a pas le rôle admin on va le rediriger vers la page liste de projet
         if ($this->isGranted("ROLE_ADMIN") != true)
             return $this->redirectToRoute('app_admin_project');
 
-        # le nombre de projets total de la base de données
+        # Le nombre de projets total de la base de données
         $totalProject = $projectRepository->getNbrResults();
-        # le nbr(parameter) dernier resultats
+        # Le nbr(parameter) dernier resultats
         $lastProjects = $projectRepository->getLastResluts(5);
 
-        # le nombre de change requests  total de la base de données
+        # Le nombre de change requests  total de la base de données
         $totalPCR = $changeRequestRepository->getNbrResults();
-        # le nbr(parameter) dernier resultats
+        # Le nbr(parameter) dernier resultats
         $lastPCRs = $changeRequestRepository->getLastResluts(5);
 
-        # le nombre de process  total de la base de données
+        # Le nombre de process  total de la base de données
         $totalProcess = $processRepository->getNbrResults();
-        # le nbr(parameter) dernier resultats
+        # Le nbr(parameter) dernier resultats
         $lastProcess = $processRepository->getLastResluts(5);
 
-        # le nombre de tasks  total de la base de données
+        # Le nombre de tasks  total de la base de données
         $totalTasks = $taskRepository->getNbrResults();
-        # le nbr(parameter) dernier resultats
+        # Le nbr(parameter) dernier resultats
         $lastTasks = $taskRepository->getLastResluts(5);
 
-        # le nbr(parameter) dernier task in progress
+        # Le nbr(parameter) dernier task in progress
         $lastTasksInProgress = $taskRepository->getLastTaskOnProgress(5);
 
 
-        # le nombre de change requests selon status
+        # Le nombre de change requests selon status
         $nbrPCRApprouved = $changeRequestRepository->getNbrResultsByStats('Approuved');
         $nbrPCRNewCR = $changeRequestRepository->getNbrResultsByStats('New CR');
         $nbrPCRInReview = $changeRequestRepository->getNbrResultsByStats('In Review');
         $nbrPCRRejected = $changeRequestRepository->getNbrResultsByStats('Rejected');
 
-        # en utilise la fonction count pour selectionner le nombre total de materiels
+        # On utilise la fonction count pour selectionner le nombre total de materiels
         $materialCount = $materialRepository->count([]);
         # le nombre de materiels valide
         $materialValid = $materialRepository->countValide();
 
-        # en pass tout les variable vers le twig
+        # On pass tout les variable vers le twig
         return $this->render('admin/dashboard.html.twig', [
             'title' => 'DASHBOARD',
             'totalProject' => $totalProject,
@@ -95,7 +95,7 @@ class adminController extends AbstractController
         ]);
     }
 
-    # le route de la page modifier profile
+    # La route de la page modifier profile
     /**
      * @Route("/admin/profile", name="app_admin_profile_modifier")
      */
@@ -108,7 +108,7 @@ class adminController extends AbstractController
         $form = $this->createForm(profileType::class, $user);
 
 
-        # le submit de formulaire + verification
+        # Traiter les données du formulaire + verification
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -137,7 +137,7 @@ class adminController extends AbstractController
                 $user->setAvatar($media);
             }
 
-            # le cryptage de mot de pass
+            # le cryptage du mot de pass est défini en auto voir le fichier security.yaml
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -152,7 +152,7 @@ class adminController extends AbstractController
             # le message d'alert
             $this->addFlash('success','Profile modifié avec succès!');
 
-            # le redirect vers page admin
+            # le redirect vers page dashboard
             return $this->redirectToRoute('app_admin');
         }
 

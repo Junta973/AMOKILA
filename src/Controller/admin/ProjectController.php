@@ -14,30 +14,32 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectController extends AbstractController
 {
+    #route vers ma liste projet
     /**
      * @Route("/admin/project", name="app_admin_project")
      */
-    public function index(Request $request,ProjectRepository $projectRepository): Response
+    public function index(Request $request,ProjectRepository $projectRepository)
     {
 
-        # recupération des paramaters de formulaire recherche
+        # Les infos nécessaire à ma liste de projet
         $ref = $request->request->get('refprojet');
         $name = $request->request->get('nameprojet');
 
-        # on pass les parameters vers la method search et filtrer la resultat
+        # On passe les parametres vers la method search et filtrer le resultat
         $projects = $projectRepository->search($name,$ref);
 
-        # envoie de projects vers le twig
+        # renvoie  vers le twig
         return $this->render('admin/Project/index.html.twig', [
             'title' => 'PROJECT',
             'projects' => $projects
         ]);
     }
 
+    #Route create
     /**
      * @route("/admin/project/ajouter", name="app_admin_project_ajouter", methods={"GET","POST"})
      */
-    public function ajouterProjet(Request $request,EntityManagerInterface $entityManager): Response
+    public function ajouterProjet(Request $request,EntityManagerInterface $entityManager)
     {
         # création de new project
         $projet = new Project();
@@ -63,12 +65,13 @@ class ProjectController extends AbstractController
         return $this->render('admin/Project/ajouterProjet.html.twig', ["form" => $form->createView()]);
     }
 
+    #route update
     /**
      * @route("/admin/project/modifier/{id}", name="app_admin_project_modifier", methods={"GET","POST"})
      */
-    public function modifierProjet(Request $request,ProjectRepository $projectRepository,EntityManagerInterface $entityManager,$id): Response
+    public function modifierProjet(Request $request,ProjectRepository $projectRepository,EntityManagerInterface $entityManager,$id)
     {
-        # get projet par id
+        # trouver le projet par son id
         $projet = $projectRepository->findOneBy(['id'=>$id]);
 
 
@@ -93,10 +96,11 @@ class ProjectController extends AbstractController
         return $this->render('admin/Project/modifierProjet.html.twig', ["form" => $form->createView()]);
     }
 
+    #route delete
     /**
      * @Route("/admin/project/delete/{id}", name="app_admin_project_delete", methods={"GET"})
      */
-    public function deleteProjet(Request $request,EntityManagerInterface $entityManager, $id): Response
+    public function deleteProjet(Request $request,EntityManagerInterface $entityManager, $id)
     {
         # get projet par id
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);
@@ -118,10 +122,11 @@ class ProjectController extends AbstractController
 
     }
 
+    #Route read
     /**
      * @route("/admin/project/view/{id}", name="app_admin_project_view", methods={"GET"})
      */
-    public function viewProjet(Request $request,EntityManagerInterface $entityManager,$id): Response
+    public function viewProjet(Request $request,EntityManagerInterface $entityManager,$id)
     {
         # get projet par id
         $project = $entityManager->getRepository(Project::class)->findOneBy(['id'=>$id]);

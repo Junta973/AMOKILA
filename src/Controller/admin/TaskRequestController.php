@@ -13,10 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TaskRequestController extends AbstractController
 {
+    #route vers ma liste des taches
     /**
      * @Route("/admin/taskList", name="app_admin_task_list")
      */
-    public function index(Request $request,TaskRepository $taskRepository): Response
+    public function index(Request $request,TaskRepository $taskRepository)
     {
 
         $reftask = $request->request->get('reftask');
@@ -31,10 +32,11 @@ class TaskRequestController extends AbstractController
         ]);
     }
 
+    #Route create
     /**
      * @route("/admin/taskList/ajouter", name="app_admin_taskList_ajouter", methods={"GET","POST"})
      */
-    public function ajoutertaskList(Request $request,EntityManagerInterface $entityManager): Response
+    public function ajoutertaskList(Request $request,EntityManagerInterface $entityManager)
     {
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
@@ -50,10 +52,11 @@ class TaskRequestController extends AbstractController
         return $this->render('admin/Task/ajouterTask.html.twig', ["form" => $form->createView()]);
     }
 
+    #Route update
     /**
      * @route("/admin/taskList/modifier/{id}", name="app_admin_taskList_modifier", methods={"GET","POST"})
      */
-    public function modifiertaskRequest(Request $request,TaskRepository $taskRepository,EntityManagerInterface $entityManager,$id): Response
+    public function modifiertaskRequest(Request $request,TaskRepository $taskRepository,EntityManagerInterface $entityManager,$id)
     {
         $task = $taskRepository->findOneBy(['id'=>$id]);
         $form = $this->createForm(TaskType::class, $task);
@@ -68,10 +71,11 @@ class TaskRequestController extends AbstractController
         return $this->render('admin/Task/modifierTask.html.twig', ["form" => $form->createView()]);
     }
 
+    #Route delete en methode GET
     /**
      * @Route("/admin/taskList/delete/{id}", name="app_admin_taskList_delete", methods={"GET"})
      */
-    public function deletetaskRequest(Request $request,EntityManagerInterface $entityManager, $id): Response
+    public function deletetaskRequest(Request $request,EntityManagerInterface $entityManager, $id)
     {
         $task = $entityManager->getRepository(Task::class)->findOneBy(['id'=>$id]);
         if($task){
@@ -86,10 +90,11 @@ class TaskRequestController extends AbstractController
 
     }
 
+    #Route read en methode GET
     /**
      * @route("/admin/taskList/view/{id}", name="app_admin_taskList_view", methods={"GET"})
      */
-    public function viewtaskRequest(Request $request,EntityManagerInterface $entityManager,$id): Response
+    public function viewtaskRequest(Request $request,EntityManagerInterface $entityManager,$id)
     {
         $task = $entityManager->getRepository(Task::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(TaskType::class, $task);

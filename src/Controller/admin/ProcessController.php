@@ -14,25 +14,29 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProcessController extends AbstractController
 {
+    #Route vers la liste des process
     /**
      * @Route("/admin/process", name="app_admin_process")
      */
-    public function index(Request $request,ProcessRepository $processRepository): Response
+    public function index(Request $request,ProcessRepository $processRepository)
     {
-
+        #Les infos que j'ai besoin pour creer ma liste
         $processref = $request->request->get('processref');
         $processname = $request->request->get('processname');
         $allProcess = $processRepository->search($processref,$processname);
+
+        #Je renvoie vers mon twig
         return $this->render('admin/Process/index.html.twig', [
             'title' => 'PROCESS',
             'allProcess' => $allProcess
         ]);
     }
 
+    #route create
     /**
      * @route("/admin/process/ajouter", name="app_admin_process_ajouter", methods={"GET","POST"})
      */
-    public function ajouterProcess(Request $request,SluggerInterface $slugger,EntityManagerInterface $entityManager): Response
+    public function ajouterProcess(Request $request,SluggerInterface $slugger,EntityManagerInterface $entityManager)
     {
         $process = new Process();
         $form = $this->createForm(ProcessType::class, $process);
@@ -84,11 +88,11 @@ class ProcessController extends AbstractController
         return $this->render('admin/Process/ajouterProcess.html.twig', ["form" => $form->createView()]);
     }
 
-
+    #Route update
     /**
      * @route("/admin/process/modifier/{id}", name="app_admin_process_modifier", methods={"GET","POST"})
      */
-    public function modifierProcess(Request $request,ProcessRepository $processRepository,SluggerInterface $slugger,EntityManagerInterface $entityManager,$id): Response
+    public function modifierProcess(Request $request,ProcessRepository $processRepository,SluggerInterface $slugger,EntityManagerInterface $entityManager,$id)
     {
         $process = $processRepository->findOneBy(['id'=>$id]);
         $form = $this->createForm(ProcessType::class, $process);
@@ -153,10 +157,11 @@ class ProcessController extends AbstractController
         return $newFilename;
     }
 
+    #Route delete
     /**
      * @Route("/admin/process/delete/{id}", name="app_admin_process_delete", methods={"GET"})
      */
-    public function deleteProcess(Request $request,EntityManagerInterface $entityManager, $id): Response
+    public function deleteProcess(Request $request,EntityManagerInterface $entityManager, $id)
     {
         $process = $entityManager->getRepository(Process::class)->findOneBy(['id'=>$id]);
         if($process){
@@ -171,10 +176,11 @@ class ProcessController extends AbstractController
 
     }
 
+    #Route read
     /**
      * @route("/admin/process/view/{id}", name="app_admin_process_view", methods={"GET"})
      */
-    public function viewProcess(Request $request,EntityManagerInterface $entityManager,$id): Response
+    public function viewProcess(Request $request,EntityManagerInterface $entityManager,$id)
     {
         $process = $entityManager->getRepository(Process::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(ProcessType::class, $process);

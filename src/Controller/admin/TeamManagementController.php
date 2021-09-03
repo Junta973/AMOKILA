@@ -15,10 +15,11 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class TeamManagementController extends AbstractController
 {
+    #route vers ma liste team
     /**
      * @Route("/admin/TeamManagement", name="app_admin_team_management")
      */
-    public function index(Request $request,UserRepository $userRepository): Response
+    public function index(Request $request,UserRepository $userRepository)
     {
 
         $email = $request->request->get('email');
@@ -33,10 +34,11 @@ class TeamManagementController extends AbstractController
         ]);
     }
 
+    #route create
     /**
      * @Route("/admin/utitlisateur/ajouter", name="app_admin_utilisateur_ajouter", methods={"GET","POST"})
      */
-    public function ajouterUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger,EntityManagerInterface $entityManager): Response
+    public function ajouterUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger,EntityManagerInterface $entityManager)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -83,10 +85,11 @@ class TeamManagementController extends AbstractController
         return $this->render("admin/TeamManagement/addMember.html.twig", ["form" => $form->createView()]);
     }
 
+    #Route update
     /**
      * @Route("/admin/utitlisateur/modifier/{id}", name="app_admin_utilisateur_modifier", methods={"GET","POST"})
      */
-    public function modifierUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,EntityManagerInterface $entityManager,$id): Response
+    public function modifierUtitlisateur(Request $request, UserPasswordEncoderInterface $passwordEncoder,SluggerInterface $slugger,EntityManagerInterface $entityManager,$id)
     {
         $user = $entityManager->getRepository(User::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(UserType::class, $user);
@@ -131,10 +134,11 @@ class TeamManagementController extends AbstractController
         return $this->render("admin/TeamManagement/editMember.html.twig", ["form" => $form->createView()]);
     }
 
+    #Route delete
     /**
      * @Route("/admin/utitlisateur/delete/{id}", name="app_admin_utilisateur_delete", methods={"GET"})
      */
-    public function deleteUtitlisateur(Request $request,EntityManagerInterface $entityManager, $id): Response
+    public function deleteUtitlisateur(Request $request,EntityManagerInterface $entityManager, $id)
     {
         $user = $entityManager->getRepository(User::class)->findOneBy(['id'=>$id]);
         if($user){

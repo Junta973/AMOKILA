@@ -13,10 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MaterialController extends AbstractController
 {
+    # Route vers la liste de materiels
     /**
      * @Route("/admin/material", name="app_admin_material")
      */
-    public function index(Request $request,MaterialRepository $materialRepository): Response
+    public function index(Request $request,MaterialRepository $materialRepository)
     {
 
         $ref = $request->request->get('ref');
@@ -31,10 +32,11 @@ class MaterialController extends AbstractController
         ]);
     }
 
+    # Route Create
     /**
      * @route("/admin/material/ajouter", name="app_admin_material_ajouter", methods={"GET","POST"})
      */
-    public function ajouterMaterial(Request $request,EntityManagerInterface $entityManager): Response
+    public function ajouterMaterial(Request $request,EntityManagerInterface $entityManager)
     {
         $material = new Material();
         $form = $this->createForm(MaterialType::class, $material);
@@ -49,13 +51,15 @@ class MaterialController extends AbstractController
         return $this->render('admin/Material/ajouterMaterial.html.twig', ["form" => $form->createView()]);
     }
 
+    # Route Update
     /**
      * @route("/admin/material/modifier/{id}", name="app_admin_material_modifier", methods={"GET","POST"})
      */
-    public function modifierMaterial(Request $request,MaterialRepository $materialRepository,EntityManagerInterface $entityManager,$id): Response
+    public function modifierMaterial(Request $request,MaterialRepository $materialRepository,EntityManagerInterface $entityManager,$id)
     {
         $materila = $materialRepository->findOneBy(['id'=>$id]);
         $form = $this->createForm(MaterialType::class, $materila);
+        # pour traiter les données du formulaire + vérification
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $material = $form->getData();
@@ -67,10 +71,11 @@ class MaterialController extends AbstractController
         return $this->render('admin/Material/modifierMaterial.html.twig', ["form" => $form->createView()]);
     }
 
+    # Route Delete
     /**
      * @Route("/admin/material/delete/{id}", name="app_admin_material_delete", methods={"GET"})
      */
-    public function deleteMaterial(Request $request,EntityManagerInterface $entityManager, $id): Response
+    public function deleteMaterial(Request $request,EntityManagerInterface $entityManager, $id)
     {
         $Material = $entityManager->getRepository(Material::class)->findOneBy(['id'=>$id]);
         if($Material){
@@ -85,14 +90,17 @@ class MaterialController extends AbstractController
 
     }
 
+    # Route Read
     /**
      * @route("/admin/material/view/{id}", name="app_admin_material_view", methods={"GET"})
      */
-    public function viewMaterial(Request $request,EntityManagerInterface $entityManager,$id): Response
+    public function viewMaterial(Request $request,EntityManagerInterface $entityManager,$id)
     {
         $Material = $entityManager->getRepository(Material::class)->findOneBy(['id'=>$id]);
         $form = $this->createForm(MaterialType::class, $Material);
+        # traite les données du formulaire
         $form->handleRequest($request);
+        #renvoie la réponse vers le twig view
         return $this->render('admin/Material/viewMaterial.html.twig',['material'=>$Material,'form'=>$form->createView()]);
     }
 }

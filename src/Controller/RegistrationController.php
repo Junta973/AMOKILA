@@ -15,7 +15,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('app_home');
@@ -26,7 +26,8 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted()) {
             if ($form->isValid()){
-                // encode the plain password
+
+                #encode le mot de passe automatiquement
                 $user->setPassword(
                     $passwordEncoder->encodePassword(
                         $user,
@@ -35,11 +36,11 @@ class RegistrationController extends AbstractController
                 );
 
                 $user->setUsername('');
-                //dd($user);
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
-                // do anything else you need here, like send an email
+
                 $this->addFlash('success','Inscription effectué avec succès!');
                 return $this->redirectToRoute('app_login');
             }else{
