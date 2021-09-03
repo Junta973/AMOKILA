@@ -142,9 +142,24 @@ class TeamManagementController extends AbstractController
     {
         $user = $entityManager->getRepository(User::class)->findOneBy(['id'=>$id]);
         if($user){
-            $entityManager->remove($user);
-            $entityManager->flush();
-            $this->addFlash('success','Utilisateur supprimé avec succès!');
+
+            if (
+                count($user->getAssignedTasks()) != 0 ||
+                count($user->getProjectChangeRequests()) != 0 ||
+                count($user->getProjects()) != 0 ||
+                count($user->getTasks()) != 0 ||
+                count($user->getProcesses()) != 0 ||
+                count($user->getPcrRequestedbyuser()) != 0 ||
+                count($user->getPcrApprouvedbyuser()) != 0
+            ){
+                $this->addFlash('danger','Vous ne pouvez pas supprimer cet utilisateur!');
+            }else{
+                $entityManager->remove($user);
+                $entityManager->flush();
+                $this->addFlash('success','Utilisateur supprimé avec succès!');
+            }
+
+
         }else{
             $this->addFlash('danger','Utilisateur introuvable!');
         }
