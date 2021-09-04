@@ -1,8 +1,8 @@
 {% extends 'forms_base.html.twig' %}
 
-{% block title %}MODIFIER TASK{% endblock %}
+{% block title %}MODIFIER TACHE{% endblock %}
 
-{% block titleHeader %}MODIFIER TASK{% endblock %}
+{% block titleHeader %}MODIFIER TACHE{% endblock %}
 {% block body %}
     {{ form_start(form) }}
     <div class="row">
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Ref CR</label>
+                <label class="wc-100">Nom CR</label>
                 {{ form_widget(form.requestChange) }}
                 <span class="error-field"></span>
             </div>

@@ -52,6 +52,7 @@ security:
 
          - { path: ^/admin/taskList/ajouter,     role: ROLE_ADMIN }
          - { path: ^/admin/taskList/modifier,    role: ROLE_ADMIN }
+         - { path: ^/admin/taskList/modifier,    role: ROLE_USER }
          - { path: ^/admin/taskList/delete,      role: ROLE_ADMIN }
          - { path: ^/admin/taskList/view,        role: ROLE_USER }
          - { path: ^/admin/taskList,             role: ROLE_USER }

@@ -1,8 +1,8 @@
 {% extends 'forms_base.html.twig' %}
 
-{% block title %}DETAILS TASK{% endblock %}
+{% block title %}DETAILS TACHE{% endblock %}
 
-{% block titleHeader %}DETAILS TASK #{{ task.id }} {{ task.taskName }}{% endblock %}
+{% block titleHeader %}DETAILS TACHE #{{ task.id }} {{ task.taskName }}{% endblock %}
 {% block body %}
 
     <form>
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Ref PCR</label>
+                <label class="wc-100">Nom CR</label>
                 <input class="form-control" value="{{ task.projet }}" readonly>
             </div>
         </div>
