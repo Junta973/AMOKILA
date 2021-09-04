@@ -6,7 +6,7 @@
 
     <div class="header-body">
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
-            <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Process</a>
+            <a href="{{ path('app_admin_process_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Ajouter Procedure</a>
         {% endif %}
     </div>
     <div class="container-body">
@@ -21,16 +21,16 @@
             <form method="post">
                 <div class="row">
                     <div class="w-resp wt-40">
-                        <label class="text-black">Process Ref</label>
+                        <label class="text-black">Ref procedure</label>
                         <input class="form-control" name="processref" placeholder="search ref.." />
                     </div>
                     <div class="w-resp wt-40">
-                        <label class="text-black">Process Name</label>
+                        <label class="text-black">Nom procedure</label>
                         <input class="form-control" name="processname" placeholder="Search Process name.." />
                     </div>
 
                     <div class="w-resp wt-20 btn-algin">
-                        <button class="h-45">Search</button>
+                        <button class="h-45">Chercher</button>
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
             <thead>
             <tr>
                 <th class="wt-40">Ref</th>
-                <th class="wt-40">Process name</th>
+                <th class="wt-40">Nom procedure</th>
                 <th class="wt-20">Action</th>
             </tr>
             </thead>

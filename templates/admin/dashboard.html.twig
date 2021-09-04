@@ -47,12 +47,12 @@
             </div>
             <div class="col-md-4 card">
                 <div class="card-title">
-                    Nombre de Process
+                    Nbr de Procedure
                     {{ totalProcess }}
                 </div>
                 <div class="card-details">
                     <a class="buttonLink">
-                        <h3>{{ lastProcess|length }} derniers process</h3>
+                        <h3>{{ lastProcess|length }} dernieres procedure</h3>
                     </a>
                     {% for l in lastProcess %}
                         <a href="{{ path('app_admin_process_view',{'id':l.id}) }}" style="color: #5eb5e0;" class="buttonLink">
@@ -64,12 +64,12 @@
             </div>
             <div class="col-md-4 card">
                 <div class="card-title">
-                    Nombre de Task
+                    Nombre de Tâche
                     {{ totalTasks }}
                 </div>
                 <div class="card-details">
                     <a class="buttonLink">
-                        <h3>{{ lastTasks|length}} derniers task</h3>
+                        <h3>{{ lastTasks|length}} dernières tâche</h3>
                     </a>
                     {% for l in lastTasks %}
                         <a href="{{ path('app_admin_taskList_view',{'id':l.id}) }}" style="color: #5eb5e0;" class="buttonLink">
@@ -100,7 +100,7 @@
             </div>
             <div class="col-md-4 card">
                 <div class="card-title">
-                    CR approval status
+                    Status des CR
                 </div>
                 <div class="card-details">
                     <div class="row">
@@ -127,7 +127,7 @@
             </div>
             <div class="col-md-4 card">
                 <div class="card-title">
-                    {{ lastTasksInProgress|length }} task progress
+                    {{ lastTasksInProgress|length }} tâche en cours
                 </div>
                 <div class="card-details">
                     {% for task in lastTasksInProgress %}

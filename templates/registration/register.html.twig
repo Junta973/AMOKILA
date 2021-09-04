@@ -1,10 +1,10 @@
 {% extends 'forms_base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
     {{ form_start(registrationForm) }}
-    <h1>Register</h1>
+    <h1>Inscription</h1>
 
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">{{ message }}</div>
@@ -19,7 +19,7 @@
         <span class="error-field">{{ form_errors(registrationForm.email) }}</span>
     </div>
     <div class="form-group">
-        <label>Password</label>
+        <label>Mot de passe</label>
         {{ form_widget(registrationForm.plainPassword) }}
         <span class="error-field">{{ form_errors(registrationForm.plainPassword) }}</span>
     </div>
@@ -28,10 +28,10 @@
     </div>
 
     <div class="form-group text-center">
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Valider</button>
     </div>
     <div class="text-center">
-        <a href="{{ path('app_home') }}"><h1><i class="fa fa-undo"></i> Back</h1></a>
+        <a href="{{ path('app_home') }}"><h1><i class="fa fa-undo"></i> Retour</h1></a>
     </div>
 
     {{ form_end(registrationForm) }}

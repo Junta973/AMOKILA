@@ -2,14 +2,14 @@
 
 {% block title %}DETAILS PROCESS{% endblock %}
 
-{% block titleHeader %}DETAILS PROCESS #{{ process.id }} {{ process.processName }}{% endblock %}
+{% block titleHeader %}DETAILS PROCEDURE #{{ process.id }} {{ process.processName }}{% endblock %}
 {% block body %}
 
     <form>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Process Name</label>
+                <label class="wc-100">Nom procedure</label>
                 {{ form_widget(form.process_name,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Process réference</label>
+                <label class="wc-100">Ref Procedure</label>
                 {{ form_widget(form.ref_process,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Created By</label>
+                <label class="wc-100">Crée par</label>
                 <input class="form-control" value="{{ process.user }}" readonly />
             </div>
         </div>
@@ -39,7 +39,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Task</label>
+                <label class="wc-100">Tâche associée</label>
                 <input class="form-control" value="{{ process.task }}" readonly />
             </div>
         </div>

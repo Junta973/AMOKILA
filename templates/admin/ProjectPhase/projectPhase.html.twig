@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Phase Name</label>
+                <label class="wc-100">Nom Phase</label>
                 {{ form_widget(form.phase_name) }}
                 <span class="error-field">{{ form_errors(form.phase_name) }}</span>
             </div>
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Phase Description</label>
+                <label class="wc-100">Description phase</label>
                 {{ form_widget(form.phase_description) }}
                 <span class="error-field">{{ form_errors(form.phase_description) }}</span>
             </div>
@@ -34,14 +34,14 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Phase start date</label>
+                <label class="wc-100">Date début phase</label>
                 {{ form_widget(form.project_phase_date_start) }}
                 <span class="error-field">{{ form_errors(form.project_phase_date_start) }}</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Phase end date</label>
+                <label class="wc-100">Date fin phase</label>
                 {{ form_widget(form.project_phase_date_end) }}
                 <span class="error-field">{{ form_errors(form.project_phase_date_end) }}</span>
             </div>
@@ -49,7 +49,7 @@
     </div>
     <hr>
     <div class="wc-100 text-center">
-        <button type="reset" class="btn btn-danger">Annuler</button>
+        <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-danger">Annuler</a>
         <button type="submit" class="btn btn-light"><i class="fa fa-plus"></i> Ajouter</button>
     </div>
     <hr>

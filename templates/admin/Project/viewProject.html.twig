@@ -9,13 +9,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project Name</label>
+                <label class="wc-100">Nom Projet</label>
                 {{ form_widget(form.project_name,{'attr':{'readonly':true}}) }}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project ref</label>
+                <label class="wc-100">Ref Projet</label>
                 {{ form_widget(form.ref_project,{'attr':{'readonly':true}}) }}
                 
             </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Parent</label>
+                <label class="wc-100">Principal</label>
                 <input class="form-control" value="{{ project.maitre }}" readonly>
             </div>
         </div>
@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Project description</label>
+                <label class="wc-100">Description Projet</label>
                 {{ form_widget(form.project_description,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -46,13 +46,13 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Project start date</label>
+                <label class="wc-100">Date début</label>
                 {{ form_widget(form.date_init_projet,{'attr':{'readonly':true}}) }}
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Project end date</label>
+                <label class="wc-100">Date fin</label>
                 {{ form_widget(form.date_fin_projet,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -64,7 +64,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Cost</label>
+                <label class="wc-100">Coût</label>
                 {{ form_widget(form.cost,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -72,14 +72,14 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project Phase</label>
+                <label class="wc-100">Phase Projet</label>
                 <input class="form-control" value="{{ project.phase }}" readonly>
             </div>
         </div>
         <div class="col-md-6">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
                 <label class="wc-100"></label><br>
-                <a class="btn btn-dark font-14 w-100" href="{{ path('app_admin_phase') }}" target="_blank">Phase config</a>
+                <a class="btn btn-dark font-14 w-100" href="{{ path('app_admin_phase') }}" target="_blank">Conf Phase</a>
             {% endif %}
         </div>
     </div>

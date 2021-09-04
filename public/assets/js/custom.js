@@ -22,7 +22,7 @@ $(document).ready(function (){
     // etat menu par defaut opened
     var etatmenu = "opened";
 
-    // si il y a un valeur dans le localstorage on va le met dans etatmenu
+    // si il y a un valeur dans le localstorage on va le mettre dans etatmenu
     if(localStorage.getItem('menu'))
         etatmenu = localStorage.getItem('menu');
 

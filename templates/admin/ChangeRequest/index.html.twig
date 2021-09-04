@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="header-body">
-        <a href="{{ path('app_admin_change_request_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add Change Request</a>
+        <a href="{{ path('app_admin_change_request_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Ajouter CR</a>
     </div>
     <div class="container-body">
         {% for message in app.flashes('success') %}
@@ -19,15 +19,15 @@
             <form method="post">
                 <div class="row">
                     <div class="w-resp wt-20">
-                        <label class="text-black">PCR Ref</label>
-                        <input class="form-control" name="pcrref" placeholder="search ref.." />
+                        <label class="text-black">Ref CR</label>
+                        <input class="form-control" name="pcrref" placeholder="chercher ref.." />
                     </div>
                     <div class="w-resp wt-40">
-                        <label class="text-black">PCR Name</label>
-                        <input class="form-control" name="pcrname" placeholder="search pcr name.." />
+                        <label class="text-black">Nom CR</label>
+                        <input class="form-control" name="pcrname" placeholder="chercher nom pcr.." />
                     </div>
                     <div class="w-resp wt-20">
-                        <label class="text-black">PCR Etat</label>
+                        <label class="text-black">Etat CR</label>
                         <select name="pcretat" class="wc-100">
                             <option></option>
                             <option value="New CR">New CR</option>
@@ -37,7 +37,7 @@
                         </select>
                     </div>
                     <div class="w-resp btn-algin wt-20">
-                        <button class="h-45">Search</button>
+                        <button class="h-45">Chercher</button>
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
             <thead>
             <tr>
                 <th class="wt-20">Ref</th>
-                <th class="wt-40">Project change request name</th>
+                <th class="wt-40">Nom CR</th>
                 <th class="wt-20">Etat</th>
                 <th class="wt-20">Action</th>
             </tr>

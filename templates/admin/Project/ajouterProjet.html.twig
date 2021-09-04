@@ -9,14 +9,14 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project Name</label>
+                <label class="wc-100">Nom du projet</label>
                 {{ form_widget(form.project_name) }}
                 <span class="error-field">{{ form_errors(form.project_name) }}</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project ref</label>
+                <label class="wc-100">Ref projet</label>
                 {{ form_widget(form.ref_project) }}
                 <span class="error-field">{{ form_errors(form.ref_project) }}</span>
             </div>
@@ -25,14 +25,14 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project owner</label>
+                <label class="wc-100">Resp. Projet</label>
                 {{ form_widget(form.projectOwner) }}
                 <span class="error-field">{{ form_errors(form.projectOwner) }}</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project Master</label>
+                <label class="wc-100">Projet Principal</label>
                 {{ form_widget(form.maitre) }}
                 <span class="error-field">{{ form_errors(form.maitre) }}</span>
             </div>
@@ -41,7 +41,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project Phase</label>
+                <label class="wc-100">Phase Projet</label>
                 {{ form_widget(form.Phase) }}
                 <span class="error-field">{{ form_errors(form.Phase) }}</span>
             </div>
@@ -49,21 +49,21 @@
         <div class="col-md-6">
             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
             <label class="wc-100"></label><br>
-            <a class="btn btn-dark font-14 w-100" href="{{ path('app_admin_phase') }}">Phase config</a>
+            <a class="btn btn-dark font-14 w-100" href="{{ path('app_admin_phase') }}">Conf phase</a>
             {% endif %}
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Project start date</label>
+                <label class="wc-100">Date début</label>
                 {{ form_widget(form.date_init_projet) }}
                 <span class="error-field">{{ form_errors(form.date_init_projet) }}</span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Project end date</label>
+                <label class="wc-100">Date fin</label>
                 {{ form_widget(form.date_fin_projet) }}
                 <span class="error-field">{{ form_errors(form.date_fin_projet) }}</span>
             </div>
@@ -77,7 +77,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Cost</label>
+                <label class="wc-100">Coût</label>
                 {{ form_widget(form.cost) }}
                 <span class="error-field">{{ form_errors(form.cost) }}</span>
             </div>
@@ -86,7 +86,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Project description</label>
+                <label class="wc-100">Description Projet</label>
                 {{ form_widget(form.project_description) }}
                 <span class="error-field">{{ form_errors(form.project_description) }}</span>
             </div>

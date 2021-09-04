@@ -7,7 +7,7 @@
     <div class="header-body text-center">
         {# Seulement les admin ou les super admin peuvent ajouter un projet #}
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
-            <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Add project</a>
+            <a href="{{ path('app_admin_project_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2">Ajouter projet</a>
         {% endif %}
     </div>
     <div class="container-body">
@@ -24,15 +24,15 @@
             <form method="post">
                 <div class="row">
                     <div class="w-resp" style="width: 29%;">
-                        <label class="text-black">Project Ref</label>
-                        <input class="form-control" name="refprojet" placeholder="search ref.." />
+                        <label class="text-black">Ref Projet</label>
+                        <input class="form-control" name="refprojet" placeholder="Chercher la ref..." />
                     </div>
                     <div class="w-resp" style="width: 41%;">
-                        <label class="text-black">Project Name</label>
-                        <input class="form-control" name="nameprojet" placeholder="search project name.." />
+                        <label class="text-black">Nom Projet</label>
+                        <input class="form-control" name="nameprojet" placeholder="Chercher le nom du projet..." />
                     </div>
                     <div class="btn-algin"  style="width: 30%;">
-                        <button class="h-45">Search</button>
+                        <button class="h-45">Chercher</button>
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                     Ref
                 </th>
                 <th>
-                    Project name
+                    Nom Projet
                 </th>
                 <th style="width: 30%;">Action</th>
             </tr>

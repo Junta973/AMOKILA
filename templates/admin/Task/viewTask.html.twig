@@ -9,13 +9,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Task Name</label>
+                <label class="wc-100">Nom tâche</label>
                 {{ form_widget(form.task_name,{'attr':{'readonly':true}}) }}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Task ref</label>
+                <label class="wc-100">Ref tâche</label>
                 {{ form_widget(form.task_ref,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Project change request réf</label>
+                <label class="wc-100">Ref PCR</label>
                 <input class="form-control" value="{{ task.projet }}" readonly>
             </div>
         </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Color</label>
+                <label class="wc-100">Couleur</label>
                 {{ form_widget(form.color,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -45,13 +45,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Project Réference</label>
+                <label class="wc-100">Projet assigné</label>
                 {{ form_widget(form.projet,{'attr':{'readonly':true}}) }}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label class="wc-100">Task Cost</label>
+                <label class="wc-100">Coût tâche</label>
                 {{ form_widget(form.task_cost,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -59,7 +59,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Task Description</label>
+                <label class="wc-100">Description tâche</label>
                 {{ form_widget(form.task_description,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -68,19 +68,19 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Date start</label>
+                <label class="wc-100">Date début</label>
                 {{ form_widget(form.date_start,{'attr':{'readonly':true}}) }}
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Date End</label>
+                <label class="wc-100">Date fin</label>
                 {{ form_widget(form.date_end,{'attr':{'readonly':true}}) }}
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="wc-100">Progress</label>
+                <label class="wc-100">Progression</label>
                 {{ form_widget(form.progress,{'attr':{'readonly':true}}) }}
             </div>
         </div>
@@ -88,7 +88,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label class="wc-100">Assigned To</label>
+                <label class="wc-100">Assigné(e) à</label>
                 <textarea rows="3" class="form-control" readonly>
                     {% for u in task.assignedTo %}
                         - {{ u }}

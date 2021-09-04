@@ -6,19 +6,19 @@
 {% block body %}
 
     {{ form_start(form) }}
-        <label>Material reference</label>
+        <label>Ref Materiel</label>
         {{ form_widget(form.ref_material,{'attr':{'readonly':true}}) }}
 
-        <label>Material name</label>
+        <label>Nom Materiel</label>
         {{ form_widget(form.name_material,{'attr':{'readonly':true}}) }}
 
-        <label>Validity date</label>
+        <label>Date de validité</label>
         {{ form_widget(form.date_validation_in,{'attr':{'readonly':true}}) }}
 
-        <label>Expire date</label>
+        <label>Date d'expiration</label>
         {{ form_widget(form.date_validation_out,{'attr':{'readonly':true}}) }}
 
-        <label>Cost</label>
+        <label>Coût</label>
         {{ form_widget(form.material_cost,{'attr':{'readonly':true}}) }}
 
         <hr>

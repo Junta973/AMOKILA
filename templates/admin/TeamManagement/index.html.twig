@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="header-body">
-        <a href="{{ path('app_admin_utilisateur_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2"><i class="fa fa-user"></i> add user</a>
+        <a href="{{ path('app_admin_utilisateur_ajouter') }}" class="btn btn-dark w-240 mt-5 ml-2"><i class="fa fa-user"></i>Ajouter employé</a>
     </div>
     <div class="container-body">
 
@@ -23,19 +23,19 @@
                         <input class="form-control" name="email" placeholder="Email.." />
                     </div>
                     <div class="col-md-3">
-                        <label class="text-black">Skills</label>
-                        <input class="form-control" name="skills" placeholder="Skills.." />
+                        <label class="text-black">Compétence</label>
+                        <input class="form-control" name="skills" placeholder="Compétence.." />
                     </div>
                     <div class="col-md-3">
-                        <label class="text-black">Level</label>
-                        <input class="form-control" type="number" min="0" max="5" name="level" placeholder="Level.." />
+                        <label class="text-black">Niveau</label>
+                        <input class="form-control" type="number" min="0" max="5" name="level" placeholder="Niveau.." />
                     </div>
                     <div class="col-md-3">
-                        <label class="text-black">Profession</label>
-                        <input class="form-control" name="profession" placeholder="Profession.." />
+                        <label class="text-black">Métier</label>
+                        <input class="form-control" name="profession" placeholder="Métier.." />
                     </div>
                     <div class="col-md-3 btn-algin">
-                        <button class="h-45">Search</button>
+                        <button class="h-45">Chercher</button>
                     </div>
                 </div>
 
@@ -46,9 +46,9 @@
             <tr>
                 <th>Photo</th>
                 <th>E-mail</th>
-                <th class="d-none-modible">Profession</th>
-                <th class="d-none-modible">Skills</th>
-                <th class="d-none-modible">Level</th>
+                <th class="d-none-modible">Métier</th>
+                <th class="d-none-modible">Compétence</th>
+                <th class="d-none-modible">Niveau</th>
                 <th class="d-none-modible">Département</th>
                 <th style="width: 30%;">Action</th>
             </tr>
