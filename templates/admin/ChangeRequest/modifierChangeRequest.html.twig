@@ -100,11 +100,11 @@
         <div class="col-md-3">
             <div class="form-group">
                 {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
-                    <label class="wc-100">Status</label>
+                    <label class="wc-100">Statut</label>
                     {{ form_widget(form.pcr_status) }}
                     <span class="error-field">{{ form_errors(form.pcr_status) }}</span>
                 {% else %}
-                    <label class="wc-100">Status</label>
+                    <label class="wc-100">Statut</label>
                     <input class="form-control" value="{{ changeRequest.pcrStatus }}" readonly>
 
                 {% endif %}
