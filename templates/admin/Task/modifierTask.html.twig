@@ -9,14 +9,22 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Nom tâche</label>
-                {{ form_widget(form.task_name) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.task_name) }}
+                {% else %}
+                    {{ form_widget(form.task_name,{'attr':{'readonly':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.task_name) }}</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Ref tâche</label>
-                {{ form_widget(form.task_ref) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.task_ref) }}
+                {% else %}
+                    {{ form_widget(form.task_ref,{'attr':{'readonly':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.task_ref) }}</span>
             </div>
         </div>
@@ -26,21 +34,33 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">Nom CR</label>
-                {{ form_widget(form.requestChange) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.requestChange) }}
+                {% else %}
+                    {{ form_widget(form.requestChange,{'attr':{'disabled':true}}) }}
+                {% endif %}
                 <span class="error-field"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">Date</label>
-                {{ form_widget(form.date) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.date) }}
+                {% else %}
+                    {{ form_widget(form.date,{'attr':{'readonly':true}}) }}
+                {% endif %}
                 <span class="error-field"></span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">Couleur</label>
-                {{ form_widget(form.color) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.color) }}
+                {% else %}
+                    {{ form_widget(form.color,{'attr':{'disabled':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.color) }}</span>
             </div>
         </div>
@@ -49,14 +69,22 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Projet concerné</label>
-                {{ form_widget(form.projet) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.projet) }}
+                {% else %}
+                    {{ form_widget(form.projet,{'attr':{'disabled':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.projet) }}</span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label class="wc-100">Coût tâche</label>
-                {{ form_widget(form.task_cost) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.task_cost) }}
+                {% else %}
+                    {{ form_widget(form.task_cost,{'attr':{'readonly':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.task_cost) }}</span>
             </div>
         </div>
@@ -65,7 +93,11 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="wc-100">Description tâche</label>
-                {{ form_widget(form.task_description) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.task_description) }}
+                {% else %}
+                    {{ form_widget(form.task_description,{'attr':{'readonly':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.task_description) }}</span>
             </div>
         </div>
@@ -75,14 +107,22 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">Date début</label>
-                {{ form_widget(form.date_start) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.date_start) }}
+                {% else %}
+                    {{ form_widget(form.date_start,{'attr':{'readonly':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.date_start) }}</span>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
                 <label class="wc-100">Date fin</label>
-                {{ form_widget(form.date_end) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.date_end) }}
+                {% else %}
+                    {{ form_widget(form.date_end,{'attr':{'readonly':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.date_end) }}</span>
             </div>
         </div>
@@ -98,7 +138,11 @@
         <div class="col-md-12">
             <div class="form-group">
                 <label class="wc-100">Assigné(e) à</label>
-                {{ form_widget(form.assignedTo) }}
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ form_widget(form.assignedTo) }}
+                {% else %}
+                    {{ form_widget(form.assignedTo,{'attr':{'disabled':true}}) }}
+                {% endif %}
                 <span class="error-field">{{ form_errors(form.assignedTo) }}</span>
             </div>
         </div>
