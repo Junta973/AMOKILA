@@ -27,7 +27,7 @@ class MaterialController extends AbstractController
 
         $allMaterials = $materialRepository->search($ref,$name,$etat);
         return $this->render('admin/Material/index.html.twig', [
-            'title' => 'MATERIALS LIST',
+            'title' => 'MATERIELS',
             'allMaterials' => $allMaterials
         ]);
     }

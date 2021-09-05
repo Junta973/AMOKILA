@@ -72,7 +72,7 @@ class adminController extends AbstractController
         # le nombre de materiels valide
         $materialValid = $materialRepository->countValide();
 
-        # On pass tout les variable vers le twig
+        # On envoie toutes les variable vers le twig
         return $this->render('admin/dashboard.html.twig', [
             'title' => 'DASHBOARD',
             'totalProject' => $totalProject,

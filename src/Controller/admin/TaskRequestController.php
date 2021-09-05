@@ -27,7 +27,7 @@ class TaskRequestController extends AbstractController
 
         $tasks = $taskRepository->search($reftask,$nametask,$minprogress,$maxprogress);
         return $this->render('admin/Task/index.html.twig', [
-            'title' => 'TASK LIST',
+            'title' => 'TACHES',
             'tasks' => $tasks
         ]);
     }

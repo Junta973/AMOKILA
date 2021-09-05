@@ -30,7 +30,7 @@ class ProjectController extends AbstractController
 
         # renvoie  vers le twig
         return $this->render('admin/Project/index.html.twig', [
-            'title' => 'PROJECT',
+            'title' => 'PROJETS',
             'projects' => $projects
         ]);
     }

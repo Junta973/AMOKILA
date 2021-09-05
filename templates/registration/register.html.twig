@@ -24,7 +24,8 @@
         <span class="error-field">{{ form_errors(registrationForm.plainPassword) }}</span>
     </div>
     <div class="form-group customcheckbox">
-        {{ form_row(registrationForm.agreeTerms) }}
+        <label>Conditions générales</label>
+        {{ form_widget(registrationForm.agreeTerms) }}
     </div>
 
     <div class="form-group text-center">

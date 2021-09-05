@@ -27,7 +27,7 @@ class ProcessController extends AbstractController
 
         #Je renvoie vers mon twig
         return $this->render('admin/Process/index.html.twig', [
-            'title' => 'PROCESS',
+            'title' => 'PROCEDURES',
             'allProcess' => $allProcess
         ]);
     }

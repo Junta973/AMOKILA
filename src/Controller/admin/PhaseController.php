@@ -43,7 +43,7 @@ class PhaseController extends AbstractController
         $allPhases = $phaseRepository->findAll();
         #Je renvoie vers le twig view
         return $this->render('admin/ProjectPhase/projectPhase.html.twig', [
-            'title' => 'PHASE CONFIGURATION',
+            'title' => 'CONFIG PHASE',
             'allphases' => $allPhases,
             'form' => $form->createView()
         ]);

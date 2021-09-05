@@ -29,7 +29,7 @@ class TeamManagementController extends AbstractController
 
         $users = $userRepository->search($email,$skills,$level,$profession);
         return $this->render('admin/TeamManagement/index.html.twig', [
-            'title' => 'TEAM MANAGEMENT',
+            'title' => 'EMPLOYES',
             'users' => $users
         ]);
     }
