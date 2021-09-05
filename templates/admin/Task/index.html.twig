@@ -69,11 +69,12 @@
                     <a class="badge badge-{{ etat }} font-14">{{ task.progress ? task.progress : 0 }}%</a>
                 </th>
                 <td class="text-center">
+
                     {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUPER_ADMIN')  %}
-                        <a href="{{ path('app_admin_taskList_modifier',{'id':task.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
                         <a href="{{ path('app_admin_taskList_delete',{'id': task.id}) }}" class="text-danger w-100 mt-2"><i class="fa fa-trash"></i></a>
                     {% endif %}
                     <a href="{{ path('app_admin_taskList_view',{'id':task.id}) }}" class="text-info w-100 mt-2"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('app_admin_taskList_modifier',{'id':task.id}) }}" class="text-primary w-100 mt-2"><i class="fa fa-pencil"></i></a>
                 </td>
             </tr>
             {% else %}
